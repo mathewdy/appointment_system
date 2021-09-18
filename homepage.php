@@ -47,7 +47,7 @@
                     <h3>Medical Center</h3>
                     <ul>
                         <li><a href="">Book an Appointment</a></li>
-                        <li><a href="">Doctors</a></li>
+                        <li><a href="">Doctor</a></li>
                     </ul>
                 </div>
                 <div class="column">

@@ -71,13 +71,13 @@ if(isset($_POST['select'])){
     if($run_doctors_Details){
         echo '<b>'.$specialization . " Section ".'</b>';
         
-       if(mysqli_num_rows($run_doctors_Details) > 0)
+        if(mysqli_num_rows($run_doctors_Details) > 0)
         foreach($run_doctors_Details as $row){
                 ?>
                 <table>
                 <thead>
                     <tr>
-                        <th><b>Doctor</b></th>
+                        <th><b>Doctors</b></th>
                         <th><b>Specialization</b></th>
                         <th><b>HMO</b></th>
                         <th>Image</th>

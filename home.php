@@ -21,6 +21,7 @@ if(empty($_SESSION['email'])){
     <title>Document</title>
 </head>
 <body>
+    <!--kulang ako ng side bar-->
     <h2>Book Appointment</h2>
     <form action="#" method="POST">
         <label for="">Specialization</label>

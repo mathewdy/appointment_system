@@ -31,7 +31,7 @@ include('connection.php');
             ?>
 
                 <form action="set-patient.php" method="POST">
-                    <input type="text" name="id" value="<?php echo $row ['id']?>">
+                    <input type="hidden" name="id" value="<?php echo $row ['id']?>">
                     <label for="">Doctor : </label>
                     <input type="text" name="name_of_doctor" value="<?php echo $row ['first_name']. " " . $row ['last_name']?>"><br>
                     <label for="">Specialization: </label>

@@ -4,7 +4,7 @@ session_start();
 
 
 if(empty($_SESSION['email'])){
-    echo "<script> window.location.href='login-patient.php'</script>";
+    echo "<script> window.location.href='login.php'</script>";
 }
 ?>
 
@@ -21,8 +21,8 @@ if(empty($_SESSION['email'])){
     <!----pili muna sya dito dashboard kuno---->
     <a href="set-appointment.php">Set Appointment</a> <br>
     <a href="view-appointment.php">View Appointments / Confirm Appointments</a> <br>
-    <a href="">View Doctors</a> <br>
-    <a href="">View Patients</a> <br>
+    <a href="view-doctors.php">View Doctors</a> <br>
+    <a href="view-patients.php">View Patients</a> <br>
     <form action="logout.php" method="POST">
         <input type="submit" name="logout" value="Log Out">
     </form>

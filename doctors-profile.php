@@ -115,7 +115,7 @@ if(isset($_POST['book_appointment'])){
 
     //dito ko din i sesend yung sms notification nya
     $name_of_doctor = $_POST['name_of_doctor'];
-    $appointment_date = $_POST['appointment_date'];
+    $appointment_date = date('y-m-d' , strtotime($_POST['appointment_date']));
     $appointment_time = $_POST['appointment_time'];
     $name_of_patient = $_SESSION['first_name'] . " " . $_SESSION['last_name'];
 

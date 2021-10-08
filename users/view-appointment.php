@@ -51,8 +51,8 @@ session_start();
 
 
 if(isset($_POST['select'])){
-
-    $send_date = date('y-m-16');
+    date_default_timezone_set('Asia/Manila');
+    $send_date = date("Y-m-d");
     echo $send_date . '<br>';
 
     $specialization = $_POST['specialization'];
@@ -84,7 +84,7 @@ if(isset($_POST['select'])){
                             <td><?php echo $row ['specialization']?></td>
                             <td><?php echo $row ['first_name'] . $row ['last_name']?></td>
                             <td><?php echo $row ['name_of_patient']?></td>
-                            <td><?php echo $row ['appointment_date'] . $row ['appointment_time']?></td>
+                            <td><?php echo $row ['appointment_date'] . " ". $row ['appointment_time']?></td>
                             <td><?php echo $row ['remarks']?></td>
                             <td>
                                 <form action="view-details.php" method="POST">

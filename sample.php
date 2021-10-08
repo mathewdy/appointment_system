@@ -42,6 +42,7 @@ if(mysqli_num_rows($run) > 0){
 // so since gumagana na to, automatic na syang papasok sa SMS (pati sa DB) , since walang mga laman yung mga patient nya 
 // hindi yun mag tetext sa number or hindi sya papasok sa db
 
+/*
 $date = date('y-m-d');
 
 echo $date . '<br>';
@@ -125,7 +126,39 @@ if(mysqli_fetch_assoc($run) > 0){
     }
 }
 
+*/
 
 
+//dapat automatic na syang mag sesend sa mga doctors ng notifications
 
+$query = "SELECT appointments.appointment_date, appointments.id_doctor, users.mobile_number ,COUNT(*)
+FROM appointments
+LEFT JOIN users ON appointments.id_doctor = users.id
+WHERE appointments.appointment_date = '2021/10/09'
+GROUP BY appointments.id_doctor ";
+$run = mysqli_query($conn,$query);
+
+if(mysqli_num_rows($run) > 0){
+    foreach($run as $row){
+
+        echo $id_of_doctor= $row["id_doctor"] . "<br>" ;
+        echo $mobile_number= $row["mobile_number"];
+        echo $number_of_patients = $row["COUNT(*)"] . "<br>";
+        echo $appointment_date = $row ["appointment_date"];
+
+        
+        $insert = "INSERT INTO sample (number_of_patients,appointment_date,id_doctor,mobile_number)
+        VALUES ('$number_of_patients', '$appointment_date', '$id_of_doctor','$mobile_number')";
+        $run = mysqli_query($conn,$insert);
+
+        if($run){
+            echo "added to databse";
+        }
+        
+    }
+}
 ?>
+
+
+
+

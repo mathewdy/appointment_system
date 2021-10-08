@@ -131,6 +131,9 @@ if(mysqli_fetch_assoc($run) > 0){
 
 //dapat automatic na syang mag sesend sa mga doctors ng notifications
 
+//ETO NA YUNG FUCKING COOOOOOOOOOOOOOOOOOOOOOOODEEEE!!!!!!!!!! NAISIP KO LANG TO NGAYONG ARAW 
+// OCTOBER 9, 2021 , 4:05AM, kase nag twwerrrk kami sa kabilang thesis HASHAHSHAHS; 
+
 $query = "SELECT appointments.appointment_date, appointments.id_doctor, users.mobile_number ,COUNT(*)
 FROM appointments
 LEFT JOIN users ON appointments.id_doctor = users.id

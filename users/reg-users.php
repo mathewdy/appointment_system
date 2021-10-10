@@ -4,12 +4,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
     <title>Online Appointment System</title>
 </head>
 <body>
     
    <?php    
-    include('connection.php');
+   session_start();
+ include('../connection.php');
     //gumamit ako ng php mailer
     use PHPMailer\PHPMailer\PHPMailer;
     use PHPMailer\PHPMailer\SMTP;
@@ -55,10 +57,6 @@
         
     }
 
-
-   //Connection to database
-   session_start();
-
     $error = NULL;
 
    
@@ -86,13 +84,13 @@
         <label for="">Date of Birth:</label> 
         <input type="date" name="date_of_birth">  <br>
         <label for="">Phone Number:</label>
-        <input type="text" name="mobile_number"> <br>
+        <input type="text" name="mobile_number" placeholder="+63"> <br>
         
         <!---dito naman sa check box, array to. so kung baga kung ano yung ma check nya 
         yun yung mailalagay sa database na profession nya-->
-        <input type="checkbox" name="profession[]" id="" value="doctor" > Check if you are a doctor  <br>
-        <input type="checkbox" name="profession[]" id="" value="secretary" > Check if you are secretary <br>
-       
+        <input type="checkbox" name="profession[]" class="profession_lists" value="doctor" required> Check if you are a doctor  <br>
+        <input type="checkbox" name="profession[]" class="profession_lists"   value="secretary" required> Check if you are secretary <br>
+
         <!--kapag na pindot mo naman tong register button so papasok na to sa loob ng database-->
         <input type="submit" name="register" value="register">
 
@@ -125,6 +123,11 @@
 
         $profession = $_POST['profession'];
 
+        if(empty($profession)){
+            echo "Please Select Profession";
+            exit();
+        }
+
        // time zone kase kung anong oras sya nag create netong profile
        // date & time 
        // Hour Minutes Secods
@@ -132,6 +135,16 @@
         $time= date("h:i:s", time());
         //year month date
         $date = date('y-m-d');
+
+        if(strpos($phone_number,"+63") !== FALSE){
+            echo "valid";
+            
+        }else{
+            echo "phone number invalid" ;
+            exit();
+        }
+
+        
 
         //validation ng email
         // kung naka register na tong email na to sa database di na sya makakapasok for registration 
@@ -147,8 +160,11 @@
             // AS meaning nan Alias kung baga
             foreach($profession as $prof){
                 // papasok sa database lahat ng ininput na data
-                $user_form = "INSERT INTO users (doctor_or_secretary,email,account_id,first_name,last_name,age,gender,date_of_birth,mobile_number,v_code,email_status,date_time_created)
-                VALUES ('$prof','$email','$account_id' ,'$first_name' ,'$last_name' , '$age' , '$gender' , '$date_birth' , '$phone_number', '$vkey' , '$email_status' ,'$date  $time' )";
+                
+            
+
+                $user_form = "INSERT INTO users (doctor_or_secretary,email,account_id,first_name,last_name,age,gender,date_of_birth,mobile_number,v_code,email_status,date_time_created,date_time_updated,remarks)
+                VALUES ('$prof','$email','$account_id' ,'$first_name' ,'$last_name' , '$age' , '$gender' , '$date_birth' , '$phone_number', '$vkey' , '$email_status' ,'$date  $time' ,'$date $time', NULL)";
                 //call out yung query , then isama si sendMail para ma valid yung email.
             
                 $run_form = mysqli_query($conn,$user_form)  && sendMail($_POST['email'],$vkey,$account_id);
@@ -163,8 +179,8 @@
                         $insert_id = $conn->insert_id;
                         // so since secretary sya papasok to sa user_Type table na sinasabi ko 
                         if($user_id == 'secretary'){
-                            $query_secretary = "INSERT INTO user_type (user_id,date_time_created)
-                            VALUES ('$insert_id','$date $time')";
+                            $query_secretary = "INSERT INTO user_type (user_id,date_time_created,date_time_updated,remarks)
+                            VALUES ('$insert_id','$date $time','$date $time', NULL)";
                             $run_secretary = mysqli_query($conn,$query_secretary);
                             echo "sucess for secreatry";
                         }else{
@@ -214,3 +230,9 @@
    
 </body>
 </html>
+
+<script type="text/javascript">
+   $('.profession_lists').click(function(){
+    $(this).siblings('input:checkbox').prop('checked', false);
+   });
+</script>

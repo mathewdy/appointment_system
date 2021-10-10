@@ -1,6 +1,5 @@
 <?php
-$conn = new mysqli ("localhost" , "root" , "" , "appointment_system") ;
-
+include('connection.php');
 session_start();
 echo $_SESSION['email'];
 

@@ -1,5 +1,5 @@
 <?php
-include('connection.php');
+include('../connection.php');
 session_start();
 
 ?>
@@ -23,7 +23,7 @@ session_start();
         <input type="submit" name="login" value="Log In">
 
     </form>
-
+    <a href="reg-users.php">Sign Up</a>
 </body>
 </html>
 

@@ -1,6 +1,5 @@
 <?php
-
-$conn = new mysqli("localhost" , "root" , "" , "appointment_system");
+include('../connection.php');
 
 if(isset($_GET['email']) && isset($_GET['v_code']))
 {

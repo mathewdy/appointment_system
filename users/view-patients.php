@@ -1,6 +1,6 @@
 <?php
 
-include('connection.php');
+include('../connection.php');
 session_start();
 
 ?>
@@ -17,6 +17,7 @@ session_start();
     
 
 <a href="home.php">Back</a>
+<h3>Data of Patients</h3>
 <?php
 
 //baka mag lagay pa ako ng search patients SHASHAHSHAH 
@@ -38,6 +39,8 @@ if(mysqli_num_rows($run) > 0){
 
         <?php
     }
+}else{
+    echo "No Patients ". $conn->error;
 }
 
 ?>

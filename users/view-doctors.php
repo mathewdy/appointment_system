@@ -1,8 +1,8 @@
 <?php
-$conn = new mysqli ("localhost" , "root" , "" , "appointment_system") ;
+include('../connection.php');
 
 session_start();
-echo $_SESSION['email'];
+
 
 if(empty($_SESSION['email'])){
     echo "<script> window.location.href='login.php'</script>";
@@ -21,6 +21,7 @@ if(empty($_SESSION['email'])){
     <title>Document</title>
 </head>
 <body>
+    <a href="home.php">Back</a>
     <h2>Book Appointment</h2>
     <form action="#" method="POST">
         <label for="">Specialization</label>

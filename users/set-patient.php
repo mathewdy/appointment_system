@@ -1,15 +1,14 @@
 <?php
 session_start();
-include('connection.php');
+include('../connection.php');
 $name_of_secretary = $_SESSION['first_name'] .  " " . $_SESSION['last_name'];
-echo $name_of_secretary;
+
 
 if(isset($_POST['select_doctor'])){
     $id = $_POST['id'];
     $name_of_doctor = $_POST['name_of_doctor'];
     $specialization = $_POST['specialization'];
 
-    echo $name_of_doctor;
 }
 
 ?>
@@ -85,17 +84,6 @@ if(isset($_POST['select_doctor'])){
 
 <?php
 
-/*
-require_once __DIR__.'/vendor/autoload.php';
-*/
-
-
-//feeling ko gagawa pa ako ng isang file para automatic na lang sya mag sesend, kase dito
-// mag sasave lang ng info
-// dun sa kabila dapat mag sesend na ako ng SMS and naka filter na yung name nya, date(today) , ilan yung patients that day
-// then kunin ko number ni doc. ganenr SHASHAHSHA 
-// BUKAS NA AKO MAG CODE
-
 if(isset($_POST['select_patient'])){
     date_default_timezone_set("Asia/Manila");
     $time= date("h:i:s", time());
@@ -116,22 +104,12 @@ if(isset($_POST['select_patient'])){
    
     $query_appointment = "INSERT INTO appointments (appointment_date,appointment_time,id_doctor,name_of_secretary,name_of_patient,
     date_time_created,date_time_updated,remarks) VALUES ('$appointment_date' , '$appointment_time' , '$id_doctor',
-    '$name_of_secretary' , '$name_of_patient' , '$date $time' , NULL, '$remarks')";
+    '$name_of_secretary' , '$name_of_patient' , '$date $time' , '$date $time', '$remarks')";
 
     $run_appointment = mysqli_query($conn,$query_appointment);
 
     if($run_appointment) {
          echo "<script> window.alert('Succesfully Updated'); window.location.href='home.php'; </script>";
-
-         /*
-        $messagebird = new MessageBird\Client('hzPlSRE4OFahwg9ZI80xfqhpr');
-        $message = new MessageBird\Objects\Message;
-        $message->originator = '+639614507751';
-        $message->recipients = $mobile_number;
-        $message->body = $msg;
-        $response = $messagebird->messages->create($message);
-        var_dump($response);
-        */
     }else{
         echo "eerrrorr" . $conn->error;
     }

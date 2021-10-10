@@ -1,6 +1,6 @@
 <?php
 
-include('connection.php');
+include('../connection.php');
 
 session_start();
 // eto yung mga data ni doctor
@@ -8,10 +8,6 @@ $id =$_SESSION['id'];
 $email =$_SESSION['email'];
 $account_id = $_SESSION['account_id'];
 
-
-echo $id;
-echo $email;
-echo $account_id;
 
 ?>
 <!DOCTYPE html>
@@ -114,7 +110,7 @@ if(isset($_POST['add'])){
     }else{
 
         $query_doctors_details = "INSERT INTO doctors_details (user_id,specialization,prc_id,prc_number,internship,residency,hmo,doc_picture,terms_agreement,date_time_created) 
-        VALUES ('$id' , '$specialization' ,'$prc_id', '$prc_number' , '$internship' ,'$residency','$hmo','$doc_picture','$terms_agreement' ,'$date $time')";
+        VALUES ('$id' , '$specialization' ,'$prc_id', '$prc_number' , '$internship' ,'$residency','$hmo','$doc_picture','$terms_agreement' ,'$date $time','$date $time' , NULL)";
         $run_doctors_details = mysqli_query($conn,$query_doctors_details);
         move_uploaded_file($_FILES['prc_id']['tmp_name'], "id_prc/". $_FILES['prc_id'] ['name']);
         move_uploaded_file($_FILES['doc_picture']['tmp_name'], "doc_picture/". $_FILES['doc_picture'] ['name']);

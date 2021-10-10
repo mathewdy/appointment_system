@@ -1,13 +1,12 @@
 <?php
 
-include('connection.php');
+include('../connection.php');
 session_start();
-echo $secretary = $_SESSION['first_name'] . $_SESSION['last_name'];
+
 
 if(isset($_POST['edit'])){
     $id = $_POST['id'];
     $appointment_date = $_POST['appointment_date'];
-
 
     $remarks = $_POST['remarks'];
     $name_of_patient = $_POST['name_of_patient'];

@@ -1,0 +1,108 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+body{
+    background: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    
+}
+
+    
+.logo img{
+
+   padding: 50px;
+   border-radius: 500px;
+   width: 180px;
+   height: 180px;
+    
+}
+
+.login{
+    
+    text-align: center;
+    font-size: 30px;
+}
+
+.login input[type=submit]{
+    width: 27em;
+    height: 3em;
+    background-color: #3660D4;
+    border-radius: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.login input[type=email]{
+    width: 20em;
+    border-top: none;
+    margin: 8px 0;
+    border-left: none;
+    border-right: none;
+    font-size: 20px;
+}
+
+.login input[type=password]{
+    width: 20em;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    font-size: 20px;
+}
+
+.login label input{
+border-color: black;
+}
+.login a{
+    text-decoration: none;
+}
+
+.login a{
+    padding-right: 400px;
+    color: black;
+}
+
+.wrapper{
+    display: flex;
+    position: relative;
+    
+}
+.wrapper .navbar{
+    position: fixed;
+    width: 230px;
+    height: 750px;
+    background:#3674BA;
+    padding: 30px 0;
+    left: 1330px;
+    padding-top: 10em;
+
+    
+}
+
+.wrapper .navbar ul li{
+    padding: 15px;
+   
+    border-top: 1px solid rgba(255,255,255,0.05);
+
+}
+
+.wrapper .navbar ul li a{
+    
+    display: block;
+    color: white;
+    text-decoration: none;
+    font-family: sans-serif;
+    font-size: 20px;
+    padding: 20px 0;
+    border-bottom: 1px solid black ;
+  
+}
+
+.wrapper .navbar ul li a:hover{
+    color: black;
+    transition-duration: 0.5s;
+}
+ul{
+    list-style: none;
+}

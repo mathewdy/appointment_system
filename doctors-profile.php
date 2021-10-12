@@ -2,10 +2,10 @@
 
 include('connection.php');
 session_start();
+$patients_id = $_SESSION['id'];
 $email = $_SESSION['email'];
 $mobile_number = $_SESSION['mobile_number'];
-echo $mobile_number;
-echo $email;
+
 $first_name=$_SESSION['first_name'];
 $last_name = $_SESSION['last_name'];
 ?>
@@ -129,15 +129,15 @@ if(isset($_POST['book_appointment'])){
     $msg = "Hi! this is your appointment details from Novaliches General Hospital. 
     Your appointment date & time is on $appointment_date $appointment_time , and your doctor is $name_of_doctor please go to your appointment schedule on time. Thank you so much! ";
 
-    $query_appointments = "INSERT INTO appointments (appointment_date,appointment_time,id_doctor,name_of_secretary,
-    name_of_patient,date_time_created,date_time_updated,remarks) VALUES 
-    ('$appointment_date' , '$appointment_time' , '$id_doctor' , NULL , '$name_of_patient', '$date $time',  NULL ,'$remarks')";
+    $query_appointments = "INSERT INTO appointments (appointment_date,appointment_time,users_id,name_of_secretary,
+    patients_id,date_time_created,date_time_updated,remarks) VALUES 
+    ('$appointment_date' , '$appointment_time' , '$id_doctor' , NULL , '$patients_id', '$date $time',  '$date $time' ,'$remarks')";
     $run_appointments = mysqli_query($conn,$query_appointments); 
 
     if($run_appointments){
 
         // eto na lang eedit ko hahahahahaha 
-      echo "sucess";
+      echo "<script>alert('Appointment Success'); window.location.href='home.php'; </script>";
     
       /*
       $messagebird = new MessageBird\Client('hzPlSRE4OFahwg9ZI80xfqhpr');
@@ -151,7 +151,7 @@ if(isset($_POST['book_appointment'])){
         
       
     }else{
-        echo "error" . $conn->error;
+        echo "<script>alert('Something went wrong'); </script>" . $conn->error;
     }
 }
 

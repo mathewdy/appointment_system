@@ -126,8 +126,8 @@
           echo "<script>alert('Password Incorrect')</script>";
         }else{
             //insert into database 
-            $patient_form = "INSERT INTO patients (email,password,first_name,last_name,age,gender,date_of_birth,mobile_number,v_code,email_status,date_time_created)
-            VALUES ('$email' ,'$password' ,'$first_name' ,'$last_name' , '$age' , '$gender' , '$date_birth' , '$phone_number', '$vkey' , '$email_status' ,'$date  $time' )";
+            $patient_form = "INSERT INTO patients (email,password,first_name,last_name,age,gender,date_of_birth,mobile_number,v_code,email_status,date_time_created,date_time_updated,remarks)
+            VALUES ('$email' ,'$password' ,'$first_name' ,'$last_name' , '$age' , '$gender' , '$date_birth' , '$phone_number', '$vkey' , '$email_status' ,'$date  $time', '$date $time', NULL )";
             //call out yung query , then isama si sendMail para ma valid yung email.
             $run_form = mysqli_query($conn,$patient_form) && sendMail($_POST['email'], $vkey);
             if($run_form){
@@ -135,8 +135,8 @@
                 //foreign key
                 $patient_id = $conn->insert_id;
 
-                $patient_details = "INSERT INTO patient_details (patient_id,hmo,date_time_created) VALUES
-                ('$patient_id' , '$hmo' , '$date  $time ')";
+                $patient_details = "INSERT INTO patient_details (patient_id,hmo,date_time_created,date_time_updated,remarks) VALUES
+                ('$patient_id' , '$hmo' , '$date  $time ', '$date $time' , NULL)";
                 $run_details = mysqli_query($conn,$patient_details);
 
                 if($run_details){

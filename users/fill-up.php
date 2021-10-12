@@ -109,8 +109,8 @@ if(isset($_POST['add'])){
         exit();
     }else{
 
-        $query_doctors_details = "INSERT INTO doctors_details (user_id,specialization,prc_id,prc_number,internship,residency,hmo,doc_picture,terms_agreement,date_time_created) 
-        VALUES ('$id' , '$specialization' ,'$prc_id', '$prc_number' , '$internship' ,'$residency','$hmo','$doc_picture','$terms_agreement' ,'$date $time','$date $time' , NULL)";
+        $query_doctors_details = "INSERT INTO doctors_details (user_id,specialization,prc_id,prc_number,internship,residency,hmo,doc_picture,date_time_created,date_time_updated,remarks) 
+        VALUES ('$id' , '$specialization' ,'$prc_id', '$prc_number' , '$internship' ,'$residency','$hmo','$doc_picture' ,'$date $time','$date $time' , NULL)";
         $run_doctors_details = mysqli_query($conn,$query_doctors_details);
         move_uploaded_file($_FILES['prc_id']['tmp_name'], "id_prc/". $_FILES['prc_id'] ['name']);
         move_uploaded_file($_FILES['doc_picture']['tmp_name'], "doc_picture/". $_FILES['doc_picture'] ['name']);

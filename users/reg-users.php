@@ -84,12 +84,12 @@
         <label for="">Date of Birth:</label> 
         <input type="date" name="date_of_birth">  <br>
         <label for="">Phone Number:</label>
-        <input type="text" name="mobile_number" placeholder="+63"> <br>
+        <input type="text" name="mobile_number" placeholder="+63" title="use international number"> <br>
         
         <!---dito naman sa check box, array to. so kung baga kung ano yung ma check nya 
         yun yung mailalagay sa database na profession nya-->
-        <input type="checkbox" name="profession[]" class="profession_lists" value="doctor" required> Check if you are a doctor  <br>
-        <input type="checkbox" name="profession[]" class="profession_lists"   value="secretary" required> Check if you are secretary <br>
+        <input type="checkbox" name="profession[]" class="profession_lists" value="doctor" > Check if you are a doctor  <br>
+        <input type="checkbox" name="profession[]" class="profession_lists"   value="secretary" > Check if you are secretary <br>
 
         <!--kapag na pindot mo naman tong register button so papasok na to sa loob ng database-->
         <input type="submit" name="register" value="register">
@@ -120,7 +120,7 @@
         // kung baga dun sa email nya ikaw lang makaka access nyan
         $vkey = md5(rand('10000' , '9999'));
         $email_status = 0 ;
-
+        error_reporting(E_ERROR | E_PARSE);
         $profession = $_POST['profession'];
 
         if(empty($profession)){
@@ -140,7 +140,7 @@
             echo "valid";
             
         }else{
-            echo "phone number invalid" ;
+            echo "Please use international format" ;
             exit();
         }
 

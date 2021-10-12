@@ -1,7 +1,8 @@
 <?php
 include('connection.php');
 session_start();
-echo $_SESSION['email'];
+
+
 
 if(empty($_SESSION['email'])){
     echo "<script> window.location.href='login-patient.php'</script>";
@@ -22,6 +23,7 @@ if(empty($_SESSION['email'])){
 <body>
     <!--kulang ako ng side bar-->
     <h2>Book Appointment</h2>
+    <a href="appointments.php">Your Appointments</a>
     <form action="#" method="POST">
         <label for="">Specialization</label>
         <select name="specialization" id="">

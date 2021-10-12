@@ -3,24 +3,23 @@
 
 include('connection.php');
 
-
-
 //dapat automatic na syang mag sesend sa mga doctors ng notifications
 
 //ETO NA YUNG FUCKING COOOOOOOOOOOOOOOOOOOOOOOODEEEE!!!!!!!!!! NAISIP KO LANG TO NGAYONG ARAW 
 // OCTOBER 9, 2021 , 4:05AM, kase nag twwerrrk kami sa kabilang thesis HASHAHSHAHS; 
 
+$date_today = date('y-m-d');
 $query = "SELECT appointments.appointment_date, appointments.id_doctor, users.mobile_number ,COUNT(*)
 FROM appointments
 LEFT JOIN users ON appointments.id_doctor = users.id
-WHERE appointments.appointment_date = '2021/10/12'
+WHERE appointments.appointment_date = '$date_today'
 GROUP BY appointments.id_doctor ";
 $run = mysqli_query($conn,$query);
 
 if(mysqli_num_rows($run) > 0){
     foreach($run as $row){
 
-        echo date('y-m-d');
+        
         ?>
         <label for=""><b>  Id Doctor </b></label>
         <p><?php echo $row ['id_doctor']?></p>
@@ -49,7 +48,8 @@ if(mysqli_num_rows($run) > 0){
         echo "added to databse";
         /*
         require_once __DIR__.'/vendor/autoload.php';
-        $msg = "you have $number_of_patients, for today";
+        $msg = "Hi doc goodmorning! You are about to expect of a total $number_of_patients this day. 
+        $date_today";
         $messagebird = new MessageBird\Client('T8vuK9B6RqjBuBVDQ6rQ3lHhJ');
         $message = new MessageBird\Objects\Message;
         $message->originator = '+639614507751';

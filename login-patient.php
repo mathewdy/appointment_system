@@ -11,21 +11,47 @@ include('connection.php');
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/login.css">
     <title>Document</title>
 </head>
 <body>
     <!--login-->
-    <form action="#" method="POST">
-        <h3>Login</h3>
-        <label for="">Email</label>
-        <input type="email" name="email"> <br>
-        <label for="">Password</label>
-        <input type="password" name="password"> <br>
-        <input type="submit" name="login" value="Login">
-    </form>
-    <!----pag na click ko to pupunta na ako sa registartion-->
-    <a href="reg-patient.php">Registration For Patient</a>
 
+
+    <div class="wrapper">
+        <div class="navbar">
+            <ul>
+                <li>
+                    <a href="homepage.php">Home</a>
+                    <a href="#">About</a>
+                    <a href="#">Doctors</a>
+                </li>
+            </ul>
+        </div>
+    </div>  
+ 
+    <div class="logo">
+        <img src="css/logo.png" alt="Logo">
+    </div>
+       
+
+    <form action="#" method="POST">
+        <div class="login">
+            <h3>Welcome!</h3>
+            <div class="inputs">
+            <label for="">Email: </label>
+            <input type="email" name="email"> <br>
+            </div>
+            <label for="">Password: </label>
+            <input type="password" name="password"> <br>
+            <input type="submit" name="login" value="Login"><br> <br>
+            <a href="reg-patient.php">No account? Sign up</a>
+        </div>
+    </form>
+ 
+    <!----pag na click ko to pupunta na ako sa registartion-->
+    
+   
 </body>
 </html>
 

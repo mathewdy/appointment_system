@@ -15,7 +15,7 @@
             <ul>
                 <li><a href="#">Home</a></li>
                 <li><a href="#">About</a></li>
-                <li><a href="#">Appointment</a></li>
+                <li><a href="reg-patient.php">Appointment</a></li>
                 <li><a href="#">Doctor</a></li>
                 <li><a href="">Secretary</a></li>
             </ul>
@@ -38,16 +38,16 @@
                 <div class="column">
                     <h3>Foundation</h3>
                     <ul>
-                        <li><a href="">History</a></li>
-                        <li><a href="">Mission</a></li>
-                        <li><a href="">Vision</a></li>
+                        <li><a href="#">History</a></li>
+                        <li><a href="#">Mission</a></li>
+                        <li><a href="#">Vision</a></li>
                     </ul>
                 </div>
                 <div class="column">
                     <h3>Medical Center</h3>
                     <ul>
-                        <li><a href="">Book an Appointment</a></li>
-                        <li><a href="">Doctor</a></li>
+                        <li><a href="reg-patient.php">Book an Appointment</a></li>
+                        <li><a href="#">Doctor</a></li>
                     </ul>
                 </div>
                 <div class="column">

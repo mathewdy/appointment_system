@@ -116,7 +116,7 @@ if(isset($_POST['add'])){
         move_uploaded_file($_FILES['doc_picture']['tmp_name'], "doc_picture/". $_FILES['doc_picture'] ['name']);
     
         if($run_doctors_details){
-            echo "ADDED TO DOCTORS DETAILS";
+            echo "<script>alert('Added Details') </script>";
         }else{
             echo "ERROR: " . $conn->error;
         }

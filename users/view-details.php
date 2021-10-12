@@ -92,7 +92,7 @@ if(isset($_POST['update'])){
     if($run){
         echo ("<script>window.alert('Succesfully Updated'); window.location.href='view-appointment.php';</script>");
     }else{
-        echo "error";
+        echo "<script>alert('Something went wrong'); </script>";
     }
 }
 

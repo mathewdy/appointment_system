@@ -111,7 +111,7 @@ if(isset($_POST['select_patient'])){
     if($run_appointment) {
          echo "<script> window.alert('Succesfully Updated'); window.location.href='home.php'; </script>";
     }else{
-        echo "eerrrorr" . $conn->error;
+        echo "<script>alert('Something went wrong'); </script>" . $conn->error;
     }
 }
 

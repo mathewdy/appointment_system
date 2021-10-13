@@ -5,9 +5,28 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Online Appointment System</title>
+    <link rel="stylesheet" href=".\css\registration.css">
 </head>
 <body>
     
+<div class="wrapper">
+        <div class="navbar">
+            <ul>
+                <li>
+                    <a href="homepage.php">Home</a>
+                    <a href="#">About</a>
+                    <a href="#">Doctors</a>
+                </li>
+            </ul>
+        </div>
+    </div>  
+ 
+    <div class="logo">
+        <img src="css/logo.png" alt="Logo">
+    </div>
+
+<h2> Registration Form </h2>
+
    <?php
     include('connection.php');
     use PHPMailer\PHPMailer\PHPMailer;
@@ -57,38 +76,66 @@
     $error = NULL;
     ?>  
 
-    <form action="#" method="POST">
-        <h3>Sign up</h3>
-        <label for="">Email:</label>
-        <input type="email" name="email"> <br>
-        <label for="">Password: </label>
-        <input type="password" name="password"> <br>
-        <label for="">Repeat Password: </label>
-        <input type="password" name="password2"> <br>
-        <label for="">First Name:</label>
-        <input type="text" name="first_name"> <br>
-        <label for="">Last Name:</label>
-        <input type="text" name="last_name"> <br>
-        <label for="">Age: </label>
-        <input type="number" name="age"> <br>
-        <label for="">Gender: </label>
-        <select name="gender" id="" required>
-            <option value="">-Select-</option>
-            <option value="male">Male</option>
-            <option value="female">Female</option>
-        </select> <br>
-        <label for="">Date of Birth:</label> 
-        <input type="date" name="date_of_birth">  <br>
-        <label for="">Phone Number:</label>
-        <input type="text" name="mobile_number" value="+63"> <br>
-        <label for="">HMO:</label>
-        <input type="text" name="hmo" > <br>
-        <input type="submit" name="register" value="register">
+    <div class= "container">
+        <div class= "Title"> </div>
+        <form action="#" method="POST">
+            <h3>Sign up</h3>
+            <div class="user-details">
+            <div class= "email">
+            <label for="">Email:</label>
+            <input type="email" name="email"> <br>
+            </div>
+            <div class="password">
+            <label for="">Password: </label>
+            <input type="password" name="password"> <br>
+            </div>
+            <div class= "password2">
+            <label for="">Repeat Password: </label>
+            <input type="password" name="password2"> <br>
+            </div>
+            <div class= "firstname">
+            <label for="">First Name:</label>
+            <input type="text" name="first_name"> <br>
+            </div>
+            <div class= "lastname">
+            <label for="">Last Name:</label>
+            <input type="text" name="last_name"> <br>
+            </div>
+            <div class= "age">
+            <label for="">Age: </label>
+            <input type="number" name="age"> <br>
+            </div>
+            <div class= "gender">
+            <label for="">Gender: </label>
+            <select name="gender" id="" required>
+                <option value="">-Select-</option>
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+            </select> <br>
+            </div>
+            <div class= "date-of-birth">
+            <label for="">Date of Birth:</label> 
+            <input type="date" name="date_of_birth">  <br>
+            </div>
+            <div class= "phone-number">
+            <label for="">Phone Number:</label>
+            <input type="text" name="mobile_number" value="+63"> <br>
+            </div>
+            <div class= "hmo">
+            <label for="">HMO:</label>
+            <input type="text" name="hmo" > <br>
+            </div>
+            <div class= "register"> <br>
+            <input type="submit" name="register" value="Register">
+            </div>
+            </div>
+        </form>
+    </div>
 
-    </form>
+    <div class="login"> <br>
     <!---kapag na click ko to pupunta ako sa login page-->
     <a href="login-patient.php">Log in Patient</a>
- 
+    </div>
     <?php
 
      //registration

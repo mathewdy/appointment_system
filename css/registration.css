@@ -1,0 +1,178 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+body{
+    background: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    align-items: center;
+    justify-content: center;
+}
+
+.container{
+    max-width: 700px;
+    width: 100%;
+    text-align: center;
+    background: whitesmoke;
+    padding: 25px  30px;
+    border-radius: 10px;
+    margin: 0 auto;
+}
+
+.container form .user-details{
+    display: flex;
+    flex-wrap: wrap;
+}
+    
+.logo img{
+    padding: 50px;
+    border-radius: 500px;
+    width: 180px;
+    height: 180px;
+ }
+
+ h2{
+     text-align: center;
+     color: blue;
+     font-size: 30px;
+ }
+ 
+.wrapper .navbar{
+    position: fixed;
+    width: 230px;
+    height: 750px;
+    background:#3674BA;
+    padding: 30px 0;
+    left: 1330px;
+    padding-top: 10em;
+}
+
+.wrapper .navbar ul li{
+    padding: 15px;
+    border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+.wrapper .navbar ul li a{
+    display: block;
+    color: white;
+    text-decoration: none;
+    font-family: sans-serif;
+    font-size: 20px;
+    padding: 20px 0;
+    border-bottom: 1px solid black ;
+}
+
+.wrapper .navbar ul li a:hover{
+    color: black;
+    transition-duration: 0.5s;
+}
+
+ul{
+    list-style: none;
+}
+
+h3{
+    text-align: center;
+}
+
+label{
+    
+    display: inline-block;
+    text-align: left;
+}
+
+form{
+    text-align: center;
+}
+
+.login{
+    text-align: center;
+}
+
+.login a{
+    text-decoration-line: none;
+}
+
+input{
+    width: 100%;
+    box-sizing: border-box;
+    padding: 5px 10px;
+    border: solid black;
+    border-radius: 4px;
+    size: 120em;
+    max-width: 20em;
+    min-width: 17em;
+    
+
+}
+
+select{
+    width: 100%;
+    box-sizing: border-box;
+    padding: 5px 10px;
+    border: solid black;
+    border-radius: 4px;
+}
+.gender{
+    text-align: left;
+    margin-left: 10px;
+}
+
+.age{
+    text-align: left;
+    margin: 0 auto;
+}
+
+.email{
+    text-align: left;
+    margin-left: 10px;
+}
+
+.password{
+    text-align: left;
+    margin: 0 auto;
+}
+
+.password2{
+    text-align: left;
+    margin-left: 10px;
+}
+
+.firstname{
+    text-align: left;
+    margin: 0 auto;
+}
+
+.lastname{
+    text-align: left;
+    margin-left: 10px;
+}
+
+.date-of-birth{
+    text-align: left;
+    margin-left: auto;
+}
+
+.phone-number{
+    text-align: left;
+    margin-left: 10px;
+}
+
+.hmo{
+    text-align: left;
+    margin-right: auto;
+}
+
+.register{
+    margin: 0 auto;
+    
+}
+
+.register input[type=submit]{
+    background-color: #3660D4;
+    width: 10em;
+    height: 2em;
+    font-size: 18px;
+}
+

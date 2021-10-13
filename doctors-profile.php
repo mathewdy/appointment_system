@@ -22,6 +22,7 @@ $last_name = $_SESSION['last_name'];
         <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/themes/smoothness/jquery-ui.css" />
         <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/doctors-profile.css">
     <script>     
     $(function() {
         var date_today = new Date();
@@ -37,10 +38,14 @@ $last_name = $_SESSION['last_name'];
     </script>
 </head>
 <body>
-    <h3>Doctor</h3>
-    <a href="home.php">Back</a> <br>
-
-
+<div class="gen-container">
+<section class="content-header">
+    <a href="home.php" id="backbtn">Back</a>
+    
+    <span class="header-title">
+        <h1 class="title">DOCTORS</h1>
+    </span>
+</section>
     <?php
 
         $id = $_GET['id'];
@@ -57,32 +62,17 @@ $last_name = $_SESSION['last_name'];
             foreach($run_doctors_Details as $row){
                 ?>
                 <form action="" method="POST">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Image</th>
-                                <th>Specialization</th>
-                                <th>Internship</th>
-                                <th>Residency</th>
-                                <th>HMO</th>
-                                
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><input type="text" name="name_of_doctor" value="<?php echo $row ['first_name'] . $row ['last_name']?>" readonly></td>
-                                <td><img src="<?php echo "users/doc_picture/" . $row ['doc_picture'] ?>" width="100px" alt="Image"></td>
-                            
-                                <td><?php echo $row ['specialization']?></td>
-                                <td><?php echo $row ['internship']?></td>
-                                <td><?php echo $row ['residency']?></td>
-                                <td><?php echo $row ['hmo']?></td>
-                                <td><input type="hidden" name="id_doctor" value="<?php echo $row ['id']?>"></td>
-                            </tr>
-                        </tbody>
-                    </table>
-                   
+                    <div class="details">
+                       <p>Name: <input type="text" name="name_of_doctor" value="<?php echo $row ['first_name'] . $row ['last_name']?>" readonly> </p>
+                       <p>Image:  <img src="<?php echo "users/doc_picture/" . $row ['doc_picture'] ?>" width="100px" alt="Image"> </p>
+                       <p>Specialization: <?php echo $row ['specialization']?> </p>
+                       <p>Internship: <?php echo $row ['internship']?> </p>
+                       <p>Residency: <?php echo $row ['residency']?> </p>
+                       <p>HMO: <?php echo $row ['hmo']?></p>
+                    </div>
+
+                    <div class="select_date">
+                    <input type="hidden" name="id_doctor" value="<?php echo $row ['id']?>">
                         <label for="">Click to Select Date</label><br>
                         <i class="fa fa-calendar" style="font-size:28px"></i> <input type="text" name="appointment_date" id="datepicker" readonly>
                             <select name="appointment_time" id="">
@@ -96,6 +86,7 @@ $last_name = $_SESSION['last_name'];
                                 <option value="4:00pm - 4:30pm">4:00pm - 4:30pm</option>
                             </select>
                         <input type="submit" name="book_appointment" value="Book Appointment">
+                    </div>
                 </form>
                 <?php
             }
@@ -103,8 +94,7 @@ $last_name = $_SESSION['last_name'];
 
     ?>
     
-</body>
-</html>
+
 
 <?php
 
@@ -156,3 +146,6 @@ if(isset($_POST['book_appointment'])){
 }
 
 ?>
+</div>
+</body>
+</html>

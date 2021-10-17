@@ -17,9 +17,19 @@ $account_id = $_SESSION['account_id'];
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="../css/fill-up.css">
 </head>
 <body>
+
+<div class="logo">
+        <img src="../css/logo.png" alt="Logo" >
+    </div>
+
+<h1><i>Please fill up this form</i></h1><br>
+    <div class="container">
     <form action="#" method="POST" enctype="multipart/form-data">
+    <h2>Doctor's Details</h2><br>
+    <div class="user-details">
         <label for="">Specialization</label>
         <select name="specialization" id="">
             <option value="">Select</option>
@@ -62,11 +72,17 @@ $account_id = $_SESSION['account_id'];
         
         <!-- sa terms and agreement 10am to 4pm lang sila for appointment nila sa hospital
         pero mag work sila by tuesday to saturday--->
-        <input type="checkbox" name="terms_agreement" value="agree"> <a href="">Terms & Agreement</a> <br>
+        <input type="checkbox" name="terms_agreement" value="agree"> <a href="">Terms & Agreement</a> <br><br>
+        <div class="submit"><br>
         <input type="submit" name="cancel" value="Cancel">
+        </div>
+        <div class="submit2"><br>
         <input type="submit" name="add" value="Add info ">
+        </div>
         <input type="hidden" name="delete_id" value="<?php echo $id ?>">
+    </div>
     </form>
+    </div>
 </body>
 </html>
 

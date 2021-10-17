@@ -1,14 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8"> 
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
     <title>Online Appointment System</title>
+    <link rel="stylesheet" href="../css/reg-users.css">
 </head>
 <body>
-    
+
+<div class="wrapper">
+        <div class="navbar">
+            <ul>
+                <li>
+                    <a href="homepage.php">Home</a>
+                    <a href="#">About</a>
+                    <a href="fill-up.php">Fill Up</a>
+                    <a href="#">Doctors</a>
+                    <a href="">Secretary</a>
+                </li>
+            </ul>
+        </div>
+    </div> 
+ 
+<!--yan nagana na yan hahaha-->
+    <div class="logo">
+        <img src="../css/logo.png" alt="Logo" >
+    </div>
+
    <?php    
    session_start();
  include('../connection.php');
@@ -61,7 +81,7 @@
 
    
     ?>
-
+<div class="container">
     <form action="#" method="POST">
         <!-----sign up nya-->
         <!--yung nasa NAME na input yan yung mga inputed data na ipapasok sa database-->
@@ -87,17 +107,23 @@
         <input type="text" name="mobile_number" placeholder="+63" title="use international number"> <br>
         
         <!---dito naman sa check box, array to. so kung baga kung ano yung ma check nya 
-        yun yung mailalagay sa database na profession nya-->
+        yun yung mailalagay sa database na profession nya--><br>
         <input type="checkbox" name="profession[]" class="profession_lists" value="doctor" > Check if you are a doctor  <br>
         <input type="checkbox" name="profession[]" class="profession_lists"   value="secretary" > Check if you are secretary <br>
 
+        <br>
+        <div class="register">
         <!--kapag na pindot mo naman tong register button so papasok na to sa loob ng database-->
-        <input type="submit" name="register" value="register">
+        <input type="submit" name="register" value="Register">
+        </div>
 
     </form>
-    <!---kapag na click ko to pupunta ako sa login page-->
-    <a href="login.php">Log in</a>
- 
+ </div> <br>
+    <div class="login">
+        <!---kapag na click ko to pupunta ako sa login page-->
+        <a href="login.php">Log in</a>
+    </div>
+
     <?php
 
   

@@ -16,6 +16,7 @@
                     <a href="homepage.php">Home</a>
                     <a href="#">About</a>
                     <a href="#">Doctors</a>
+                    <a href="">Secretary</a>
                 </li>
             </ul>
         </div>
@@ -81,31 +82,31 @@
         <form action="#" method="POST">
             <h3>Sign up</h3>
             <div class="user-details">
-            <div class= "email">
+            <div class= "inputbox">
             <label for="">Email:</label>
             <input type="email" name="email"> <br>
             </div>
-            <div class="password">
+            <div class="inputbox">
             <label for="">Password: </label>
             <input type="password" name="password"> <br>
             </div>
-            <div class= "password2">
+            <div class= "inputbox">
             <label for="">Repeat Password: </label>
             <input type="password" name="password2"> <br>
             </div>
-            <div class= "firstname">
+            <div class= "inputbox">
             <label for="">First Name:</label>
             <input type="text" name="first_name"> <br>
             </div>
-            <div class= "lastname">
+            <div class= "inputbox">
             <label for="">Last Name:</label>
             <input type="text" name="last_name"> <br>
             </div>
-            <div class= "age">
+            <div class= "inputbox">
             <label for="">Age: </label>
             <input type="number" name="age"> <br>
             </div>
-            <div class= "gender">
+            <div class= "inputbox">
             <label for="">Gender: </label>
             <select name="gender" id="" required>
                 <option value="">-Select-</option>
@@ -113,15 +114,15 @@
                 <option value="female">Female</option>
             </select> <br>
             </div>
-            <div class= "date-of-birth">
+            <div class= "inputbox">
             <label for="">Date of Birth:</label> 
             <input type="date" name="date_of_birth">  <br>
             </div>
-            <div class= "phone-number">
+            <div class= "inputbox">
             <label for="">Phone Number:</label>
             <input type="text" name="mobile_number" value="+63"> <br>
             </div>
-            <div class= "hmo">
+            <div class= "inputbox">
             <label for="">HMO:</label>
             <input type="text" name="hmo" > <br>
             </div>

@@ -1,0 +1,104 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+body{
+    background: #05448D;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+    background-color: whitesmoke;
+    max-width: 400px;
+    border-radius: 10px;
+    padding: 20px  30px;
+    margin: 0 auto;
+    border: solid black;
+}
+
+.container select[name= specialization]{
+    width: 100%;
+    font-size: 15px;
+    padding: 3px 6px;
+    border-radius: 3px;
+    box-sizing: border-box;
+    border: solid black;
+}
+
+.container input[type= text]{
+    width: 100%;
+    font-size: 15px;
+    padding: 3px 6px;
+    border-radius: 3px;
+    box-sizing: border-box;
+    border: solid black;
+}
+
+.container input[type= file]{
+    width: 100%;
+    font-size: 15px;
+    padding: 3px 6px;
+    border-radius: 3px;
+    box-sizing: border-box;
+}
+
+.container .submit input[type= submit]{
+    justify-content: center;
+    width: 100%;
+    font-size: 15px;
+    padding: 3px 6px;
+    border-radius: 3px;
+    box-sizing: border-box;
+    background-color: red;
+    
+}
+
+.container form .user-details{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    text-align: left;
+}
+
+h1{
+    text-align: center;
+    color: whitesmoke;
+    font-size: 20px;
+    
+}
+
+h2{
+    text-align: center;
+}
+
+.container .submit2 input[type= submit]{
+    justify-content: center;
+    width: 100%;
+    font-size: 15px;
+    padding: 3px 6px;
+    border-radius: 3px;
+    box-sizing: border-box;
+    background-color: #3674BA;
+
+}
+
+.container input[type= checkbox]{
+    font-size: 15px;
+    padding: 3px 6px;
+    border-radius: 3px;
+    box-sizing: border-box;
+    height: 1.10em;
+    width: 1.10em;
+    margin: 4px;
+}
+
+.logo img{
+    padding: 50px;
+    border-radius: 500px;
+    width: 180px;
+    height: 180px;
+    background-color: #05448D;
+}

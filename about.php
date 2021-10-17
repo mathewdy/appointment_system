@@ -11,6 +11,7 @@ body {
 div.img {
   padding-left: 80px;
   padding-top: 30px;
+  border-radius: 500px;
 }
 
 div.hp {
@@ -63,7 +64,7 @@ div.hp2 {
   <a href="#" class="w3-bar-item w3-button w3-border-bottom">Secretary</a>
 </div>
 
-<div class="img"><img src="C:\Users\onelQtQt\Downloads\logo-modified.png" width="150" height="150"></div>
+<div class="img"><img src="css/logo.png" width="150" height="150"></div>
 
 
 <div class="hp" style="padding:15px">

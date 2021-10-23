@@ -4,8 +4,9 @@
 }
 
 body{
-    background: whitesmoke;
+    background: linear-gradient(135deg, #0e3c49, #732264);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding-bottom: 100px;
 }
 
 .logo img{
@@ -77,6 +78,7 @@ input{
 
 .login a{
     text-decoration-line: none;
+    color: #d8d7e7;
 }
 
 .login{
@@ -92,8 +94,8 @@ input{
 .wrapper .navbar{
     position: fixed;
     width: 230px;
-    height: 750px;
-    background:#3674BA;
+    height: 100%;
+    background:#d8d7e7;
     padding: 30px 0;
     left: 1330px;
     padding-top: 10em;
@@ -103,7 +105,6 @@ input{
 
 .wrapper .navbar ul li{
     padding: 15px;
-   
     border-top: 1px solid rgba(255,255,255,0.05);
 
 }
@@ -111,7 +112,7 @@ input{
 .wrapper .navbar ul li a{
     
     display: block;
-    color: white;
+    color: black;
     text-decoration: none;
     font-family: sans-serif;
     font-size: 20px;

@@ -1,0 +1,64 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+body{
+    background: linear-gradient(135deg, #0e3c49, #732264);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.wrapper{
+    display: flex;
+    position: relative;
+    
+}
+.wrapper .navbar{
+    position: fixed;
+    width: 230px;
+    height: 100%;
+    background:#d8d7e7;
+    padding: 30px 0;
+
+    
+}
+
+.wrapper .navbar ul li{
+    padding: 15px;
+    border-top: 1px solid rgba(255,255,255,0.05);
+
+}
+
+.wrapper .navbar ul li a{
+    
+    display: block;
+    color: black;
+    text-decoration: none;
+    font-family: sans-serif;
+    font-size: 20px;
+    padding: 20px 0;
+    border-bottom: 1px solid black ;
+  
+}
+
+.wrapper .navbar ul li a:hover{
+    color: black;
+    transition-duration: 0.5s;
+}
+ul{
+    list-style: none;
+}
+
+form input[type= submit]{
+    justify-content: center;
+    width: 150px;
+    font-size: 15px;
+    padding: 3px 6px;
+    border-radius: 3px;
+    box-sizing: border-box;
+    background-color: #0e3c49;
+    color: white;
+    margin-left: 90%;
+    text-align: center;
+}
+    

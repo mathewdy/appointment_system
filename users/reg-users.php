@@ -16,7 +16,6 @@
                 <li>
                     <a href="homepage.php">Home</a>
                     <a href="#">About</a>
-                    <a href="fill-up.php">Fill Up</a>
                     <a href="#">Doctors</a>
                     <a href="">Secretary</a>
                 </li>
@@ -121,7 +120,7 @@
  </div> <br>
     <div class="login">
         <!---kapag na click ko to pupunta ako sa login page-->
-        <a href="login.php">Log in</a>
+        <a href="login.php">Have an account? Log in</a>
     </div>
 
     <?php

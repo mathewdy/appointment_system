@@ -16,10 +16,15 @@ session_start();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="../css/set-appointment.css">
 </head>
 <body>
+    <br>
+    <div class="back">
     <a href="home.php">Back</a>
+    </div>
     
+    <div class="container">
     <form action="#" method="POST">
         <label for="">Select Specialization</label>
         <select name="specialization" id="">
@@ -46,9 +51,9 @@ session_start();
         </select>
         <input type="submit" name="select" value="Select"> 
     </form>
+    </div>
     
-</body>
-</html>
+
 
 <?php
 
@@ -95,3 +100,5 @@ if(isset($_POST['select'])){
     }
 }
 ?>
+</body>
+</html>

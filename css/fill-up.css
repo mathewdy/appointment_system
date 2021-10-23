@@ -4,8 +4,9 @@
 }
 
 body{
-    background: #05448D;
+    background: linear-gradient(135deg, #0e3c49, #732264);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding-bottom: 140px;
 }
 
 .container{
@@ -52,7 +53,8 @@ body{
     padding: 3px 6px;
     border-radius: 3px;
     box-sizing: border-box;
-    background-color: red;
+    background-color: #732264;
+    color: white;
     
 }
 
@@ -65,7 +67,7 @@ body{
 
 h1{
     text-align: center;
-    color: whitesmoke;
+    color: #d8d7e7;
     font-size: 20px;
     
 }
@@ -81,7 +83,8 @@ h2{
     padding: 3px 6px;
     border-radius: 3px;
     box-sizing: border-box;
-    background-color: #3674BA;
+    background-color: #0e3c49;
+    color: white;
 
 }
 
@@ -100,5 +103,4 @@ h2{
     border-radius: 500px;
     width: 180px;
     height: 180px;
-    background-color: #05448D;
 }

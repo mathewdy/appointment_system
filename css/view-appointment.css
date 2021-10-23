@@ -1,0 +1,16 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+body{
+    background: linear-gradient(135deg, #0e3c49, #732264);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.back a{
+    text-decoration-line: none;
+    color: #d8d7e7;
+    font-size: 20px;
+    padding-left: 15px;
+}

@@ -135,7 +135,7 @@
 
     <div class="login"> <br>
     <!---kapag na click ko to pupunta ako sa login page-->
-    <a href="login-patient.php">Log in Patient</a>
+    <a href="login-patient.php">Have an account? Log in</a>
     </div>
     <?php
 

@@ -15,14 +15,26 @@ if(empty($_SESSION['email'])){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="../css/home-users.css">
+    <script src= "https://kit.fontawesome.com/b99e675b6e.js" ></script>
 </head>
 <body>
-    <h3>Home</h3>
-    <!----pili muna sya dito dashboard kuno---->
-    <a href="set-appointment.php">Set Appointment</a> <br>
-    <a href="view-appointment.php">View Appointments</a> <br>
-    <a href="view-doctors.php">View Doctors</a> <br>
-    <a href="view-patients.php">View Patients</a> <br>
+   
+    <div class="wrapper">
+        <div class="navbar">
+            <ul>
+                <li>
+                <!----pili muna sya dito dashboard kuno----><br>
+                <a href="set-appointment.php"><i class="fas fa-calendar-check"></i> Set Appointment</a> <br>
+                <a href="view-appointment.php"><i class="far fa-calendar-check"></i> View Appointments</a> <br>
+                <a href="view-doctors.php"><i class="fas fa-user-md"></i> View Doctors</a> <br>
+                <a href="view-patients.php"><i class="fas fa-user-injured"></i> View Patients</a> <br>
+                </li>
+            </ul>
+        </div>
+    </div> 
+ 
+    <br>
     <form action="logout.php" method="POST">
         <input type="submit" name="logout" value="Log Out">
     </form>

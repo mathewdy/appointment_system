@@ -29,6 +29,9 @@
 <h2> Registration Form </h2>
 
    <?php
+
+   /// tangina di gumagana
+   
     include('connection.php');
     use PHPMailer\PHPMailer\PHPMailer;
     use PHPMailer\PHPMailer\SMTP;

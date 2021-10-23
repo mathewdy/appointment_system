@@ -2,7 +2,7 @@
 
 include('connection.php');
 session_start();
-$patients_id = $_SESSION['id'];
+$patients_id = $_SESSION['patient_id'];
 $email = $_SESSION['email'];
 $mobile_number = $_SESSION['mobile_number'];
 
@@ -22,7 +22,7 @@ $last_name = $_SESSION['last_name'];
         <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/themes/smoothness/jquery-ui.css" />
         <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/doctors-profile.css">
+   
     <script>     
     $(function() {
         var date_today = new Date();
@@ -48,13 +48,14 @@ $last_name = $_SESSION['last_name'];
 </section>
     <?php
 
-        $id = $_GET['id'];
+        $id = $_GET['account_id'];
 
-        $select_doctors_Details = "SELECT users.first_name,users.last_name,users.mobile_number, users.id, doctors_details.user_id,
-        doctors_details.specialization, doctors_details.internship, doctors_details.residency,
-        doctors_details.hmo, doctors_details.doc_picture
-        FROM users
-        LEFT JOIN doctors_details ON users.id = doctors_details.user_id WHERE users.id = '$id'";
+        $select_doctors_Details = "SELECT users.first_name,users.last_name,users.mobile_number,
+        doctors_details.doc_picture,doctors_details.specialization,doctors_details.user_id,users.id ,
+        doctors_details.internship,doctors_details.residency,doctors_details.hmo
+        FROM users 
+        LEFT JOIN doctors_details ON users.account_id = doctors_details.user_id
+        WHERE users.account_id = '$id'";
         $run_doctors_Details = mysqli_query($conn,$select_doctors_Details);
 
 
@@ -63,16 +64,18 @@ $last_name = $_SESSION['last_name'];
                 ?>
                 <form action="" method="POST">
                     <div class="details">
-                       <p>Name: <input type="text" name="name_of_doctor" value="<?php echo $row ['first_name'] . $row ['last_name']?>" readonly> </p>
-                       <p>Image:  <img src="<?php echo "users/doc_picture/" . $row ['doc_picture'] ?>" width="100px" alt="Image"> </p>
-                       <p>Specialization: <?php echo $row ['specialization']?> </p>
-                       <p>Internship: <?php echo $row ['internship']?> </p>
-                       <p>Residency: <?php echo $row ['residency']?> </p>
-                       <p>HMO: <?php echo $row ['hmo']?></p>
+                    <p>Name: <input type="text" name="name_of_doctor" value="<?php echo $row ['first_name'] . $row ['last_name']?>" readonly> </p>
+                   
+                    <p>Image:  <img src="<?php echo "users/doc_picture/" . $row ['doc_picture'] ?>" width="100px" alt="Image"> </p>
+                    <p>Specialization: <?php echo $row ['specialization']?> </p>
+                    <p>Internship: <?php echo $row ['internship']?> </p>
+                    <p>Residency: <?php echo $row ['residency']?> </p>
+                    <p>HMO: <?php echo $row ['hmo']?></p>
                     </div>
-
+                   
+                
                     <div class="select_date">
-                    <input type="hidden" name="id_doctor" value="<?php echo $row ['id']?>">
+                    <input type="hidden" name="id_doctor" value="<?php echo $row ['user_id']?>">
                         <label for="">Click to Select Date</label><br>
                         <i class="fa fa-calendar" style="font-size:28px"></i> <input type="text" name="appointment_date" id="datepicker" readonly>
                             <select name="appointment_time" id="">
@@ -141,7 +144,7 @@ if(isset($_POST['book_appointment'])){
         
       
     }else{
-        echo "<script>alert('Something went wrong'); </script>" . $conn->error;
+        echo "Error" . $conn->error;
     }
 }
 

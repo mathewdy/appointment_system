@@ -37,7 +37,7 @@
     use PHPMailer\PHPMailer\Exception;
     // nilagay ko dito yung mga info ng user, email, verification code , at account id nya
     // mag sesend ito sa email nya
-    function sendMail($email,$vkey,$account_id){
+    function sendMail($email,$vkey,$final_Account_id){
         require ("PHPMailer.php");
         require("SMTP.php");
         require("Exception.php");
@@ -50,8 +50,9 @@
             $mail->isSMTP();                                            //Send using SMTP
             $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
             $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-            $mail->Username   = 'mathewmelendez123123@gmail.com';                     //SMTP username
-            $mail->Password   = '62409176059359';                               //SMTP password
+            $mail->SMTPSecure = "ssl";
+            $mail->Username   = 'mathewmelendez123123123@gmail.com';                     //SMTP username
+            $mail->Password   = 'mathewpogi123';                               //SMTP password
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
             $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
         
@@ -130,9 +131,10 @@
      if(isset($_POST['register'])){
          //finetch natin lahat ng data nya using POST METHOD
         $email = $_POST['email'];
+        
+        $account_id = rand('000000', '99999999');
 
-        $account_id = rand('0000000', '9999999');
-
+        $final_Account_id = $account_id;
        
         $first_name = $_POST['first_name'];
         $last_name = $_POST['last_name'];
@@ -168,7 +170,8 @@
             echo "Please use international format" ;
             exit();
         }
-
+        //user id ito ng doctor
+        
         
 
         //validation ng email
@@ -186,13 +189,11 @@
             foreach($profession as $prof){
                 // papasok sa database lahat ng ininput na data
                 
-            
-
                 $user_form = "INSERT INTO users (doctor_or_secretary,email,account_id,first_name,last_name,age,gender,date_of_birth,mobile_number,v_code,email_status,date_time_created,date_time_updated,remarks)
-                VALUES ('$prof','$email','$account_id' ,'$first_name' ,'$last_name' , '$age' , '$gender' , '$date_birth' , '$phone_number', '$vkey' , '$email_status' ,'$date  $time' ,'$date $time', NULL)";
+                VALUES ('$prof','$email','$final_Account_id' ,'$first_name' ,'$last_name' , '$age' , '$gender' , '$date_birth' , '$phone_number', '$vkey' , '$email_status' ,'$date  $time' ,'$date $time', NULL)";
                 //call out yung query , then isama si sendMail para ma valid yung email.
             
-                $run_form = mysqli_query($conn,$user_form)  && sendMail($_POST['email'],$vkey,$account_id);
+                $run_form = mysqli_query($conn,$user_form)  && sendMail($_POST['email'],$vkey,$final_Account_id);
                 echo "sucess user ";
                 // kung gumana sya edi goods 
                 // kung check nya is secretary mapupunta sa user_type yung ID ni secretary
@@ -201,41 +202,31 @@
                     // mag auto increment yang ID nya and then maari mo makita sa database yung ID nya
                     // naka hyper link yun
                     foreach($profession as $user_id){
-                        $insert_id = $conn->insert_id;
+                        //user id ito ng secretary
+                        
                         // so since secretary sya papasok to sa user_Type table na sinasabi ko 
                         if($user_id == 'secretary'){
                             $query_secretary = "INSERT INTO user_type (user_id,date_time_created,date_time_updated,remarks)
-                            VALUES ('$insert_id','$date $time','$date $time', NULL)";
+                            VALUES ('$final_Account_id','$date $time','$date $time', NULL)";
                             $run_secretary = mysqli_query($conn,$query_secretary);
-                            echo "sucess for secreatry";
+                            echo "<script>alert('Registration Success') </script>";
                         }else{
                             //kukunin ko yung info ni doc
                             //after ko makuha info ni doc sa users gamit yung EMAIL na ginamit nya
                             $query_users = "SELECT * FROM users WHERE email='$email'";
                             $run_users = mysqli_query($conn,$query_users);
-                            
 
-                            //nag finetch ko lahat ng data nya 
-                            // ID, EMAIL, Account ID yung mga data
-                            // ginamit ko yung session para pag punta nya sa next page andun pa din yung mga data nya
-                            
                             if($run_users){
                                 if(mysqli_num_rows($run_users) > 0){
-                                    //chineck ko kung andun lahat ng data nya
                                     $result_fetch = mysqli_fetch_assoc($run_users);
 
-                                    if($result_fetch['id'] > 0 && $result_fetch['email'] && $result_fetch['account_id']){
-                                        $_SESSION['id'] = $result_fetch['id'];
-                                        $_SESSION['email'] = $result_fetch['email'];
+                                    if($result_fetch['account_id']){
                                         $_SESSION['account_id'] = $result_fetch['account_id'];
-                                        // mapupunta sya sa next page FILL-UP PAGE
                                         header("Location: fill-up.php");
                                     }
                                 }
                             }
-                           
                         }
-                        
                     }
                 
                 }else{

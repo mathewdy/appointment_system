@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 19, 2021 at 04:24 PM
+-- Generation Time: Oct 23, 2021 at 09:36 AM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.6
 
@@ -31,9 +31,9 @@ CREATE TABLE `appointments` (
   `id` int(11) NOT NULL,
   `appointment_date` date NOT NULL,
   `appointment_time` varchar(30) NOT NULL,
-  `users_id` int(20) NOT NULL,
+  `users_id` int(50) NOT NULL,
   `name_of_secretary` varchar(20) DEFAULT NULL,
-  `patients_id` int(11) NOT NULL,
+  `patients_id` int(50) NOT NULL,
   `date_time_created` datetime DEFAULT NULL,
   `date_time_updated` datetime DEFAULT NULL,
   `remarks` varchar(30) DEFAULT NULL
@@ -44,7 +44,9 @@ CREATE TABLE `appointments` (
 --
 
 INSERT INTO `appointments` (`id`, `appointment_date`, `appointment_time`, `users_id`, `name_of_secretary`, `patients_id`, `date_time_created`, `date_time_updated`, `remarks`) VALUES
-(17, '2021-10-13', '9:00am - 9:30am', 2, NULL, 1, '2021-10-12 06:47:43', '2021-10-12 06:47:43', 'Pending Appointment');
+(16, '2021-10-28', '9:00am - 9:30am', 73070542, 'fghj fgh', 2147483647, '2021-10-23 03:15:58', '2021-10-23 03:15:58', 'Pending Appointment'),
+(17, '2021-10-27', '9:00am - 9:30am', 73070542, 'fghj fgh', 2147483647, '2021-10-23 03:19:15', '2021-10-23 03:19:15', 'Pending Appointment'),
+(27, '2021-10-27', '9:00am - 9:30am', 73070542, NULL, 2147483647, '2021-10-23 03:35:45', '2021-10-23 03:35:45', 'Pending Appointment');
 
 -- --------------------------------------------------------
 
@@ -54,7 +56,7 @@ INSERT INTO `appointments` (`id`, `appointment_date`, `appointment_time`, `users
 
 CREATE TABLE `doctors_details` (
   `id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
+  `user_id` int(50) NOT NULL,
   `specialization` varchar(30) NOT NULL,
   `prc_id` blob NOT NULL,
   `prc_number` varchar(10) NOT NULL,
@@ -72,7 +74,8 @@ CREATE TABLE `doctors_details` (
 --
 
 INSERT INTO `doctors_details` (`id`, `user_id`, `specialization`, `prc_id`, `prc_number`, `internship`, `residency`, `hmo`, `doc_picture`, `date_time_created`, `date_time_updated`, `remarks`) VALUES
-(1, 2, 'Allergy and immunology', 0x36373330313033355f323234313038303930393334373538315f343931313736353236303136303939313233325f6e2e6a7067, '123123', 'up pgh', 'up pgh', 'maxicare', 0x6d61746865772e706e67, '2021-10-12 06:04:39', '2021-10-12 06:04:39', NULL);
+(1, 73070542, 'Allergy and immunology', 0x7172206b6f2e706e67, '20232', '32', '32', '32', 0x3234363935383834375f3336393532373339313539343038335f343137323230333938313039373131383236325f6e2e706e67, '2021-10-23 02:30:41', '2021-10-23 02:30:41', NULL),
+(2, 90385119, 'Allergy and immunology', 0x7172206b6f2e706e67, '32', '13', '21', '321', 0x7172206b6f2e706e67, '2021-10-23 02:31:39', '2021-10-23 02:31:39', NULL);
 
 -- --------------------------------------------------------
 
@@ -90,10 +93,12 @@ CREATE TABLE `patients` (
   `gender` varchar(20) NOT NULL,
   `date_of_birth` date NOT NULL,
   `mobile_number` varchar(13) NOT NULL,
+  `hmo` varchar(20) NOT NULL,
+  `patient_id` int(50) NOT NULL,
   `v_code` varchar(20) NOT NULL,
   `email_status` int(11) NOT NULL,
   `date_time_created` datetime NOT NULL,
-  `date_time_update` datetime DEFAULT NULL,
+  `date_time_updated` datetime DEFAULT NULL,
   `remarks` varchar(20) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -101,30 +106,8 @@ CREATE TABLE `patients` (
 -- Dumping data for table `patients`
 --
 
-INSERT INTO `patients` (`id`, `email`, `password`, `first_name`, `last_name`, `age`, `gender`, `date_of_birth`, `mobile_number`, `v_code`, `email_status`, `date_time_created`, `date_time_update`, `remarks`) VALUES
-(1, 'cmdyzxcvbnm123@gmail.com', '123', 'mathew', 'dy', 18, 'male', '2020-01-10', '+639155334777', 'b7a782741f667201b548', 1, '2021-10-12 06:09:32', '2021-10-12 06:09:32', NULL);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `patient_details`
---
-
-CREATE TABLE `patient_details` (
-  `id` int(11) NOT NULL,
-  `patient_id` int(11) NOT NULL,
-  `hmo` varchar(30) NOT NULL,
-  `date_time_created` datetime NOT NULL,
-  `date_time_updated` datetime DEFAULT NULL,
-  `remarks` varchar(20) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `patient_details`
---
-
-INSERT INTO `patient_details` (`id`, `patient_id`, `hmo`, `date_time_created`, `date_time_updated`, `remarks`) VALUES
-(1, 1, 'maxicare', '2021-10-12 06:09:32', '2021-10-12 06:09:32', NULL);
+INSERT INTO `patients` (`id`, `email`, `password`, `first_name`, `last_name`, `age`, `gender`, `date_of_birth`, `mobile_number`, `hmo`, `patient_id`, `v_code`, `email_status`, `date_time_created`, `date_time_updated`, `remarks`) VALUES
+(1, 'sabog@gmail.com', '123', 'asdf', 'dsfasd', 2, 'male', '2020-02-20', '+639176059359', 'asdf', 2147483647, 'fa246d0262c3925617b0', 1, '2021-10-23 02:50:49', '2021-10-23 02:50:49', NULL);
 
 -- --------------------------------------------------------
 
@@ -150,14 +133,14 @@ CREATE TABLE `users` (
   `id` int(11) NOT NULL,
   `doctor_or_secretary` varchar(20) NOT NULL,
   `email` varchar(30) NOT NULL,
-  `account_id` varchar(30) NOT NULL,
+  `account_id` int(30) NOT NULL,
   `first_name` varchar(30) NOT NULL,
   `last_name` varchar(30) NOT NULL,
   `age` int(11) NOT NULL,
   `gender` varchar(10) NOT NULL,
   `date_of_birth` date NOT NULL,
   `mobile_number` varchar(13) NOT NULL,
-  `v_code` varchar(20) NOT NULL,
+  `v_code` varchar(50) NOT NULL,
   `email_status` int(11) NOT NULL,
   `date_time_created` datetime NOT NULL DEFAULT current_timestamp(),
   `date_time_updated` datetime DEFAULT current_timestamp(),
@@ -169,8 +152,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `doctor_or_secretary`, `email`, `account_id`, `first_name`, `last_name`, `age`, `gender`, `date_of_birth`, `mobile_number`, `v_code`, `email_status`, `date_time_created`, `date_time_updated`, `remarks`) VALUES
-(1, 'secretary', 'mathewdalisay@gmail.com', '4325422', 'mathew', 'dalisay', 2, 'male', '2020-02-20', '+639156915704', 'b7a782741f667201b548', 1, '2021-10-12 05:59:25', '2021-10-12 05:59:25', NULL),
-(2, 'doctor', 'leonidafrancisco12@gmail.com', '3776492', 'nida', 'francisco', 18, 'female', '2021-10-05', '+639614507751', 'b7a782741f667201b548', 0, '2021-10-12 06:01:30', '2021-10-12 06:01:30', NULL);
+(1, 'doctor', 'mathewdalisay@gmail.com', 73070542, 'mathew', 'dalisay', 2, 'male', '2020-02-20', '+639156915704', 'fa246d0262c3925617b0c72bb20eeb1d', 0, '2021-10-23 02:30:18', '2021-10-23 02:30:18', NULL),
+(2, 'doctor', 'adfa@gmail.com', 90385119, 'ashley', 'djiafhdjf', 2, 'male', '2020-02-20', '+639156915704', 'b7a782741f667201b54880c925faec4b', 0, '2021-10-23 02:31:24', '2021-10-23 02:31:24', NULL),
+(3, 'secretary', 'sad@gmail.com', 123, 'fghj', 'fgh', 2, 'female', '2020-02-20', '+639156915704', 'fa246d0262c3925617b0c72bb20eeb1d', 1, '2021-10-23 02:32:06', '2021-10-23 02:32:06', NULL);
 
 -- --------------------------------------------------------
 
@@ -180,7 +164,7 @@ INSERT INTO `users` (`id`, `doctor_or_secretary`, `email`, `account_id`, `first_
 
 CREATE TABLE `user_type` (
   `id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
+  `user_id` int(50) NOT NULL,
   `date_time_created` datetime NOT NULL,
   `date_time_updated` datetime DEFAULT NULL,
   `remarks` varchar(30) DEFAULT NULL
@@ -191,7 +175,7 @@ CREATE TABLE `user_type` (
 --
 
 INSERT INTO `user_type` (`id`, `user_id`, `date_time_created`, `date_time_updated`, `remarks`) VALUES
-(1, 1, '2021-10-12 05:59:25', '2021-10-12 05:59:25', NULL);
+(1, 123, '2021-10-23 02:32:06', '2021-10-23 02:32:06', NULL);
 
 --
 -- Indexes for dumped tables
@@ -202,7 +186,6 @@ INSERT INTO `user_type` (`id`, `user_id`, `date_time_created`, `date_time_update
 --
 ALTER TABLE `appointments`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `id_doctor` (`users_id`,`patients_id`),
   ADD KEY `users_id` (`users_id`),
   ADD KEY `patients_id` (`patients_id`);
 
@@ -211,20 +194,14 @@ ALTER TABLE `appointments`
 --
 ALTER TABLE `doctors_details`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `user_id` (`user_id`);
+  ADD UNIQUE KEY `user_id` (`user_id`);
 
 --
 -- Indexes for table `patients`
 --
 ALTER TABLE `patients`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `patient_details`
---
-ALTER TABLE `patient_details`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `patient_id` (`patient_id`);
+  ADD UNIQUE KEY `patient_id` (`patient_id`);
 
 --
 -- Indexes for table `sample`
@@ -236,14 +213,15 @@ ALTER TABLE `sample`
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `account_id` (`account_id`);
 
 --
 -- Indexes for table `user_type`
 --
 ALTER TABLE `user_type`
   ADD PRIMARY KEY (`id`),
-  ADD KEY `user_id` (`user_id`);
+  ADD UNIQUE KEY `user_id` (`user_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -253,24 +231,18 @@ ALTER TABLE `user_type`
 -- AUTO_INCREMENT for table `appointments`
 --
 ALTER TABLE `appointments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `doctors_details`
 --
 ALTER TABLE `doctors_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `patients`
 --
 ALTER TABLE `patients`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `patient_details`
---
-ALTER TABLE `patient_details`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
@@ -283,7 +255,7 @@ ALTER TABLE `sample`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `user_type`
@@ -299,26 +271,20 @@ ALTER TABLE `user_type`
 -- Constraints for table `appointments`
 --
 ALTER TABLE `appointments`
-  ADD CONSTRAINT `appointments_ibfk_1` FOREIGN KEY (`users_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `appointments_ibfk_2` FOREIGN KEY (`patients_id`) REFERENCES `patients` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `appointments_ibfk_1` FOREIGN KEY (`users_id`) REFERENCES `doctors_details` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `appointments_ibfk_2` FOREIGN KEY (`patients_id`) REFERENCES `patients` (`patient_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `doctors_details`
 --
 ALTER TABLE `doctors_details`
-  ADD CONSTRAINT `doctors_details_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `patient_details`
---
-ALTER TABLE `patient_details`
-  ADD CONSTRAINT `patient_details_ibfk_1` FOREIGN KEY (`patient_id`) REFERENCES `patients` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `doctors_details_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`account_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `user_type`
 --
 ALTER TABLE `user_type`
-  ADD CONSTRAINT `user_type_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user_type` (`id`);
+  ADD CONSTRAINT `user_type_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `users` (`account_id`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

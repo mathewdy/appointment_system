@@ -49,8 +49,9 @@
             $mail->isSMTP();                                            //Send using SMTP
             $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
             $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-            $mail->Username   = 'mathewmelendez123123@gmail.com';                     //SMTP username
-            $mail->Password   = '62409176059359';                               //SMTP password
+            $mail->SMTPSecure = "ssl";
+            $mail->Username   = 'mathewmelendez123123123@gmail.com';                     //SMTP username
+            $mail->Password   = 'mathewpogi123';                               //SMTP password
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
             $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
         
@@ -64,8 +65,7 @@
             $mail->Body    = "Thanks for registration! Hello $email welcome to <b> NGH </b> 
             Click the link to verify the email address. Thank you so much! ♥ 
             <a href='http://localhost/OTP/verify.php?email=$email&v_code=$vkey'>Verify</a>' " ;
-           
-        
+
             $mail->send();
             return true;
         } catch (Exception $e) {
@@ -73,7 +73,6 @@
         }
         
     }
-
 
    session_start();
 
@@ -161,6 +160,11 @@
 
         $hmo = $_POST['hmo'];
 
+        $date1 = date('ymd');
+        $time1 = date('his');
+        $number = rand(1,500);
+        $patient_id = $date1 . $time1. $number;
+
       
         //validation ng email
         $vkey = md5(rand('10000' , '9999'));
@@ -174,39 +178,22 @@
         }elseif($phone_number == 11){
             echo "numbers must be 11";
         }elseif($password != $password2){
-          echo "<script>alert('Password Incorrect')</script>";
+            echo "<script>alert('Password Incorrect')</script>";
         }else{
             //insert into database 
-            $patient_form = "INSERT INTO patients (email,password,first_name,last_name,age,gender,date_of_birth,mobile_number,v_code,email_status,date_time_created,date_time_updated,remarks)
-            VALUES ('$email' ,'$password' ,'$first_name' ,'$last_name' , '$age' , '$gender' , '$date_birth' , '$phone_number', '$vkey' , '$email_status' ,'$date  $time', '$date $time', NULL )";
+            $patient_form = "INSERT INTO patients (email,password,first_name,last_name,age,gender,date_of_birth,mobile_number,hmo,patient_id,v_code,email_status,date_time_created,date_time_updated,remarks)
+            VALUES ('$email' ,'$password' ,'$first_name' ,'$last_name' , '$age' , '$gender' , '$date_birth' , '$phone_number','$hmo','$patient_id', '$vkey' , '$email_status' ,'$date  $time', '$date $time', NULL )";
             //call out yung query , then isama si sendMail para ma valid yung email.
-            $run_form = mysqli_query($conn,$patient_form) && sendMail($_POST['email'], $vkey);
+            $run_form = mysqli_query($conn,$patient_form) && sendMail($email, $vkey) ;
             if($run_form){
-
-                //foreign key
-                $patient_id = $conn->insert_id;
-
-                $patient_details = "INSERT INTO patient_details (patient_id,hmo,date_time_created,date_time_updated,remarks) VALUES
-                ('$patient_id' , '$hmo' , '$date  $time ', '$date $time' , NULL)";
-                $run_details = mysqli_query($conn,$patient_details);
-
-                if($run_details){
-                    echo "<script>alert('Registration Successful')</script>";
-                    echo "<script>window.location.href='login-patient.php' </script>";
-                    
-                }
-
-                
+                echo "<script>alert('Registration Successful')</script>";
+                echo "<script>window.location.href='login-patient.php' </script>";
             }else{
-                echo "<script>alert('Error: Something Went Wrong')</script>";
+                echo "Error". $conn->error;
             }
         }
-
     }
-
     echo "" . $conn->error ; 
     ?>
-    
-   
 </body>
 </html>

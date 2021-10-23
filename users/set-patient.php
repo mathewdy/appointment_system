@@ -51,11 +51,12 @@ if(isset($_POST['select_doctor'])){
     
     <h1>Select Patient</h1>
     <form action="#" method="POST">
+        <!--id ata to ng doctor SHAHSHA nakalimutan ko na --->
         <input type="text" name="id" value="<?php echo $id?>">
-        <select name="name_of_patient" id="">
+        <select name="patient_id" id="">
             <option value="">-Select-</option>
             <?php foreach ($run_patients as $row) {?>
-                <option value="<?php echo $row ['first_name'] . " ".  $row ['last_name']?>">
+                <option value="<?php echo $row ['patient_id']?>">
                 <?php echo $row ['first_name'] . " " .$row ['last_name']?></option>
             <?php } ?>
         </select> <br>
@@ -92,19 +93,17 @@ if(isset($_POST['select_patient'])){
     $id_doctor = $_POST['id'];
     $remarks = "Pending Appointment";
 
-    $name_of_patient = $_POST['name_of_patient'];
+    $patient_id = $_POST['patient_id'];
     $appointment_date = date('y-m-d', strtotime($_POST['appointment_date']));
     $appointment_time = $_POST['appointment_time'];
 
-    if($name_of_patient == ""){
+    if($patient_id == ""){
         echo "no patient";
-        echo "<script> window.alert('no patient'); window.location.href='home.php'; </script>";
-        exit();
     }
    
-    $query_appointment = "INSERT INTO appointments (appointment_date,appointment_time,id_doctor,name_of_secretary,name_of_patient,
+    $query_appointment = "INSERT INTO appointments (appointment_date,appointment_time,users_id,name_of_secretary,patients_id,
     date_time_created,date_time_updated,remarks) VALUES ('$appointment_date' , '$appointment_time' , '$id_doctor',
-    '$name_of_secretary' , '$name_of_patient' , '$date $time' , '$date $time', '$remarks')";
+    '$name_of_secretary' , '$patient_id' , '$date $time' , '$date $time', '$remarks')";
 
     $run_appointment = mysqli_query($conn,$query_appointment);
 

@@ -3,10 +3,8 @@
 include('../connection.php');
 
 session_start();
-// eto yung mga data ni doctor
-$id =$_SESSION['id'];
-$email =$_SESSION['email'];
-$account_id = $_SESSION['account_id'];
+$final_account_id = $_SESSION['account_id'];
+echo $_SESSION['account_id'];
 
 
 ?>
@@ -88,6 +86,8 @@ $account_id = $_SESSION['account_id'];
 
 <?php
 if(isset($_POST['add'])){
+
+    
     date_default_timezone_set("Asia/Manila");
     $date = date("y-m-d");
     $time = date("h:i:s" , time());
@@ -124,29 +124,29 @@ if(isset($_POST['add'])){
         echo "not added " . $conn->error  ;
         exit();
     }else{
-
         $query_doctors_details = "INSERT INTO doctors_details (user_id,specialization,prc_id,prc_number,internship,residency,hmo,doc_picture,date_time_created,date_time_updated,remarks) 
-        VALUES ('$id' , '$specialization' ,'$prc_id', '$prc_number' , '$internship' ,'$residency','$hmo','$doc_picture' ,'$date $time','$date $time' , NULL)";
+        VALUES ('$final_account_id' , '$specialization' ,'$prc_id', '$prc_number' , '$internship' ,'$residency','$hmo','$doc_picture' ,'$date $time','$date $time' , NULL)";
         $run_doctors_details = mysqli_query($conn,$query_doctors_details);
         move_uploaded_file($_FILES['prc_id']['tmp_name'], "id_prc/". $_FILES['prc_id'] ['name']);
         move_uploaded_file($_FILES['doc_picture']['tmp_name'], "doc_picture/". $_FILES['doc_picture'] ['name']);
     
         if($run_doctors_details){
             echo "<script>alert('Added Details') </script>";
+            echo "<script>window.location.href='login.php'</script>";
         }else{
             echo "ERROR: " . $conn->error;
         }
+        
     }
-   
 }
 
 if(isset($_POST['cancel'])){
     $delete_id = $_POST['delete_id'];
 
-    $delete_doctors_details = "DELETE  FROM doctors_details WHERE user_id='$id'";
+    $delete_doctors_details = "DELETE  FROM doctors_details WHERE user_id='$final_account_id'";
     $run_doctors_details = mysqli_query($conn,$delete_doctors_details);
 
-    $delete_users = "DELETE FROM users WHERE id='$id'";
+    $delete_users = "DELETE FROM users WHERE account_id='$final_account_id'";
     $run_users = mysqli_query($conn,$delete_users);
 
     if($run_users && $run_doctors_details){

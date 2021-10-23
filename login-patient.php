@@ -78,7 +78,7 @@ if(isset($_POST['login'])){
                 if(($_POST['password'] == $result_fetch['password'])){
                     // makakapag login kapag tama
                     $_SESSION['logged_in'] = true;
-                    $_SESSION['id'] = $result_fetch['id'];
+                    $_SESSION['patient_id'] = $result_fetch['patient_id'];
                     $_SESSION['email'] = $result_fetch['email'];
                     $_SESSION['first_name'] = $result_fetch ['first_name'];
                     $_SESSION['last_name'] = $result_fetch['last_name'];

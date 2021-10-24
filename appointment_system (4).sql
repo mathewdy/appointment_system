@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 23, 2021 at 09:36 AM
+-- Generation Time: Oct 24, 2021 at 09:25 AM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.6
 
@@ -201,7 +201,7 @@ ALTER TABLE `doctors_details`
 --
 ALTER TABLE `patients`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `patient_id` (`patient_id`);
+  ADD KEY `patient_id` (`patient_id`);
 
 --
 -- Indexes for table `sample`
@@ -214,7 +214,7 @@ ALTER TABLE `sample`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `account_id` (`account_id`);
+  ADD KEY `account_id` (`account_id`);
 
 --
 -- Indexes for table `user_type`

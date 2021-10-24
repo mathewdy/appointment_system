@@ -49,7 +49,6 @@
             $mail->isSMTP();                                            //Send using SMTP
             $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
             $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-            $mail->SMTPSecure = "ssl";
             $mail->Username   = 'mathewmelendez123123123@gmail.com';                     //SMTP username
             $mail->Password   = 'mathewpogi123';                               //SMTP password
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
@@ -160,10 +159,9 @@
 
         $hmo = $_POST['hmo'];
 
-        $date1 = date('ymd');
-        $time1 = date('his');
-        $number = rand(1,500);
-        $patient_id = $date1 . $time1. $number;
+        
+        $number = rand('999999','999999');
+        $patient_id = $number;
 
       
         //validation ng email

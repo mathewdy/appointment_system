@@ -50,7 +50,7 @@
             $mail->isSMTP();                                            //Send using SMTP
             $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
             $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
-            $mail->SMTPSecure = "ssl";
+           
             $mail->Username   = 'mathewmelendez123123123@gmail.com';                     //SMTP username
             $mail->Password   = 'mathewpogi123';                               //SMTP password
             $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
@@ -64,9 +64,9 @@
             $mail->isHTML(true);                                  //Set email format to HTML
             $mail->Subject = 'Email Verification from Novaliches General Hospital ';
             $mail->Body    = "Thanks for registration ! Hello $email welcome to <b> NGH </b> 
-            this is your account id '$account_id'
+            this is your account id '$final_Account_id'
             Click the link to verify the email address. Thank you so much! ♥ 
-            <a href='http://localhost/OTP/users/verify.php?email=$email&v_code=$vkey&account_id=$account_id'>Verify</a>' " ;
+            <a href='http://localhost/OTP/users/verify.php?email=$email&v_code=$vkey&account_id=$final_Account_id'>Verify</a>' " ;
            
         
             $mail->send();
@@ -132,7 +132,7 @@
          //finetch natin lahat ng data nya using POST METHOD
         $email = $_POST['email'];
         
-        $account_id = rand('000000', '99999999');
+        $account_id = rand('000000', '999999');
 
         $final_Account_id = $account_id;
        

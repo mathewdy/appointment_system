@@ -2,7 +2,7 @@
 
 include('connection.php');
 session_start();
-$id = $_SESSION['id'];
+$id = $_SESSION['patient_id'];
 
 ?>
 

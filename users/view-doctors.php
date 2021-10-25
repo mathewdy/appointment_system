@@ -56,8 +56,6 @@ if(empty($_SESSION['email'])){
     </form>
     
     
-</body>
-</html>
 
 <?php
 
@@ -65,15 +63,15 @@ if(empty($_SESSION['email'])){
 if(isset($_POST['select'])){
     $specialization = $_POST['specialization'];
 // unfinished 
-    $select_doctors_Details = "SELECT users.first_name,users.last_name,users.mobile_number, users.id, doctors_details.user_id,
-    doctors_details.specialization, doctors_details.internship, doctors_details.residency,
-    doctors_details.hmo, doctors_details.doc_picture
+    $select_doctors_Details = "SELECT users.first_name,users.last_name,doctors_details.specialization,
+    doctors_details.hmo,doctors_details.doc_picture,doctors_details.user_id
     FROM users
-    LEFT JOIN doctors_details ON users.id = doctors_details.user_id WHERE specialization = '$specialization'";
+    LEFT JOIN doctors_details ON users.account_id = doctors_details.user_id
+    WHERE doctors_details.specialization = '$specialization'";
     $run_doctors_Details = mysqli_query($conn,$select_doctors_Details);
 
     if($run_doctors_Details){
-        echo '<b>'.$specialization . " Section ".'</b>';
+        echo '<b>'.'<center>'.$specialization . " Section ".'</center>' .'</b>';
         
         if(mysqli_num_rows($run_doctors_Details) > 0)
         foreach($run_doctors_Details as $row){
@@ -97,7 +95,7 @@ if(isset($_POST['select'])){
                         <td><img src="<?php echo "doc_picture/" .$row['doc_picture']; ?>" alt="Doc Image" width="100px"></td>
                         <td>
                             <!-----check yung buong profile ni doctor--->
-                            <a href="whole-profile-doc.php?id=<?php echo $row ['id']?>">View Profile</a>
+                            <a href="whole-profile-doc.php?user_id=<?php echo $row ['user_id']?>">View Profile</a>
                         </td>
                     </tr>
                 </tbody>
@@ -105,10 +103,13 @@ if(isset($_POST['select'])){
 
                 <?php
         }else{
-            echo "No Found " .$conn->error;
+            
+            echo  '<b style="color: white;">'. "No Found " . '</b>' .$conn->error;
         }
     }
 }
 
 
 ?>
+</body>
+</html>

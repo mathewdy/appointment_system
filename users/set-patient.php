@@ -52,14 +52,15 @@ if(isset($_POST['select_doctor'])){
     <h1>Select Patient</h1>
     <form action="#" method="POST">
         <!--id ata to ng doctor SHAHSHA nakalimutan ko na --->
-        <input type="text" name="id" value="<?php echo $id?>">
-        <select name="patient_id" id="">
+        <input type="text" name="id_doctor" value="<?php echo $id?>">
+        <select name="name_of_patient" id="">
             <option value="">-Select-</option>
             <?php foreach ($run_patients as $row) {?>
-                <option value="<?php echo $row ['patient_id']?>">
+                <option value="<?php echo $row ['first_name']. " " . $row ['last_name'] ?>">
                 <?php echo $row ['first_name'] . " " .$row ['last_name']?></option>
             <?php } ?>
         </select> <br>
+        
         <label for="">Click to Select Date & Time</label><br>
         <i class="fa fa-calendar" style="font-size:28px"></i> <input type="text" name="appointment_date" id="datepicker" readonly>
         <select name="appointment_time" id="">
@@ -89,26 +90,25 @@ if(isset($_POST['select_patient'])){
     date_default_timezone_set("Asia/Manila");
     $time= date("h:i:s", time());
     $date = date('y-m-d');
-
-    $id_doctor = $_POST['id'];
     $remarks = "Pending Appointment";
-
-    $patient_id = $_POST['patient_id'];
+    $name_of_doctor = $_POST['name_of_doctor'];
+    $name_of_patient = $_POST['name_of_patient'];
+    $id_doctor =  $_POST['id_doctor'];
     $appointment_date = date('y-m-d', strtotime($_POST['appointment_date']));
     $appointment_time = $_POST['appointment_time'];
 
-    if($patient_id == ""){
+    if($name_of_patient == ""){
         echo "no patient";
     }
-   
-    $query_appointment = "INSERT INTO appointments (appointment_date,appointment_time,users_id,name_of_secretary,patients_id,
-    date_time_created,date_time_updated,remarks) VALUES ('$appointment_date' , '$appointment_time' , '$id_doctor',
-    '$name_of_secretary' , '$patient_id' , '$date $time' , '$date $time', '$remarks')";
+
+    $query_appointment = "INSERT INTO appointments (appointment_date,appointment_time,user_id,name_of_doctor,name_of_secretary,name_of_patient,
+    date_time_created,date_time_updated,remarks) VALUES ('$appointment_date' , '$appointment_time','$id_doctor','$name_of_doctor',
+    '$name_of_secretary' , '$name_of_patient' , '$date $time' , '$date $time', '$remarks')";
 
     $run_appointment = mysqli_query($conn,$query_appointment);
 
     if($run_appointment) {
-         echo "<script> window.alert('Succesfully Updated'); window.location.href='home.php'; </script>";
+        echo "<script> window.alert('Succesfully Updated'); window.location.href='home.php'; </script>";
     }else{
         echo "<script>alert('Something went wrong'); </script>" . $conn->error;
     }

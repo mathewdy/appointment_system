@@ -61,13 +61,12 @@ if(isset($_POST['select'])){
 
     $specialization = $_POST['specialization'];
     
-    $query_appointment_details = "SELECT appointments.appointment_date, appointments.appointment_time , users.first_name, users.last_name, users.mobile_number,
-    patients.first_name,patients.last_name, doctors_details.specialization
+    $query_appointment_details = "SELECT appointments.appointment_date,
+    appointments.appointment_time,appointments.name_of_doctor,appointments.name_of_patient,
+    doctors_details.specialization, appointments.remarks,appointments.id,appointments.date_time_created,appointments.user_id
     FROM appointments
-    LEFT JOIN users ON appointments.users_id = users.account_id 
-    LEFT JOIN patients ON appointments.users_id = patients.patient_id
-    LEFT JOIN doctors_details ON appointments.users_id = doctors_details.user_id
-    WHERE doctors_details.specialization = 'Allergy and immunology' AND appointments.appointment_date = '$send_date'";
+    LEFT JOIN doctors_details ON appointments.user_id = doctors_details.user_id
+    WHERE doctors_details.specialization = '$specialization' AND appointments.appointment_date ='2021-10-28' ";
 
     $run_appointment_details = mysqli_query($conn,$query_appointment_details);
 
@@ -85,8 +84,8 @@ if(isset($_POST['select'])){
                         </tr>
                         <tr>
                             <td><?php echo $row ['specialization']?></td>
-                            <td><?php echo $row ['first_name'] . $row ['last_name']?></td>
-                            <td><?php echo $row ['first_name'] . $row ['last_name']?></td>
+                            <td><?php echo $row ['name_of_doctor']?></td>
+                            <td><?php echo $row ['name_of_patient']?></td>
                             <td><?php echo $row ['appointment_date'] . " ". $row ['appointment_time']?></td>
                             <td><?php echo $row ['remarks']?></td>
                             <td>
@@ -97,7 +96,7 @@ if(isset($_POST['select'])){
                                     <input type="hidden" name="appointment_time" value="<?php echo $row ['appointment_time']?>">
                                     <input type="hidden" name="remarks" value="<?php echo $row ['remarks']?>">
                                     <input type="hidden" name="name_of_patient" value="<?php echo $row ['name_of_patient']?>">
-                                    <input type="hidden" name="id_doctor" value="<?php echo $row ['id_doctor']?>">
+                                    <input type="hidden" name="id_doctor" value="<?php echo $row ['user_id']?>">
                                     <input type="hidden" name="date_time_created" value="<?php echo $row ['date_time_created']?>">
                                    
                                 </form> 

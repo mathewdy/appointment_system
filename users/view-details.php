@@ -83,7 +83,7 @@ if(isset($_POST['update'])){
     $remarks = $_POST['remarks'];
 
     $query = "UPDATE appointments SET appointment_date='$appointment_date' , appointment_time='$appointment_time',
-    id_doctor='$id_doctor' , name_of_secretary = '$name_of_secretary' , name_of_patient='$name_of_patient',
+    user_id='$id_doctor' , name_of_secretary = '$name_of_secretary' , name_of_patient='$name_of_patient',
     date_time_created = '$date_time_created' , date_time_updated = '$date $time' , remarks='$remarks'
     WHERE id = '$id'";
 

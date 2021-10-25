@@ -15,14 +15,16 @@ session_start();
     <title>Document</title>
 </head>
 <body>
-    <a href="home.php">Back</a>
+    <a href="view-doctors.php">Back</a>
     <?php
+    $id = $_GET['user_id'];
 
-    $query_whole_profile_Doc = "SELECT users.first_name, users.last_name , users.mobile_number, doctors_details.specialization ,doctors_details.internship,
-    doctors_details.residency,doctors_details.hmo,doctors_details.doc_picture, users.doctor_or_secretary
-    FROM users 
-    LEFT JOIN doctors_details ON users.id = doctors_details.user_id 
-    WHERE users.doctor_or_secretary = 'doctor'";
+    $query_whole_profile_Doc = "SELECT users.doctor_or_secretary, users.account_id,users.first_name,
+    users.last_name,users.gender,users.mobile_number,doctors_details.specialization,
+    doctors_details.hmo,doctors_details.doc_picture,doctors_details.internship,doctors_details.residency
+    FROM users
+    LEFT JOIN doctors_details ON users.account_id = doctors_details.user_id
+    WHERE doctors_details.user_id = '$id'";
     $run = mysqli_query($conn,$query_whole_profile_Doc);
 
     if(mysqli_num_rows($run) > 0){

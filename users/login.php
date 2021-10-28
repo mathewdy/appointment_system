@@ -12,18 +12,36 @@ session_start();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="../css/login-users.css">
+    <script src= "https://kit.fontawesome.com/b99e675b6e.js" ></script>
 </head>
 <body>
-    <h3>Login</h3>  
-    <form action="#" method="POST">
-        <label for="">Email</label>
-        <input type="email" name="email" >
-        <label for="">Account ID</label>
-        <input type="text" name="account_id">
-        <input type="submit" name="login" value="Log In">
 
+    <div class="wrapper">
+        <div class="navbar">
+            <ul>
+                <li>
+                <!----pili muna sya dito dashboard kuno----><br>
+                <a href="#"><i class="fas fa-calendar-check"></i> Set Appointment</a> <br>
+                <a href="#"><i class="far fa-calendar-check"></i> View Appointments</a> <br>
+                <a href="#"><i class="fas fa-user-md"></i> View Doctors</a> <br>
+                <a href="#"><i class="fas fa-user-injured"></i> View Patients</a> <br>
+                </li>
+            </ul>
+        </div>
+    </div> 
+    <form action="#" method="POST">
+    <div class="login">
+        <br><br><br><br><br><br>
+        <h3>Welcome Secretaries!</h3>  
+        <div class="inputs">
+            <input type="email" name="email" placeholder="  Email:"><br>
+            <input type="text" name="account_id"  placeholder="  Account ID:"><br>
+            </div>
+            <input type="submit" name="login" value="Log In"><br><br>
+        <a href="reg-users.php">No account? Sign Up</a>
+    </div>
     </form>
-    <a href="reg-users.php">Sign Up</a>
 </body>
 </html>
 

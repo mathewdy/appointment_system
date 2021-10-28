@@ -39,11 +39,9 @@ include('connection.php');
         <div class="login">
             <h3>Welcome!</h3>
             <div class="inputs">
-            <label for="">Email: </label>
-            <input type="email" name="email"> <br>
+            <input type="email" name="email" placeholder="   Email:"> <br>
+            <input type="password" name="password" placeholder="   Password:"> <br>
             </div>
-            <label for="">Password: </label>
-            <input type="password" name="password"> <br>
             <input type="submit" name="login" value="Login"><br> <br>
             <a href="reg-patient.php">No account? Sign up</a>
         </div>

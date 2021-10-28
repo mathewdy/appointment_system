@@ -6,17 +6,7 @@
 body{
     background: linear-gradient(135deg, #0e3c49, #732264);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    padding-bottom: 400px;
-    
-}
-
-    
-.logo img{
-
-   padding: 50px;
-   border-radius: 500px;
-   width: 180px;
-   height: 180px;
+    padding-bottom: 380px;
     
 }
 
@@ -38,26 +28,26 @@ body{
 .login input[type=email]{
     width: 26em;
     height: 3em;
-    padding-left: 10px;
-    padding-right: 10px;
     border-top: none;
     margin: 8px 0;
     border-left: none;
     border-right: none;
     font-size: 20px;
     border-radius: 10px;
-}
-
-.login input[type=password]{
-    width: 26em;
-    height: 3em;
     padding-left: 10px;
     padding-right: 10px;
+}
+
+.login input[type=text]{
+    width: 26em;
+    height: 3em;
     border-top: none;
     border-left: none;
     border-right: none;
     font-size: 20px;
     border-radius: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
     margin: 8px 0;
 }
 
@@ -92,15 +82,12 @@ border-color: black;
     height: 100%;
     background:#d8d7e7;
     padding: 30px 0;
-    left: 1330px;
-    padding-top: 10em;
 
     
 }
 
 .wrapper .navbar ul li{
     padding: 15px;
-   
     border-top: 1px solid rgba(255,255,255,0.05);
 
 }

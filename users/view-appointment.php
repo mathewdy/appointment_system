@@ -17,11 +17,13 @@ session_start();
 <body>
     <br>
     <div class="back">
-    <a href="home.php">Back</a>
+    <form action="home.php" method="POST">
+        <input type="submit" name="home" value="Back">
+    </form>
     </div>
     <h3>Search Appointments</h3>
 
-    
+    <div class="container">
     <form action="#" method="POST">
         <label for="">Select Specialization</label>
         <select name="specialization" id="">
@@ -48,6 +50,7 @@ session_start();
         </select>
         <input type="submit" name="select" value="Select"> 
     </form>
+    </div>
 </body>
 </html>
 

@@ -21,9 +21,12 @@ session_start();
 <body>
     <br>
     <div class="back">
-    <a href="home.php">Back</a>
+    <form action="home.php" method="POST">
+        <input type="submit" name="home" value="Back">
+    </form>
     </div>
     
+    <br>
     <div class="container">
     <form action="#" method="POST">
         <label for="">Select Specialization</label>

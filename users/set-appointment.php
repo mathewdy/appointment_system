@@ -27,6 +27,8 @@ session_start();
     </div>
     
     <br>
+    <h3><i>Set an Appointment</i></h3>
+
     <div class="container">
     <form action="#" method="POST">
         <label for="">Select Specialization</label>
@@ -53,7 +55,7 @@ session_start();
             <option value="Urology">Urology</option>
         </select>
         <input type="submit" name="select" value="Select"> 
-    </form>
+    </form><br>
     </div>
     
 
@@ -74,29 +76,29 @@ if(isset($_POST['select'])){
     if($run_doctors_Details){
        if(mysqli_num_rows($run_doctors_Details) > 0)
         foreach($run_doctors_Details as $row){
-                ?>
-                <table>
-                <thead>
-                    <tr>
-                        <th><b>Doctor</b></th>
-                        <th><b>Specialization</b></th>
-                        <th>Image</th>
-                        
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><?php echo $row ['first_name'] . $row ['last_name']?></td>
-                        <td><?php echo $row ['specialization']?></td>
-                        <td><img src="<?php echo "doc_picture/" .$row['doc_picture']; ?>" alt="Doc Image" width="100px"></td>
-                        <td>
-                            <a href="doctors-profile.php?account_id=<?php echo $row ['user_id']?>">View Profile</a>
-                        </td>
-                    </tr>
-                </tbody>
-                </table>
-
-                <?php
+            ?>
+            <ul class="card-container">   
+                <li>
+                    <div class= "card">
+                        <div class="image">
+                        <img src="<?php echo "doc_picture/" .$row['doc_picture']; ?>" alt="Doc Image" width="200px" height="200px">
+                        </div>    
+                        <br>
+                            <div class="card-body">
+                            <i><label for="">Doctor's Name</label></i>
+                                <h4 class="card-title"> <?php echo $row ['first_name'] . $row ['last_name']?> </h4>
+                            <i><label for="">Specialization</label></i>    
+                                <h5 class="card-title"> <?php echo $row ['specialization']?> </h5>
+                                <div class="profile">
+                                <br><form action="whole-profile-doc.php?user_id=<?php echo $row ['user_id']?>" method="POST">
+                                    <input type="submit" name="profile" value="View Profile">
+                                </form>
+                                </div>
+                            </div>        
+                    </div>
+                </li>
+            </ul>
+            <?php
         }else{
             echo "No Found " .$conn->error;
         }

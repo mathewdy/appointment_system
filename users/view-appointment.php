@@ -21,8 +21,10 @@ session_start();
         <input type="submit" name="home" value="Back">
     </form>
     </div>
-    <h3>Search Appointments</h3>
+    <br>
+    <h3><i>Search Appointments</i></h3>
 
+    
     <div class="container">
     <form action="#" method="POST">
         <label for="">Select Specialization</label>
@@ -50,9 +52,7 @@ session_start();
         </select>
         <input type="submit" name="select" value="Select"> 
     </form>
-    </div>
-</body>
-</html>
+    </div><br>
 
 <?php
 
@@ -60,7 +60,8 @@ session_start();
 if(isset($_POST['select'])){
     date_default_timezone_set('Asia/Manila');
     $send_date = date("Y-m-29");
-    echo $send_date . '<br>';
+    echo '<center>' . $send_date .'</center>'. '<br>';
+
 
     $specialization = $_POST['specialization'];
     
@@ -76,42 +77,42 @@ if(isset($_POST['select'])){
     if($run_appointment_details){
         if(mysqli_num_rows($run_appointment_details) > 0){
             foreach($run_appointment_details as $row){
-                ?>
-                    <table>
-                        <tr>
-                            <th>Specialization</th>
-                            <th>Name of Doctor</th>
-                            <th>Name of Patient</th>
-                            <th>Date & Time</th>
-                            <th>Remarks</th>
-                        </tr>
-                        <tr>
-                            <td><?php echo $row ['specialization']?></td>
-                            <td><?php echo $row ['name_of_doctor']?></td>
-                            <td><?php echo $row ['name_of_patient']?></td>
-                            <td><?php echo $row ['appointment_date'] . " ". $row ['appointment_time']?></td>
-                            <td><?php echo $row ['remarks']?></td>
-                            <td>
-                                <form action="view-details.php" method="POST">
-                                    <input type="submit" name="edit" value="Edit">
-                                    <input type="hidden" name="id" value="<?php echo $row ['id']?>">
-                                    <input type="hidden" name="appointment_date" value="<?php echo $row['appointment_date']?>">
-                                    <input type="hidden" name="appointment_time" value="<?php echo $row ['appointment_time']?>">
-                                    <input type="hidden" name="remarks" value="<?php echo $row ['remarks']?>">
-                                    <input type="hidden" name="name_of_patient" value="<?php echo $row ['name_of_patient']?>">
-                                    <input type="hidden" name="id_doctor" value="<?php echo $row ['user_id']?>">
-                                    <input type="hidden" name="date_time_created" value="<?php echo $row ['date_time_created']?>">
-                                   
-                                </form> 
-                                                               
-                            </td>
-                        </tr>
-                        
-        
-                    
-                    </table>
+      
 
-                <?php
+
+	?>
+    <ul class="card-container">   
+        <li>
+            <div class= "card">
+                    <div class="card-body">
+                        <p class="card-text">
+                            <b><i><label for="">Specialization</label></i></b><br>
+                            <?php echo $row ['specialization']?><br><br>
+                            <b><i><label for="">Doctor</label></b></i><br>
+                            <?php echo $row ['name_of_doctor']?><br><br>
+                            <b><i><label for="">Patient</label></b></i><br>
+                            <?php echo $row ['name_of_patient']?><br><br>
+                            <b><i><label for="">Appointment Date & Time</label></b></i><br>
+                            <?php echo $row ['appointment_date'] . " ". $row ['appointment_time']?><br><br>
+                            <b><i><label for="">Remarks</label></b></i><br>
+                            <?php echo $row ['remarks']?><br><br>
+                        </p>
+                        <form action="view-details.php" method="POST">
+                                <input type="submit" name="edit" value="Edit">
+                                <input type="hidden" name="id" value="<?php echo $row ['id']?>">
+                                <input type="hidden" name="appointment_date" value="<?php echo $row['appointment_date']?>">
+                                <input type="hidden" name="appointment_time" value="<?php echo $row ['appointment_time']?>">
+                                <input type="hidden" name="remarks" value="<?php echo $row ['remarks']?>">
+                                <input type="hidden" name="name_of_patient" value="<?php echo $row ['name_of_patient']?>">
+                                <input type="hidden" name="id_doctor" value="<?php echo $row ['user_id']?>">
+                                <input type="hidden" name="date_time_created" value="<?php echo $row ['date_time_created']?>">
+                               
+                            </form> 
+                    </div>        
+            </div>
+        </li>
+    </ul>
+    <?php
             }
         }else{
             echo "no appointment" . $conn->error;
@@ -121,3 +122,5 @@ if(isset($_POST['select'])){
 }
 
 ?>
+</body>
+</html>

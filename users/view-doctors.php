@@ -24,10 +24,16 @@ if(empty($_SESSION['email'])){
 <body>
     <br>
     <div class="back">
-    <a href="home.php">Back</a>
+    <form action="home.php" method="POST">
+        <input type="submit" name="home" value="Back">
+    </form>
     </div>
     
-<h3>View Doctors</h3>
+<br>    
+<h3><i>View Doctors</i></h3>
+
+    
+    <div class="container">
     <form action="#" method="POST">
         <label for="">Specialization</label>
         <select name="specialization" id="">
@@ -54,6 +60,7 @@ if(empty($_SESSION['email'])){
         </select>
         <input type="submit" name="select" value="Select"> 
     </form>
+    </div>
     
     
 
@@ -75,33 +82,30 @@ if(isset($_POST['select'])){
         
         if(mysqli_num_rows($run_doctors_Details) > 0)
         foreach($run_doctors_Details as $row){
-                ?>
-                <table>
-                <thead>
-                    <tr>
-                        <th><b>Doctors</b></th>
-                        <th><b>Specialization</b></th>
-                        <th><b>HMO</b></th>
-                        <th>Image</th>
-                        
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                    
-                        <td><?php echo $row ['first_name'] . $row ['last_name']?></td>
-                        <td><?php echo $row ['specialization']?></td>
-                        <td><?php echo $row ['hmo']?></td>
-                        <td><img src="<?php echo "doc_picture/" .$row['doc_picture']; ?>" alt="Doc Image" width="100px"></td>
-                        <td>
-                            <!-----check yung buong profile ni doctor--->
-                            <a href="whole-profile-doc.php?user_id=<?php echo $row ['user_id']?>">View Profile</a>
-                        </td>
-                    </tr>
-                </tbody>
-                </table>
-
-                <?php
+        ?>
+        <ul class="card-container">   
+            <li>
+                <div class= "card">
+                    <div class="image">
+                    <img src="<?php echo "doc_picture/" .$row['doc_picture']; ?>" alt="Doc Image" width="200px" height="200px">
+                    </div>    
+                    <br>
+                        <div class="card-body">
+                            <h4 class="card-title"> <?php echo $row ['first_name'] . $row ['last_name']?> </h4>
+                            <h5 class="card-title"> <?php echo $row ['specialization']?> </h5>
+                            <p class="card-text">
+                                <?php echo $row ['hmo']?>
+                            </p>
+                            <div class="profile">
+                            <form action="whole-profile-doc.php?user_id=<?php echo $row ['user_id']?>" method="POST">
+                                <input type="submit" name="home" value="View Profile">
+                            </form>
+                            </div>
+                        </div>        
+                </div>
+            </li>
+        </ul>
+        <?php
         }else{
             
             echo  '<b style="color: white;">'. "No Found " . '</b>' .$conn->error;

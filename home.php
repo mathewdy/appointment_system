@@ -85,12 +85,16 @@ border-radius: 25px 25px;
       <div class="position-sticky pt-3">
 
         <ul class="nav flex-column">
-          <li class="nav-item">
-           <a class="nav-link" href="appointments.php" style="font-size: 16px; border-bottom: 1px solid gray;">Your Appointments</a>
+        <li class="nav-item">
+            <a class="nav-link" href="homepage.php" style="font-size: 16px; border-bottom: 1px solid gray;">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="department_dashboard.php" style="font-size: 16px; border-bottom: 1px solid gray;">Department</a>
+           <a class="nav-link" href="appointments.php" style="font-size: 16px; border-bottom: 1px solid gray;">Appointments</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about.php" style="font-size: 16px; border-bottom: 1px solid gray;">About</a>
+          </li>
+        
                    <li class="nav-item" style="border-bottom: 1px solid gray;">
         <form action="logout.php" method="POST">
             <input type="submit" value="Log Out" class="nav-link my-logout" style="font-size: 16px; ">

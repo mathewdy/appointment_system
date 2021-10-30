@@ -18,10 +18,12 @@ session_start();
  
 <br>
 <div class="back">
-<a href="home.php">Back</a>
+    <form action="home.php" method="POST">
+        <input type="submit" name="home" value="Back">
+    </form>
 </div>
 
-<h3>Data of Patients</h3>
+<h2><i>Data of Patients</i></h2>
 <?php
 
 //baka mag lagay pa ako ng search patients SHASHAHSHAH 
@@ -32,15 +34,26 @@ $run = mysqli_query($conn,$query_patients);
 if(mysqli_num_rows($run) > 0){
     foreach($run as $row){
         ?>
-
-
-            <h3><?php echo $row ['first_name'] . " ".  $row ['last_name']?></h3>
-            <p><?php echo $row ['age']?></p>
-            <p><?php echo $row ['gender']?></p>
-            <p><?php echo $row ['date_of_birth']?></p>
-            <p><?php echo $row ['mobile_number']?></p>
-            <p><?php echo $row ['email']?></p>
-
+        <ul class="card-container">   
+            <li>
+                <div class= "card">
+                        <div class="card-body">
+                            <h3><?php echo $row ['first_name'] . " ".  $row ['last_name']?></h3><br>
+                            <b><i><label for="">Age</label></i></b><br>
+                            <?php echo $row ['age']?><br><br>
+                            <b><i><label for="">Gender</label></b></i><br>
+                            <?php echo $row ['gender']?><br><br>
+                            <b><i><label for="">Birthday</label></b></i><br>
+                            <?php echo $row ['date_of_birth']?><br><br>
+                            <b><i><label for="">Contact Number</label></b></i><br>
+                            <?php echo $row ['mobile_number']?><br><br>
+                            <b><i><label for="">Email</label></b></i><br>
+                            <?php echo $row ['email']?><br><br>
+                        </p>
+                        </div>        
+                </div>
+            </li>
+        </ul>
         <?php
     }
 }else{

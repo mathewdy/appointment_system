@@ -4,13 +4,75 @@
 }
 
 body{
-    background: linear-gradient(135deg, #0e3c49, #732264);
+    background: linear-gradient(135deg,  #0583d2, #b8e3ff, #0583d2);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding-bottom: 800px;
 }
 
-.back a{
-    text-decoration-line: none;
-    color: #d8d7e7;
+.back form input[type= submit]{
+    justify-content: center;
+    width: 130px;
+    font-size: 15px;
+    padding: 3px 6px;
+    border-radius: 3px;
+    box-sizing: border-box;
+    background-color: #3660D4;
+    color: white;
+    margin-left: 20px;
+    text-align: center;
+}
+
+h2{
+    text-align: center;
     font-size: 20px;
-    padding-left: 15px;
+    padding-bottom: 5px;
+}
+
+
+.card{
+    width: 250px;
+    height: 360px;
+    background: linear-gradient(135deg, #61b0b7, #84caf8, #61b0b7);
+    border-radius: 6px;
+    position: inherit;
+    box-shadow: 0px 1px 10px 1px #000;
+    padding: 20px 20px ;
+    margin-left: 60px;
+    border: solid black;
+}
+
+.card .card-body{
+    text-align: center;
+}
+
+.card form  input[type= submit]{
+    justify-content: center;
+    width: 130px;
+    font-size: 15px;
+    padding: 3px 6px;
+    border-radius: 3px;
+    box-sizing: border-box;
+    background-color: #0584d280;
+    color: white;
+    text-align: center;
+}
+
+.card-container ul{
+    text-align:center;
+    margin:auto 0;
+}
+.card-container li{
+    list-style-type:none;
+    padding:.5em .5em .5em .5em;
+    float:left;
+    text-align:left;
+    margin: 0 auto;
+}
+
+.card-container h3{
+    font-size: 25px;
+}
+
+b{
+    padding: 3px;
 }

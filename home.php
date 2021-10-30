@@ -8,53 +8,123 @@ if(empty($_SESSION['email'])){
     echo "<script> window.location.href='login-patient.php'</script>";
 }
 
-
 ?>
 
 
 <!DOCTYPE html>
 <html lang="en">
-<head>    
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/home.css">
-    <title>Document</title>
-</head>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Book Appointment</title>
+
+    <!-- Bootstrap core CSS -->
+
+    <!-- Custom styles for this template -->
+    <link href="assets/css/sticky-footer-navbar.css" rel="stylesheet">
+    <link href="assets/css/bootstrap.rtl.min.css" rel="stylesheet">
+      <link href="assets/css/dashboard.rtl.css" rel="stylesheet">
+  </head>
+      <style>
+      .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+      }
+
+      @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+  <style>
+
+body{
+    background: linear-gradient(135deg, #0e3c49, #732264);
+}
+.my_label{
+    color: white;
+}
+.my_select_btn{
+    width: 100%;
+}
+.my_form{
+
+padding: 5px 5px;
+}
+.my-bg{
+    background:#D8D7E7;
+}
+.my-logout{
+   background-color: transparent; border: none;
+}
+
+.my-data{
+padding: 30px 30px;
+background-color: #f7f7f7;
+margin-top: 10%;
+height: 90%;
+box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+border-radius: 25px 25px;
+}
+
+</style>
+
 <body>
-  
-    <!--kulang ako ng side bar-->
-    <h2>Book Appointment</h2>
-    <div class="navbar_home">
-        <ul>
-            <li>
-                <a href="#">Home</a>
-            </li>
-        </ul>
-    </div>
-    <div class="navbar_doctors">
-        <ul>
-            <li>
-                <a href="">Doctors</a>
-            </li>
-        </ul>
-    </div>
-    <div class="logout">
+
+<div class="container-fluid">
+  <div class="row">
+
+    <nav id="sidebarMenu" class="col-md-2 col-lg-2 d-md-block my-bg sidebar collapse">
+      <div class="position-sticky pt-3">
+
+        <ul class="nav flex-column">
+          <li class="nav-item">
+           <a class="nav-link" href="appointments.php" style="font-size: 16px; border-bottom: 1px solid gray;">Your Appointments</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="department_dashboard.php" style="font-size: 16px; border-bottom: 1px solid gray;">Department</a>
+          </li>
+                   <li class="nav-item" style="border-bottom: 1px solid gray;">
         <form action="logout.php" method="POST">
-            <input type="submit" value="Log Out">
+            <input type="submit" value="Log Out" class="nav-link my-logout" style="font-size: 16px; ">
         </form>
-    </div>
+      </li>
+        </ul>
+
+
    
-    <div class="appointments">
-        <a href="appointments.php">Your Appointments</a>
-    </div>
+      </div>
+    </nav>
 
-    <div class="container">
+    <main class="col-md-3 col-lg-5">
+      <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2">
+            <img rel="icon" src="assets/logo.png" width="150">&nbsp 
 
-    <form action="#" method="POST">
-        <div class="specialization">
-            <label for="">Specialization: </label>
-            <select name="specialization" id="">
+      </div>
+    </main>
+     <center><h2 style="color: white; margin-right: 20%;">Book an Appointment</h2></center>
+
+  </div>
+</div>
+
+
+<div class="container">
+
+    
+
+<br>
+
+    <form action="#" method="POST" class="col-4">
+       <div class="input-group mb-3">
+        <select name="specialization" id="" class="form-select">
+          <option value="" selected disabled>Specialization</option>
             <option value="Allergy and immunology">Allergy and immunology</option>
                 <option value="Anesthesiology">Anesthesiology</option>
                 <option value="Dermatology">Dermatology</option>
@@ -76,11 +146,13 @@ if(empty($_SESSION['email'])){
                 <option value="Surgery">Surgery</option>
                 <option value="Urology">Urology</option>
             </select>
-            <input type="submit" name="select" value="Select"> 
-        </div>
+  <input type="submit" name="select" value="Select" class="btn btn-primary">
+</div>
+     
     </form>
-    
+    <br>
 
+  <main style="position: relative;">
 
 <?php
 
@@ -88,60 +160,59 @@ if(empty($_SESSION['email'])){
 if(isset($_POST['select'])){
     $specialization = $_POST['specialization'];
 // unfinished 
-    $select_doctors_Details = "SELECT users.first_name,users.last_name,users.mobile_number, doctors_details.hmo,
-    doctors_details.user_id,doctors_details.specialization,doctors_details.doc_picture,doctors_details.internship,
-    doctors_details.residency,doctors_details.hmo
+    $select_doctors_Details = "SELECT users.first_name,users.last_name,users.mobile_number, users.id, doctors_details.user_id,
+    doctors_details.specialization, doctors_details.internship, doctors_details.residency,
+    doctors_details.hmo, doctors_details.doc_picture
     FROM users
-    LEFT JOIN doctors_details ON users.account_id = doctors_details.user_id
-    WHERE doctors_details.specialization = '$specialization'";
+    LEFT JOIN doctors_details ON users.id = doctors_details.user_id WHERE specialization = '$specialization'";
     $run_doctors_Details = mysqli_query($conn,$select_doctors_Details);
 
     if($run_doctors_Details){
         ?>
-
-            <div class="specialization1">
-                <?php echo $specialization ?>
-            </div>
-
+            <div class="row">
         <?php
         
         if(mysqli_num_rows($run_doctors_Details) > 0)
         foreach($run_doctors_Details as $row){
                 ?>
-                
-                    <table class="table">
-                    <thead>
-                        <tr>
-                            <th><b>Doctors</b></th>
-                            <th><b>Specialization</b></th>
-                            <th><b>HMO</b></th>
-                            <th>Image</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                        
-                            <td><?php echo $row ['first_name'] . $row ['last_name']?></td>
-                            <td><?php echo $row ['specialization']?></td>
-                            <td><?php echo $row ['hmo']?></td>
-                            <td><img src="<?php echo "users/doc_picture/" .$row['doc_picture']; ?>" alt="Doc Image" width="100px"></td>
-                            <td>
-                                <a href="doctors-profile.php?account_id=<?php echo $row ['user_id']?>">View Profile</a>
-                            </td>
-                        </tr>
-                    </tbody>
-                    </table>
 
+                    <div class="col-3">
+                <div class="my-data">
+
+                  <img src="<?php echo "users/doc_picture/" .$row['doc_picture']; ?>" alt="Doc Image" width="100"><br><br>
+                            <a href="doctors-profile.php?id=<?php echo $row ['id']?>" style="text-decoration: none;">View Profile</a><br><br>
+                            
+
+                   <label><b>Doctor:</b>&nbsp<?php echo $row ['first_name'] . $row ['last_name']?></label><br>
+                            <label><b>Specialization: </b>&nbsp<?php echo $row ['specialization']?></label><br>
+                            <label><b>HMO: </b><?php echo $row ['hmo']?></label><br>
+                             
+                            
+                            
+                
+                </div>
+                </div>  
+  
                 <?php
         }else{
             echo "No Found " .$conn->error;
         }
+        ?>
+</div>
+
+        <?php
     }
 }
 
 
 ?>
+</main>
 </div>
-
 </body>
+
+    <!--kulang ako ng side bar-->
+
+
+
+
 </html>

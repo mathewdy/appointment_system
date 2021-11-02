@@ -3,6 +3,8 @@
 include('connection.php');
 session_start();
 $id = $_SESSION['patient_id'];
+$full_name = $_SESSION['first_name'] . " ". $_SESSION['last_name'];
+
 
 ?>
 
@@ -19,48 +21,51 @@ $id = $_SESSION['patient_id'];
     <h3>Your Appointments</h3>
 
     <!--gagawa ako dito ng history ng appointments nya--->
-    <?php
+    
 
-    $query_Appointments = "SELECT appointments.appointment_date, appointments.appointment_time , users.last_name , appointments.date_time_created
-    FROM appointments
-    LEFT JOIN users ON appointments.users_id = users.id
-    WHERE appointments.patients_id = '$id'";
-    $run = mysqli_query($conn,$query_Appointments);
+    
+                
+    <table>
+        <tr>
+            <th>Appointment Date</th>
+            <th>Appointment Time</th>
+            <th>Doctor</th>
+            <th>Date Submitted </th>
+        
+        </tr>
+        <?php
+        $query_appointments = "SELECT * FROM appointments WHERE appointments.name_of_patient = '$full_name'";
+        $run_appointments = mysqli_query($conn,$query_appointments);
 
-    if($run){
-        if(mysqli_num_rows($run) > 0){
-            foreach($run as $row){
-                ?>
+        if($run_appointments){
+            if(mysqli_num_rows($run_appointments)> 0){
+                foreach($run_appointments as $row){
+                        ?>
 
-                    <table>
-                        <tr>
-                            <th>Appointment Date</th>
-                            <th>Appointment Time</th>
-                            <th>Doctor</th>
-                            <th>Date Submitted:</th>
-                        </tr>
-                        <tr>
-                            <td><?php echo $row ['appointment_date']?></td>
-                            <td><?php echo $row ['appointment_time']?></td>
-                            <td><?php echo $row ['last_name']?></td>
-                            <td><?php echo $row ['date_time_created']?></td>
-                        </tr>
-                    </table>
+                            <tr>
+                                <td><?php echo $row ['appointment_date']?></td>
+                                <td><?php echo $row ['appointment_time']?></td>
+                                <td><?php echo $row ['name_of_doctor']?></td>
+                                <td><?php echo $row ['date_time_created']?></td>
+                            </tr>
 
-                <?php
+                        <?php
+                
+                    }
+                }
             }
-        }
-    }
-    ?>
+
+        ?>
+    </table>
 
     <h3>On going Appointments</h3>
+    
+    
     <?php
+    
     $date = date('y-m-d');
     
-    $query_Appointments1 = "SELECT appointments.appointment_date, appointments.appointment_time , users.last_name , appointments.date_time_created
-    FROM appointments
-    LEFT JOIN users ON appointments.users_id = users.id
-    WHERE appointments.patients_id = '$id' AND appointments.appointment_date = '$date'";
+    $query_Appointments1 = "SELECT * FROM appointments WHERE appointments.name_of_patient = '$full_name' AND appointments.appointment_date = '$date'";
     $run1 = mysqli_query($conn,$query_Appointments1);
 
     if($run1){
@@ -78,7 +83,7 @@ $id = $_SESSION['patient_id'];
                         <tr>
                             <td><?php echo $row ['appointment_date']?></td>
                             <td><?php echo $row ['appointment_time']?></td>
-                            <td><?php echo $row ['last_name']?></td>
+                            <td><?php echo $row ['name_of_doctor']?></td>
                             <td><?php echo $row ['date_time_created']?></td>
                         </tr>
                     </table>
@@ -90,6 +95,7 @@ $id = $_SESSION['patient_id'];
             echo "No appointments yet";
         }
     }
+    
     ?>
 </body>
 </html>

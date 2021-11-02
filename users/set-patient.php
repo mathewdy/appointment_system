@@ -55,6 +55,8 @@ if(isset($_POST['select_doctor'])){
 
     ?>
     
+    <br><br>
+    <div class="container">
     <h1><i>Select Patient</i></h1>
     <form action="#" method="POST">
         <!--id ata to ng doctor SHAHSHA nakalimutan ko na --->
@@ -81,11 +83,13 @@ if(isset($_POST['select_doctor'])){
         </select>
        <br>
         <label for=""><b>Doctor: </b></label>
-        <input type="text" name="name_of_doctor" value="<?php echo $name_of_doctor?>">
+        <input type="text" name="name_of_doctor" value="<?php echo $name_of_doctor?>"><br>
         <label for=""><b>Specialization</b></label>
         <input type="text" name="specialization" value="<?php echo $specialization?>">
+        <br><br><br><br>
         <input type="submit" name="select_patient" value="Confirm">
     </form>
+    </div>
  
 </body>
 </html>

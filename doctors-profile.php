@@ -20,6 +20,7 @@ $name_of_patient = $first_name . " " . $last_name;
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/doctors-patients-profile.css">
     <title>Document</title>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
         <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/themes/smoothness/jquery-ui.css" />
@@ -43,10 +44,12 @@ $name_of_patient = $first_name . " " . $last_name;
 <body>
 <div class="gen-container">
 <section class="content-header">
-    <a href="home.php" id="backbtn">Back</a>
-    
+    <button><a style="text-decoration:none; color:black;" href="home.php" id="backbtn">Back</a></button>
+    <div class="logo">
+        <img src="css/logo.png" alt="Logo">
+    </div>
     <span class="header-title">
-        <h1 class="title">DOCTORS</h1>
+        <h1 class="title">Book an Appointment</h1>
     </span>
 </section>
     <?php
@@ -66,10 +69,11 @@ $name_of_patient = $first_name . " " . $last_name;
             foreach($run_doctors_Details as $row){
                 ?>
                 <form action="" method="POST">
-                    <div class="details">
-                    <p>Name: <input type="text" name="name_of_doctor" value="<?php echo $row ['first_name'] . $row ['last_name']?>" readonly> </p>
-                   
-                    <p>Image:  <img src="<?php echo "users/doc_picture/" . $row ['doc_picture'] ?>" width="100px" alt="Image"> </p>
+                <div class="row">
+                        <div class="column">
+                    <p style="text-align:center;"><img src="<?php echo "users/doc_picture/" . $row ['doc_picture'] ?>" width="100px" alt="Image"> </p>
+                    <br>
+                    <p>Name: <input style="background:none; border:none; font-size:19px;" type="text" name="name_of_doctor" value="<?php echo $row ['first_name'] . $row ['last_name']?>" readonly> </p>
                     <p>Specialization: <?php echo $row ['specialization']?> </p>
                     <p>Internship: <?php echo $row ['internship']?> </p>
                     <p>Residency: <?php echo $row ['residency']?> </p>
@@ -77,11 +81,14 @@ $name_of_patient = $first_name . " " . $last_name;
                     </div>
                    
                 
-                    <div class="select_date">
+                    <div class="column">
                     <input type="hidden" name="id_doctor" value="<?php echo $row ['user_id']?>">
-                        <label for="">Click to Select Date</label><br>
-                        <i class="fa fa-calendar" style="font-size:28px"></i> <input type="text" name="appointment_date" id="datepicker" readonly>
-                            <select name="appointment_time" id="">
+                        <label style="font-size:20px;" for="">Click to Select Date</label>
+                        <br>
+                        <br>
+                        <br>
+                        <i class="fa fa-calendar" style="font-size:30px; color:black;"></i> <input style="background: none; border: 2px solid black; border-radius:5px;"type="text" name="appointment_date" id="datepicker" readonly>
+                            <select style="background: none; border: 2px solid black; border-radius:5px" name="appointment_time" id="">
                                 <option value="9:00am - 9:30am">9:00am - 9:30am</option>
                                 <option value="10:00am - 10:30am">10:00am - 10:30am</option>
                                 <option value="11:00am -11:30am">11:00am -11:30am</option>
@@ -91,8 +98,11 @@ $name_of_patient = $first_name . " " . $last_name;
                                 <option value="3:00pm - 3:30pm">3:00pm - 3:30pm</option>
                                 <option value="4:00pm - 4:30pm">4:00pm - 4:30pm</option>
                             </select>
-                        <input type="submit" name="book_appointment" value="Book Appointment">
+                            <br>
+                            <br>
+                        <p style="text-align:center; font-family:sans-serif;"><input type="submit" name="book_appointment" value="Book Appointment"></p>
                     </div>
+                 </div>
                 </form>
                 <?php
             }

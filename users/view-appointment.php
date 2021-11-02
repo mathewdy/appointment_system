@@ -29,6 +29,7 @@ session_start();
     <form action="#" method="POST">
         <label for="">Select Specialization</label>
         <select name="specialization" id="">
+        <option value="Select">-Select-</option>
         <option value="Allergy and immunology">Allergy and immunology</option>
             <option value="Anesthesiology">Anesthesiology</option>
             <option value="Dermatology">Dermatology</option>
@@ -115,7 +116,7 @@ if(isset($_POST['select'])){
     <?php
             }
         }else{
-            echo "no appointment" . $conn->error;
+            echo  '<b style="color: black;">'. '<center>'. "No Found " . '</center>'. '</b>' .$conn->error;
         }
     }   
 

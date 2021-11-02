@@ -24,6 +24,7 @@ if(isset($_POST['select_doctor'])){
         <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/themes/smoothness/jquery-ui.css" />
         <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="../css/set-patient.css">
     <script>     
     $(function() {
         var date_today = new Date();
@@ -39,7 +40,12 @@ if(isset($_POST['select_doctor'])){
     </script>
 </head>
 <body>
-    <a href="set-appointment.php">Cancel</a>
+    <br>
+    <div class="back">
+    <form action="set-appointment.php" method="POST">
+        <input type="submit" name="cancel" value="Cancel">
+    </form>
+    </div>
     <?php
     
     //query patients
@@ -49,7 +55,7 @@ if(isset($_POST['select_doctor'])){
 
     ?>
     
-    <h1>Select Patient</h1>
+    <h1><i>Select Patient</i></h1>
     <form action="#" method="POST">
         <!--id ata to ng doctor SHAHSHA nakalimutan ko na --->
         <input type="text" name="id_doctor" value="<?php echo $id?>">

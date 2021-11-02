@@ -1,0 +1,29 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+body{
+    background: linear-gradient(135deg,  #0583d2, #b8e3ff, #0583d2);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding-bottom: 500px;
+}
+
+.back form input[type= submit]{
+    justify-content: center;
+    width: 130px;
+    font-size: 15px;
+    padding: 3px 6px;
+    border-radius: 3px;
+    box-sizing: border-box;
+    background-color: #3660D4;
+    color: white;
+    margin-left: 20px;
+    text-align: center;
+}
+
+h1{
+    text-align: center;
+    font-size: 20px;
+    padding-bottom: 5px;
+}

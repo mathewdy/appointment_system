@@ -33,6 +33,7 @@ session_start();
     <form action="#" method="POST">
         <label for="">Select Specialization</label>
         <select name="specialization" id="">
+        <option value="-select-">-Select-</option>
         <option value="Allergy and immunology">Allergy and immunology</option>
             <option value="Anesthesiology">Anesthesiology</option>
             <option value="Dermatology">Dermatology</option>
@@ -90,8 +91,8 @@ if(isset($_POST['select'])){
                             <i><label for="">Specialization</label></i>    
                                 <h5 class="card-title"> <?php echo $row ['specialization']?> </h5>
                                 <div class="profile">
-                                <br><form action="whole-profile-doc.php?user_id=<?php echo $row ['user_id']?>" method="POST">
-                                    <input type="submit" name="profile" value="View Profile">
+                                <br><form action="set-patient.php?user_id=<?php echo $row ['user_id']?>" method="POST">
+                                    <input type="submit" name="[patient]" value="Select">
                                 </form>
                                 </div>
                             </div>        
@@ -100,7 +101,7 @@ if(isset($_POST['select'])){
             </ul>
             <?php
         }else{
-            echo "No Found " .$conn->error;
+            echo  '<b style="color: black;">'. '<center>'. "No Found " . '</center>'. '</b>' .$conn->error;
         }
     }
 }

@@ -16,9 +16,7 @@ if(isset($_POST['edit'])){
 
     $id_doctor = $_POST['id_doctor'];
 
-    echo $id . '<br>';
-    echo $appointment_date . '<br>';
-    echo $remarks;
+   
 }
 
 ?>
@@ -51,7 +49,7 @@ if(isset($_POST['edit'])){
         <label for="">Appointment Time</label>
         <input type="text" name="appointment_time" value="<?php echo $appointment_time?>" readonly> <br>
         <label for="">Name of Patient</label>
-        <input type="text" name="name_of_patient" value="<?php echo $name_of_patient?>"> <br>
+        <input type="text" name="name_of_patient" value="<?php echo $name_of_patient?>" readonly> <br>
         <!---id number ng appointment date-->
         <input type="hidden" name="id" value="<?php echo $id?>">
         <input type="hidden" name="id_doctor" value="<?php echo $id_doctor?>">

@@ -1,7 +1,8 @@
 <?php
 include('../connection.php');
 session_start();
-
+$first_name = $_SESSION['first_name'];
+$last_name = $_SESSION['last_name'];
 
 if(empty($_SESSION['email'])){
     echo "<script> window.location.href='login.php'</script>";
@@ -19,7 +20,7 @@ if(empty($_SESSION['email'])){
     <script src= "https://kit.fontawesome.com/b99e675b6e.js" ></script>
 </head>
 <body>
-   
+<p><?php echo $first_name . " " . $last_name?> </p>
     <div class="wrapper">
         <div class="navbar">
             <ul>
@@ -34,10 +35,13 @@ if(empty($_SESSION['email'])){
         </div>
     </div> 
  
+   
+
     <br>
     <form action="logout.php" method="POST">
         <input type="submit" name="logout" value="Log Out">
     </form>
+   
 
 </body>
 </html>

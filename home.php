@@ -1,15 +1,11 @@
 <?php
 include('connection.php');
 session_start();
-
-
-
 if(empty($_SESSION['email'])){
     echo "<script> window.location.href='login-patient.php'</script>";
 }
 
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -86,16 +82,12 @@ border-radius: 25px 25px;
 
         <ul class="nav flex-column">
         <li class="nav-item">
-            <a class="nav-link" href="homepage.php" style="font-size: 16px; border-bottom: 1px solid gray;">Home</a>
+            <a class="nav-link" href="home.php" style="font-size: 16px; border-bottom: 1px solid gray;">Home</a>
           </li>
           <li class="nav-item">
            <a class="nav-link" href="appointments.php" style="font-size: 16px; border-bottom: 1px solid gray;">Appointments</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="about.php" style="font-size: 16px; border-bottom: 1px solid gray;">About</a>
-          </li>
-        
-                   <li class="nav-item" style="border-bottom: 1px solid gray;">
+          <li class="nav-item" style="border-bottom: 1px solid gray;">
         <form action="logout.php" method="POST">
             <input type="submit" value="Log Out" class="nav-link my-logout" style="font-size: 16px; ">
         </form>
@@ -128,7 +120,7 @@ border-radius: 25px 25px;
     <form action="#" method="POST" class="col-4">
        <div class="input-group mb-3">
         <select name="specialization" id="" class="form-select">
-          <option value="" selected disabled>Specialization</option>
+          <option value="">Specialization</option>
             <option value="Allergy and immunology">Allergy and immunology</option>
                 <option value="Anesthesiology">Anesthesiology</option>
                 <option value="Dermatology">Dermatology</option>
@@ -151,9 +143,10 @@ border-radius: 25px 25px;
                 <option value="Urology">Urology</option>
             </select>
   <input type="submit" name="select" value="Select" class="btn btn-primary">
+  </form>
 </div>
      
-    </form>
+    
     <br>
 
   <main style="position: relative;">
@@ -162,13 +155,15 @@ border-radius: 25px 25px;
 
 
 if(isset($_POST['select'])){
-    $specialization = $_POST['specialization'];
+   
 // unfinished 
-    $select_doctors_Details = "SELECT users.first_name,users.last_name,users.mobile_number, users.id, doctors_details.user_id,
-    doctors_details.specialization, doctors_details.internship, doctors_details.residency,
-    doctors_details.hmo, doctors_details.doc_picture
+  $specialization = $_POST['specialization'];
+  // mali to
+    $select_doctors_Details = "SELECT users.account_id, users.first_name,users.last_name,users.gender,users.mobile_number,doctors_details.specialization,doctors_details.internship,doctors_details.residency,
+    doctors_details.hmo,doctors_details.doc_picture
     FROM users
-    LEFT JOIN doctors_details ON users.id = doctors_details.user_id WHERE specialization = '$specialization'";
+    LEFT JOIN doctors_details ON users.account_id = doctors_details.user_id 
+    WHERE doctors_details.specialization = '$specialization'";
     $run_doctors_Details = mysqli_query($conn,$select_doctors_Details);
 
     if($run_doctors_Details){
@@ -184,22 +179,27 @@ if(isset($_POST['select'])){
                 <div class="my-data">
 
                   <img src="<?php echo "users/doc_picture/" .$row['doc_picture']; ?>" alt="Doc Image" width="100"><br><br>
-                            <a href="doctors-profile.php?id=<?php echo $row ['id']?>" style="text-decoration: none;">View Profile</a><br><br>
-                            
-
+                  <a href="doctors-profile.php?account_id=<?php echo $row ['account_id']?>" style="text-decoration: none;">View Profile</a><br><br>
                    <label><b>Doctor:</b>&nbsp<?php echo $row ['first_name'] . $row ['last_name']?></label><br>
                             <label><b>Specialization: </b>&nbsp<?php echo $row ['specialization']?></label><br>
                             <label><b>HMO: </b><?php echo $row ['hmo']?></label><br>
-                             
-                            
-                            
-                
                 </div>
                 </div>  
   
                 <?php
         }else{
-            echo "No Found " .$conn->error;
+           ?>
+
+              <style>
+                p{
+                  color: white;
+                  font-size: 30px;
+                }
+              </style>
+
+              <p><?php echo "No Found" . $conn->error ?></p>
+
+          <?php
         }
         ?>
 </div>

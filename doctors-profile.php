@@ -73,7 +73,7 @@ $name_of_patient = $first_name . " " . $last_name;
                         <div class="column">
                     <p style="text-align:center;"><img src="<?php echo "users/doc_picture/" . $row ['doc_picture'] ?>" width="100px" alt="Image"> </p>
                     <br>
-                    <p>Name: <input style="background:none; border:none; font-size:19px;" type="text" name="name_of_doctor" value="<?php echo $row ['first_name'] . $row ['last_name']?>" readonly> </p>
+                    <p>Name: <input style="background:none; border:none; font-size:19px;" type="text" name="name_of_doctor" value="<?php echo $row ['first_name']. " " . $row ['last_name']?>" readonly> </p>
                     <p>Specialization: <?php echo $row ['specialization']?> </p>
                     <p>Internship: <?php echo $row ['internship']?> </p>
                     <p>Residency: <?php echo $row ['residency']?> </p>

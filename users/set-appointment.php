@@ -85,14 +85,18 @@ if(isset($_POST['select'])){
                         <img src="<?php echo "doc_picture/" .$row['doc_picture']; ?>" alt="Doc Image" width="200px" height="200px">
                         </div>    
                         <br>
+                            <form action="set-patient.php" method="POST">
                             <div class="card-body">
                             <i><label for="">Doctor's Name</label></i>
-                                <h4 class="card-title"> <?php echo $row ['first_name'] . $row ['last_name']?> </h4>
+                                <h4 class="card-title"> <?php echo $row ['first_name'] . " " . $row ['last_name']?> </h4>
                             <i><label for="">Specialization</label></i>    
                                 <h5 class="card-title"> <?php echo $row ['specialization']?> </h5>
                                 <div class="profile">
-                                <br><form action="set-patient.php?user_id=<?php echo $row ['user_id']?>" method="POST">
-                                    <input type="submit" name="[patient]" value="Select">
+                                <br>
+                                    <input type="submit" name="select_doctor" value="Select">
+                                    <input type="hidden" name="user_id" value="<?php echo $row ['user_id']?>">
+                                    <input type="hidden" name="name_of_doctor" value="<?php echo $row ['first_name']." " . $row['last_name']?>">
+                                    <input type="hidden" name="specialization" value="<?php echo $row['specialization']?>">
                                 </form>
                                 </div>
                             </div>        

@@ -5,7 +5,7 @@ $name_of_secretary = $_SESSION['first_name'] .  " " . $_SESSION['last_name'];
 
 
 if(isset($_POST['select_doctor'])){
-    $id = $_POST['id'];
+    $id = $_POST['user_id'];
     $name_of_doctor = $_POST['name_of_doctor'];
     $specialization = $_POST['specialization'];
 
@@ -60,7 +60,7 @@ if(isset($_POST['select_doctor'])){
     <h1><i>Select Patient</i></h1>
     <form action="#" method="POST">
         <!--id ata to ng doctor SHAHSHA nakalimutan ko na --->
-        <input type="text" name="id_doctor" value="<?php echo $id?>">
+        
         <select name="name_of_patient" id="">
             <option value="">-Select-</option>
             <?php foreach ($run_patients as $row) {?>
@@ -84,9 +84,10 @@ if(isset($_POST['select_doctor'])){
        <br>
         <label for=""><b>Doctor: </b></label>
         <input type="text" name="name_of_doctor" value="<?php echo $name_of_doctor?>"><br>
-        <label for=""><b>Specialization</b></label>
+        <label for=""><b>Specialization: </b></label>
         <input type="text" name="specialization" value="<?php echo $specialization?>">
         <br><br><br><br>
+        <input type="hidden" name="user_id" value="<?php echo $id?>">
         <input type="submit" name="select_patient" value="Confirm">
     </form>
     </div>
@@ -103,7 +104,7 @@ if(isset($_POST['select_patient'])){
     $remarks = "Pending Appointment";
     $name_of_doctor = $_POST['name_of_doctor'];
     $name_of_patient = $_POST['name_of_patient'];
-    $id_doctor =  $_POST['id_doctor'];
+    $id_doctor =  $_POST['user_id'];
     $appointment_date = date('y-m-d', strtotime($_POST['appointment_date']));
     $appointment_time = $_POST['appointment_time'];
 

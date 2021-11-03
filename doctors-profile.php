@@ -49,7 +49,7 @@ $name_of_patient = $first_name . " " . $last_name;
         <img src="css/logo.png" alt="Logo">
     </div>
     <span class="header-title">
-        <h1 class="title">Book an Appointment</h1>
+        <h1 style="color:white; font-family:sans-serif; font-size:25px; text-align:center;" class="title">Book an Appointment</h1>
     </span>
 </section>
     <?php

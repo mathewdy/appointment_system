@@ -14,18 +14,25 @@ $full_name = $_SESSION['first_name'] . " ". $_SESSION['last_name'];
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/appointments.css">
     <title>Document</title>
 </head>
 <body>
-    <a href="home.php">Back</a>
-    <h3>Your Appointments</h3>
+    <div class="gen-container">
+<section class="content-header">
+    <button><a style="text-decoration:none; color:black;" href="home.php">Back</a></button>
+    <div class="logo">
+        <img src="css/logo.png" alt="Logo">
+    </div>
+</section>
+    <h3 style="color:white; font-family:sans-serif; font-size:25px; text-align:center;">Your Appointments</h3>
 
     <!--gagawa ako dito ng history ng appointments nya--->
     
 
     
                 
-    <table>
+    <table id="appointment">
         <tr>
             <th>Appointment Date</th>
             <th>Appointment Time</th>
@@ -58,7 +65,7 @@ $full_name = $_SESSION['first_name'] . " ". $_SESSION['last_name'];
         ?>
     </table>
 
-    <h3>On going Appointments</h3>
+    <h3 style="color:white; font-family:sans-serif; font-size:25px; text-align:center;">On going Appointments</h3>
     
     
     <?php
@@ -73,7 +80,7 @@ $full_name = $_SESSION['first_name'] . " ". $_SESSION['last_name'];
             foreach($run1 as $row1){
                 ?>
 
-                    <table>
+                    <table id="ongoing">
                         <tr>
                             <th>Appointment Date</th>
                             <th>Appointment Time</th>
@@ -92,7 +99,7 @@ $full_name = $_SESSION['first_name'] . " ". $_SESSION['last_name'];
                 <?php
             }
         }else{
-            echo "No appointments yet";
+            echo '<b style="color: white; font-family:sans-serif; font-size:15px;">'. '<center>'. "No appointments yet" . '</center>'. '</b>';
         }
     }
     

@@ -41,17 +41,17 @@ session_start();
                     <div class= "card">   
                         <br>
                             <div class="card-body">
-                                <h5 class="card-title"> <?php echo $row ['first_name'] . $row ['last_name']?> </h5>
-                                <h4 class="card-title"> <?php echo $row ['specialization']?> </h4>
+                                <h5 class="card-title"> <b><i><?php echo $row ['first_name'] . " " . $row ['last_name']?></b></i></h5>
+                                <h4 class="card-title"> <b><i><?php echo $row ['specialization']?></b></i></h4>
                                 <p class="card-text">
-                                    <b><i><label for="">Contact Number</label></b></i><br>
-                                    <?php echo $row ['mobile_number']?><br>
-                                    <b><i><label for="">Internship</label></b></i><br>
-                                    <?php echo $row ['internship']?><br>
-                                    <b><i><label for="">Residency</label></b></i><br>
-                                    <?php echo $row ['residency']?><br>
-                                    <b><i><label for="">HMO</label></b></i><br>
-                                    <?php echo $row ['hmo']?>
+                                    <label for="">Contact Number:</label><br>
+                                    <b><i><?php echo $row ['mobile_number']?></b></i><br>
+                                    <label for="">Internship:</label><br>
+                                    <b><i><?php echo $row ['internship']?></b></i><br>
+                                    <label for="">Residency:</label><br>
+                                    <b><i><?php echo $row ['residency']?></b></i><br>
+                                    <label for="">HMO:</label><br>
+                                    <b><i><?php echo $row ['hmo']?></b></i>
                                 </p>
                             </div> <br>
                             <div class="image">

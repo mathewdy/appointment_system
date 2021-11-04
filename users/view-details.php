@@ -28,11 +28,19 @@ if(isset($_POST['edit'])){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="../css/view-details.css">
 </head>
 <body>
-<a href="view-appointment.php">Back</a>
+<br>
+    <div class="back">
+    <form action="set-appointment.php" method="POST">
+        <input type="submit" name="cancel" value="Cancel">
+    </form>
+    </div>
+    <br>
     <h2>Details</h2>
     
+    <div class="container">
     <form action="" method="POST">
         <label for=""> <b> Edit Remark: </b> </label> <p><?php echo $remarks?></p> 
         <select name="remarks" id="">
@@ -52,9 +60,10 @@ if(isset($_POST['edit'])){
         <input type="text" name="name_of_patient" value="<?php echo $name_of_patient?>" readonly> <br>
         <!---id number ng appointment date-->
         <input type="hidden" name="id" value="<?php echo $id?>">
-        <input type="hidden" name="id_doctor" value="<?php echo $id_doctor?>">
+        <input type="hidden" name="id_doctor" value="<?php echo $id_doctor?>"><br>
         <input type="submit" name="update" value="Update">
     </form>
+    </div>
     
 
 </body>

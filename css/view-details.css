@@ -79,5 +79,7 @@ h2{
 
 .container form label{
     font-size: 18px;
+    width: 300px;
+    display: inline-block;
 }
 

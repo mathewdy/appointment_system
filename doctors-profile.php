@@ -44,7 +44,7 @@ $name_of_patient = $first_name . " " . $last_name;
 <body>
 <div class="gen-container">
 <section class="content-header">
-    <button><a style="text-decoration:none; color:black;" href="home.php" id="backbtn">Back</a></button>
+    <button style="width:100px; height:35px;"><a style="text-decoration:none; color:black; font-size:16px;" href="home.php" id="backbtn">Back</a></button>
     <div class="logo">
         <img src="css/logo.png" alt="Logo">
     </div>

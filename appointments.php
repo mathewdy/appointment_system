@@ -4,7 +4,9 @@ include('connection.php');
 session_start();
 $id = $_SESSION['patient_id'];
 $full_name = $_SESSION['first_name'] . " ". $_SESSION['last_name'];
-
+if(empty($_SESSION['email'])){
+    echo "<script> window.location.href='login-patient.php'</script>";
+}
 
 ?>
 
@@ -37,7 +39,7 @@ $full_name = $_SESSION['first_name'] . " ". $_SESSION['last_name'];
             <th>Appointment Date</th>
             <th>Appointment Time</th>
             <th>Doctor</th>
-            <th>Date Submitted </th>
+            <th>Date & Time Submitted </th>
         
         </tr>
         <?php

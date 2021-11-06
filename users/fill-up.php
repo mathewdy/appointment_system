@@ -4,7 +4,11 @@ include('../connection.php');
 
 session_start();
 $final_account_id = $_SESSION['account_id'];
-echo $_SESSION['account_id'];
+
+
+if(empty($_SESSION['account_id'])){
+    echo "<script> window.location.href='login.php'</script>";
+}
 
 
 ?>

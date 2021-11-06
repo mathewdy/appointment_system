@@ -104,7 +104,7 @@
         <label for="">Date of Birth:</label> 
         <input type="date" name="date_of_birth">  <br>
         <label for="">Phone Number:</label>
-        <input type="text" name="mobile_number" placeholder="+63" title="use international number"> <br>
+        <input type="text" name="mobile_number" value="+63" title="use international number"> <br>
         
         <!---dito naman sa check box, array to. so kung baga kung ano yung ma check nya 
         yun yung mailalagay sa database na profession nya--><br>
@@ -164,7 +164,6 @@
         $date = date('y-m-d');
 
         if(strpos($phone_number,"+63") !== FALSE){
-            echo "valid";
             
         }else{
             echo "Please use international format" ;
@@ -194,7 +193,7 @@
                 //call out yung query , then isama si sendMail para ma valid yung email.
             
                 $run_form = mysqli_query($conn,$user_form)  && sendMail($_POST['email'],$vkey,$final_Account_id);
-                echo "sucess user ";
+                
                 // kung gumana sya edi goods 
                 // kung check nya is secretary mapupunta sa user_type yung ID ni secretary
                 if($run_form){

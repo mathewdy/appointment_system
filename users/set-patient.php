@@ -10,6 +10,9 @@ if(isset($_POST['select_doctor'])){
     $specialization = $_POST['specialization'];
 
 }
+if(empty($_SESSION['email'])){
+    echo "<script> window.location.href='login.php'</script>";
+}
 
 ?>
 <!DOCTYPE html>
@@ -87,7 +90,7 @@ if(isset($_POST['select_doctor'])){
         <label for=""><b>Specialization: </b></label>
         <input type="text" name="specialization" value="<?php echo $specialization?>">
         <br><br><br><br>
-        <input type="hidden" name="user_id" value="<?php echo $id?>">
+        <input type="hidden" name="user_id" value="<?php echo $id?> ">
         <input type="submit" name="select_patient" value="Confirm">
     </form>
     </div>

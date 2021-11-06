@@ -14,9 +14,7 @@
             <ul>
                 <li>
                     <a href="homepage.php">Home</a>
-                    <a href="#">About</a>
-                    <a href="#">Doctors</a>
-                    <a href="">Secretary</a>
+                    <a href="about.php">About</a>
                 </li>
             </ul>
         </div>

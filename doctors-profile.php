@@ -11,6 +11,10 @@ $first_name=$_SESSION['first_name'];
 $last_name = $_SESSION['last_name'];
 $name_of_patient = $first_name . " " . $last_name;
 
+if(empty($_SESSION['email'])){
+    echo "<script> window.location.href='login-patient.php'</script>";
+}
+
 ?>
 
 
@@ -114,9 +118,9 @@ $name_of_patient = $first_name . " " . $last_name;
 
 <?php
 
-/*
+
 require_once __DIR__.'/vendor/autoload.php';
-*/
+
 if(isset($_POST['book_appointment'])){
 
     //dito ko din i sesend yung sms notification nya
@@ -132,8 +136,7 @@ if(isset($_POST['book_appointment'])){
     $id_doctor = $_POST['id_doctor'];
     $remarks = "Pending Appointment";
 
-    $msg = "Hi! this is your appointment details from Novaliches General Hospital. 
-    Your appointment date & time is on $appointment_date $appointment_time , and your doctor is $name_of_doctor please go to your appointment schedule on time. Thank you so much! ";
+    $msg = "Hi! this is your appointment details from Novaliches General Hospital. Your appointment date & time is on $appointment_date $appointment_time , and your doctor is $name_of_doctor please go to your appointment schedule on time. Thank you so much! ";
 
     $query_appointments = "INSERT INTO appointments (appointment_date,appointment_time,user_id,name_of_doctor,name_of_secretary,
     name_of_patient,date_time_created,date_time_updated,remarks) VALUES 
@@ -145,15 +148,15 @@ if(isset($_POST['book_appointment'])){
         // eto na lang eedit ko hahahahahaha 
       echo "<script>alert('Appointment Success'); window.location.href='home.php'; </script>";
     
-      /*
-      $messagebird = new MessageBird\Client('hzPlSRE4OFahwg9ZI80xfqhpr');
+      
+      $messagebird = new MessageBird\Client('nqTXgi1Iub31CdkqAMOkItRut');
       $message = new MessageBird\Objects\Message;
-        $message->originator = '+639614507751';
+        $message->originator = '+639156915704';
         $message->recipients = $mobile_number;
         $message->body = $msg;
         $response = $messagebird->messages->create($message);
         echo "sucess";
-        */
+        
         
       
     }else{

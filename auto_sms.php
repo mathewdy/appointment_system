@@ -55,19 +55,19 @@ if(mysqli_num_rows($run) > 0){
         $run = mysqli_query($conn,$insert);
         if($run){
         echo "added to databse";
-        /*
+        
         require_once __DIR__.'/vendor/autoload.php';
-        $msg = "Hi doc goodmorning! You are about to expect of a total $number_of_patients this day. 
+        $msg = "Hi doc goodmorning! You are about to expect of a total of number of patients ($number_of_patients) this day. 
         $date_today";
-        $messagebird = new MessageBird\Client('T8vuK9B6RqjBuBVDQ6rQ3lHhJ');
+        $messagebird = new MessageBird\Client('nqTXgi1Iub31CdkqAMOkItRut');
         $message = new MessageBird\Objects\Message;
-        $message->originator = '+639614507751';
+        $message->originator = '+639156915704';
         $message->recipients = $mobile_number;
         $message->body = $msg;
         $response = $messagebird->messages->create($message);
         var_dump($response);
         echo "sms sent";
-        */
+        
 
         }else{
         echo "error" . $conn->error;

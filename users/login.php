@@ -22,10 +22,10 @@ session_start();
             <ul>
                 <li>
                 <!----pili muna sya dito dashboard kuno----><br>
-                <a href="#"><i class="fas fa-calendar-check"></i> Set Appointment</a> <br>
-                <a href="#"><i class="far fa-calendar-check"></i> View Appointments</a> <br>
-                <a href="#"><i class="fas fa-user-md"></i> View Doctors</a> <br>
-                <a href="#"><i class="fas fa-user-injured"></i> View Patients</a> <br>
+                <a href="set-appointment.php"><i class="fas fa-calendar-check"></i> Set Appointment</a> <br>
+                <a href="view-appointment.php"><i class="far fa-calendar-check"></i> View Appointments</a> <br>
+                <a href="view-doctors.php"><i class="fas fa-user-md"></i> View Doctors</a> <br>
+                <a href="view-patients.php"><i class="fas fa-user-injured"></i> View Patients</a> <br>
                 </li>
             </ul>
         </div>
@@ -33,7 +33,7 @@ session_start();
     <form action="#" method="POST">
     <div class="login">
         <br><br><br><br><br><br>
-        <h3>Welcome Secretaries!</h3>  
+        <h3>Welcome!</h3>  
         <div class="inputs">
             <input type="email" name="email" placeholder="  Email:"><br>
             <input type="text" name="account_id"  placeholder="  Account ID:"><br>

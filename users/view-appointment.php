@@ -2,7 +2,10 @@
 
 include('../connection.php');
 session_start();
-//HINDI PA TO TAPOS
+
+if(empty($_SESSION['email'])){
+    echo "<script> window.location.href='login.php'</script>";
+}
 ?>
 
 <!DOCTYPE html>

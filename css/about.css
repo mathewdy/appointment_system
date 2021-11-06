@@ -1,0 +1,104 @@
+
+*{
+margin: 0px;
+padding: 0px;
+}
+body {
+background-color: #05448D;
+}
+
+
+
+.image img {
+padding: 50px;
+border-radius: 1000px;
+width: 150px; 
+height: 150px;
+}
+
+.hp {
+
+border-radius:2px;
+background: #3674BA;
+margin: auto;
+margin-left: 300px;
+width: 500px;
+color: white;
+font-family: sans-serif;
+text-align: justify;
+padding:15px;
+}
+
+.hp h1{
+text-align: center;
+font-weight: bold; 
+font-size: 18px;
+}
+
+.hp1 {
+border-radius:2px;
+background: #3674BA;
+margin: auto;
+margin-left: 300px;
+margin-top: 20px;
+width: 500px;   
+color: white;
+font-family: sans-serif;
+text-align: justify;
+padding: 15px;
+}
+
+p{
+    font-size: 15px;
+}
+
+.hp1 h2{
+text-align: center; 
+font-weight: bold; 
+font-size: 18px;
+}
+
+.hp2 {
+border-radius:2px;
+background: #3674BA;
+margin: auto;
+margin-left: 300px;
+margin-top: 20px;
+width: 500px;
+color: white;
+font-family: sans-serif;
+text-align: justify;
+padding:15px;
+}
+
+
+
+.sidebar ul a{
+display: block;
+height: 100%;
+width: 100%;
+line-height: 65px;
+font-size: 20px;
+color:white;
+padding-left: 40px;
+box-sizing: border-box;
+border-top: 1px solid black;
+text-decoration: none;
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+padding-top: 30px;
+
+}
+
+.sidebar a.link:hover, a.link:active{
+color:black;
+}
+
+
+
+.sidebar{
+position: fixed;
+right: 0;
+width: 200px;
+height: 100%;
+background-color: #3674BA;
+}

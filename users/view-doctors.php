@@ -92,7 +92,7 @@ if(isset($_POST['select'])){
                     </div>    
                     <br>
                         <div class="card-body">
-                            <h4 class="card-title"> <?php echo $row ['first_name'] . $row ['last_name']?> </h4>
+                            <h4 class="card-title"> <?php echo $row ['first_name'] . " " . $row ['last_name']?> </h4>
                             <h5 class="card-title"> <?php echo $row ['specialization']?> </h5>
                             <p class="card-text">
                                 <?php echo $row ['hmo']?>

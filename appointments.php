@@ -4,7 +4,9 @@ include('connection.php');
 session_start();
 $id = $_SESSION['patient_id'];
 $full_name = $_SESSION['first_name'] . " ". $_SESSION['last_name'];
-
+if(empty($_SESSION['email'])){
+    echo "<script> window.location.href='login-patient.php'</script>";
+}
 
 ?>
 
@@ -20,7 +22,7 @@ $full_name = $_SESSION['first_name'] . " ". $_SESSION['last_name'];
 <body>
     <div class="gen-container">
 <section class="content-header">
-    <button><a style="text-decoration:none; color:black;" href="home.php">Back</a></button>
+    <button style="width:100px; height:35px;"><a style="text-decoration:none; color:black; font-size:16px;" href="home.php">Back</a></button>
     <div class="logo">
         <img src="css/logo.png" alt="Logo">
     </div>
@@ -37,7 +39,7 @@ $full_name = $_SESSION['first_name'] . " ". $_SESSION['last_name'];
             <th>Appointment Date</th>
             <th>Appointment Time</th>
             <th>Doctor</th>
-            <th>Date Submitted </th>
+            <th>Date & Time Submitted </th>
         
         </tr>
         <?php

@@ -11,7 +11,7 @@ include('connection.php');
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/login-patient.css">
     <title>Document</title>
 </head>
 <body>
@@ -23,8 +23,7 @@ include('connection.php');
             <ul>
                 <li>
                     <a href="homepage.php">Home</a>
-                    <a href="#">About</a>
-                    <a href="#">Doctors</a>
+                    <a href="abowut.php">About</a>
                 </li>
             </ul>
         </div>
@@ -43,7 +42,7 @@ include('connection.php');
             <input type="password" name="password" placeholder="   Password:"> <br>
             </div>
             <input type="submit" name="login" value="Login"><br> <br>
-            <a href="reg-patient.php">No account? Sign up</a>
+            <a class="link" href="reg-patient.php">No account? Sign up</a>
         </div>
     </form>
  

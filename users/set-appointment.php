@@ -2,6 +2,9 @@
 
 include('../connection.php');
 session_start();
+if(empty($_SESSION['email'])){
+    echo "<script> window.location.href='login.php'</script>";
+}
 ?>
 
 <!--------SORT OUT KO NA LANG MUNA TO SIGURO------->

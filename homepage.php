@@ -16,8 +16,6 @@
                 <li><a href="#">Home</a></li>
                 <li><a href="#">About</a></li>
                 <li><a href="reg-patient.php">Appointment</a></li>
-                <li><a href="#">Doctor</a></li>
-                <li><a href="">Secretary</a></li>
             </ul>
         </nav>
     </div> 

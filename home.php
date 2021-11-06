@@ -2,7 +2,7 @@
 include('connection.php');
 session_start();
 if(empty($_SESSION['email'])){
-    echo "<script> window.location.href='login-patient.php'</script>";
+  echo "<script> window.location.href='login-patient.php'</script>";
 }
 
 ?>
@@ -110,9 +110,6 @@ border-radius: 25px 25px;
           </li>
       </li>
         </ul>
-
-
-   
       </div>
     </nav>
 
@@ -130,9 +127,6 @@ border-radius: 25px 25px;
 
 
 <div class="container">
-
-    
-
 <br>
 
     <form action="#" method="POST" class="col-4">

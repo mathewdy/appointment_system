@@ -20,7 +20,7 @@ if(empty($_SESSION['email'])){
     <script src= "https://kit.fontawesome.com/b99e675b6e.js" ></script>
 </head>
 <body>
-<p><?php echo $first_name . " " . $last_name?> </p>
+
     <div class="wrapper">
         <div class="navbar">
             <ul>
@@ -42,6 +42,9 @@ if(empty($_SESSION['email'])){
         <input type="submit" name="logout" value="Log Out">
     </form>
    
+    <p><b><i>Welcome <?php echo $first_name . " " . $last_name?>!</i></b></p>
+
+    
 
 </body>
 </html>

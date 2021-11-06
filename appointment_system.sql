@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 25, 2021 at 05:49 AM
+-- Generation Time: Nov 06, 2021 at 08:22 AM
 -- Server version: 10.4.19-MariaDB
 -- PHP Version: 8.0.6
 
@@ -45,14 +45,13 @@ CREATE TABLE `appointments` (
 --
 
 INSERT INTO `appointments` (`id`, `appointment_date`, `appointment_time`, `user_id`, `name_of_doctor`, `name_of_secretary`, `name_of_patient`, `date_time_created`, `date_time_updated`, `remarks`) VALUES
-(29, '2021-10-27', '1:00pm - 1:30pm', 0, '', NULL, '', '2021-10-24 09:46:41', '2021-10-24 09:46:41', 'Pending Appointment'),
-(30, '2021-10-29', '4:00pm - 4:30pm', 0, '', 'fghj fgh', '', '2021-10-24 09:58:23', '2021-10-24 09:58:23', 'Pending Appointment'),
-(31, '2021-10-27', '9:00am - 9:30am', 0, '', NULL, '', '2021-10-24 10:25:21', '2021-10-24 10:25:21', 'Pending Appointment'),
-(32, '2021-10-27', '1:00pm - 1:30pm', 0, 'mathew dalisay', 'fghj fgh', 'nida francisco', '2021-10-25 10:49:12', '2021-10-25 10:49:12', 'Pending Appointment'),
-(33, '2021-10-29', '10:00am - 10:30am', 0, 'ashley djiafhdjf', 'fghj fgh', 'nida francisco', '2021-10-25 10:58:22', '2021-10-25 10:58:22', 'Pending Appointment'),
-(34, '2021-10-28', '2:00pm - 2:30pm', 73070542, 'mathew dalisay', '', 'asdf dsfasd', '2021-10-25 11:01:58', '2021-10-25 11:11:28', 'Patient Arrived'),
-(35, '2021-10-29', '9:00am - 9:30am', 549606, 'mathew melendez', 'fghj fgh', 'asdf dsfasd', '2021-10-25 11:11:58', '2021-10-25 11:11:58', 'Pending Appointment'),
-(36, '2021-10-28', '9:00am - 9:30am', 73070542, 'mathewdalisay', NULL, 'nida francisco', '2021-10-25 11:28:06', '2021-10-25 11:28:06', 'Pending Appointment');
+(1, '2021-11-10', '9:00am - 9:30am', 738047, 'nida franciso', 'dorothy melendez', 'mathew dalisay', '2021-11-06 08:20:52', '2021-11-06 08:20:52', 'Pending Appointment'),
+(2, '2021-11-09', '9:00am - 9:30am', 738047, 'nida franciso', NULL, 'mathew dalisay', '2021-11-06 08:22:40', '2021-11-06 08:22:40', 'Pending Appointment'),
+(3, '2021-11-09', '9:00am - 9:30am', 738047, 'nida franciso', NULL, 'mathew dalisay', '2021-11-06 08:23:06', '2021-11-06 08:23:06', 'Pending Appointment'),
+(4, '2021-11-06', '9:00am - 9:30am', 738047, 'nida franciso', NULL, 'mathew dalisay', '2021-11-06 08:24:35', '2021-11-06 08:24:35', 'Pending Appointment'),
+(7, '2021-11-13', '4:00pm - 4:30pm', 738047, 'nida franciso', NULL, 'mathew dalisay', '2021-11-06 08:30:07', '2021-11-06 08:30:07', 'Pending Appointment'),
+(8, '1970-01-01', '9:00am - 9:30am', 738047, 'nida franciso', 'dorothy melendez', 'mathew dalisay', '2021-11-06 09:35:03', '2021-11-06 09:35:03', 'Pending Appointment'),
+(9, '2021-11-11', '9:00am - 9:30am', 738047, 'nida franciso', 'dorothy melendez', 'mathew dalisay', '2021-11-06 09:40:19', '2021-11-06 09:40:19', 'Pending Appointment');
 
 -- --------------------------------------------------------
 
@@ -80,9 +79,7 @@ CREATE TABLE `doctors_details` (
 --
 
 INSERT INTO `doctors_details` (`id`, `user_id`, `specialization`, `prc_id`, `prc_number`, `internship`, `residency`, `hmo`, `doc_picture`, `date_time_created`, `date_time_updated`, `remarks`) VALUES
-(1, 73070542, 'Allergy and immunology', 0x7172206b6f2e706e67, '20232', '32', '32', '32', 0x3234363935383834375f3336393532373339313539343038335f343137323230333938313039373131383236325f6e2e706e67, '2021-10-23 02:30:41', '2021-10-23 02:30:41', NULL),
-(2, 90385119, 'Allergy and immunology', 0x7172206b6f2e706e67, '32', '13', '21', '321', 0x7172206b6f2e706e67, '2021-10-23 02:31:39', '2021-10-23 02:31:39', NULL),
-(4, 549606, 'Allergy and immunology', 0x696d6167652e6a7067, '123', 'pgh', 'pgh', 'maxicare', 0x43617074757265202837292e6a7067, '2021-10-24 09:54:09', '2021-10-24 09:54:09', NULL);
+(5, 738047, 'Allergy and immunology', 0x5048494c2049442e706e67, '5555', 'Pgh', 'Pgh', 'maxicare', 0x43617074757265202839292e6a7067, '2021-11-06 08:10:31', '2021-11-06 08:10:31', NULL);
 
 -- --------------------------------------------------------
 
@@ -114,8 +111,7 @@ CREATE TABLE `patients` (
 --
 
 INSERT INTO `patients` (`id`, `email`, `password`, `first_name`, `last_name`, `age`, `gender`, `date_of_birth`, `mobile_number`, `hmo`, `patient_id`, `v_code`, `email_status`, `date_time_created`, `date_time_updated`, `remarks`) VALUES
-(1, 'sabog@gmail.com', '123', 'asdf', 'dsfasd', 2, 'male', '2020-02-20', '+639176059359', 'asdf', 2147483647, 'fa246d0262c3925617b0', 1, '2021-10-23 02:50:49', '2021-10-23 02:50:49', NULL),
-(4, 'leonidafrancisco12@gmail.com', '123', 'nida', 'francisco', 28, 'male', '2020-02-20', '+639176059359', 'maxicare', 999999, 'b7a782741f667201b548', 1, '2021-10-24 09:45:18', '2021-10-24 09:45:18', NULL);
+(6, 'mathewdalisay@gmail.com', '123', 'mathew', 'dalisay', 21, 'male', '2000-10-01', '+639156915704', 'maxicare', 999999, 'b7a782741f667201b548', 1, '2021-11-06 07:51:47', '2021-11-06 07:51:47', NULL);
 
 -- --------------------------------------------------------
 
@@ -136,7 +132,12 @@ CREATE TABLE `sample` (
 --
 
 INSERT INTO `sample` (`id`, `number_of_patients`, `appointment_date`, `user_id`, `mobile_number`) VALUES
-(1, 2, '2021-10-28', 73070542, '+639156915704');
+(1, 1, '2021-11-06', 738047, '+63614507751'),
+(2, 1, '2021-11-06', 738047, '+63614507751'),
+(3, 1, '2021-11-06', 738047, '+63614507751'),
+(4, 1, '2021-11-06', 738047, '+63614507751'),
+(5, 1, '2021-11-06', 738047, '+639156915704'),
+(6, 1, '2021-11-06', 738047, '+639614507751');
 
 -- --------------------------------------------------------
 
@@ -167,10 +168,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `doctor_or_secretary`, `email`, `account_id`, `first_name`, `last_name`, `age`, `gender`, `date_of_birth`, `mobile_number`, `v_code`, `email_status`, `date_time_created`, `date_time_updated`, `remarks`) VALUES
-(1, 'doctor', 'mathewdalisay@gmail.com', 73070542, 'mathew', 'dalisay', 2, 'male', '2020-02-20', '+639156915704', 'fa246d0262c3925617b0c72bb20eeb1d', 0, '2021-10-23 02:30:18', '2021-10-23 02:30:18', NULL),
-(2, 'doctor', 'adfa@gmail.com', 90385119, 'ashley', 'djiafhdjf', 2, 'male', '2020-02-20', '+639156915704', 'b7a782741f667201b54880c925faec4b', 0, '2021-10-23 02:31:24', '2021-10-23 02:31:24', NULL),
-(3, 'secretary', 'sad@gmail.com', 123, 'fghj', 'fgh', 2, 'female', '2020-02-20', '+639156915704', 'fa246d0262c3925617b0c72bb20eeb1d', 1, '2021-10-23 02:32:06', '2021-10-23 02:32:06', NULL),
-(6, 'doctor', 'mathewmelendez123123123@gmail.com', 549606, 'mathew', 'melendez', 17, 'male', '2020-02-20', '+639156915704', 'b7a782741f667201b54880c925faec4b', 1, '2021-10-24 09:53:27', '2021-10-24 09:53:27', NULL);
+(7, 'doctor', 'leonidafrancisco12@gmail.com', 738047, 'nida', 'franciso', 63, 'female', '1956-04-06', '+639614507751', 'fa246d0262c3925617b0c72bb20eeb1d', 0, '2021-11-06 08:08:29', '2021-11-06 08:08:29', NULL),
+(8, 'secretary', 'mathewmelendez123123123@gmail.com', 123, 'dorothy', 'melendez', 28, 'female', '1992-02-20', '+639176059359', 'fa246d0262c3925617b0c72bb20eeb1d', 1, '2021-11-06 08:18:51', '2021-11-06 08:18:51', NULL);
 
 -- --------------------------------------------------------
 
@@ -191,7 +190,7 @@ CREATE TABLE `user_type` (
 --
 
 INSERT INTO `user_type` (`id`, `user_id`, `date_time_created`, `date_time_updated`, `remarks`) VALUES
-(1, 123, '2021-10-23 02:32:06', '2021-10-23 02:32:06', NULL);
+(2, 123, '2021-11-06 08:18:51', '2021-11-06 08:18:51', NULL);
 
 --
 -- Indexes for dumped tables
@@ -245,37 +244,37 @@ ALTER TABLE `user_type`
 -- AUTO_INCREMENT for table `appointments`
 --
 ALTER TABLE `appointments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `doctors_details`
 --
 ALTER TABLE `doctors_details`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `patients`
 --
 ALTER TABLE `patients`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `sample`
 --
 ALTER TABLE `sample`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `user_type`
 --
 ALTER TABLE `user_type`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables

@@ -40,7 +40,9 @@ if(empty($_SESSION['email'])){
             }
         });
     });
+
     </script>
+    
 </head>
 <body>
     <br>
@@ -64,14 +66,14 @@ if(empty($_SESSION['email'])){
     <form action="#" method="POST">
         <!--id ata to ng doctor SHAHSHA nakalimutan ko na --->
         
-        <select name="name_of_patient" id="">
+        <select name="name_of_patient" id="name_of_patient">
             <option value="">-Select-</option>
             <?php foreach ($run_patients as $row) {?>
                 <option value="<?php echo $row ['first_name']. " " . $row ['last_name'] ?>">
                 <?php echo $row ['first_name'] . " " .$row ['last_name']?></option>
             <?php } ?>
         </select> <br>
-        
+    
         <label for="">Click to Select Date & Time</label><br>
         <i class="fa fa-calendar" style="font-size:28px"></i> <input type="text" name="appointment_date" id="datepicker" readonly>
         <select name="appointment_time" id="">
@@ -91,6 +93,9 @@ if(empty($_SESSION['email'])){
         <input type="text" name="specialization" value="<?php echo $specialization?>">
         <br><br><br><br>
         <input type="hidden" name="user_id" value="<?php echo $id?> ">
+        
+
+
         <input type="submit" name="select_patient" value="Confirm">
     </form>
     </div>

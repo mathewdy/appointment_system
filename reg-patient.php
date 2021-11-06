@@ -158,9 +158,8 @@
         $hmo = $_POST['hmo'];
 
         
-        $number = rand('999999','999999');
-        $patient_id = $number;
-
+       
+        $patient_id = rand('55555','999999');
       
         //validation ng email
         $vkey = md5(rand('10000' , '9999'));

@@ -209,7 +209,7 @@ if(isset($_POST['select'])){
                 }
               </style>
 
-              <p><?php echo "No Found" . $conn->error ?></p>
+              <p><?php echo "Not Found" . $conn->error ?></p>
 
           <?php
         }

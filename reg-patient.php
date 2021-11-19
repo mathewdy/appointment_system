@@ -28,9 +28,11 @@
 
    <?php
 
-   /// tangina di gumagana
+
    
     include('connection.php');
+    echo $base_url = $_SERVER['SERVER_NAME'];
+    
     use PHPMailer\PHPMailer\PHPMailer;
     use PHPMailer\PHPMailer\SMTP;
     use PHPMailer\PHPMailer\Exception;
@@ -61,7 +63,7 @@
             $mail->Subject = 'Email Verification from Novaliches General Hospital ';
             $mail->Body    = "Thanks for registration! Hello $email welcome to <b> NGH </b> 
             Click the link to verify the email address. Thank you so much! ♥ 
-            <a href='http://localhost/OTP/verify.php?email=$email&v_code=$vkey'>Verify</a>' " ;
+            <a href='http://localhost/appointment_system/verify.php?email=$email&v_code=$vkey'>Verify</a>' " ;
 
             $mail->send();
             return true;
@@ -180,6 +182,7 @@
             VALUES ('$email' ,'$password' ,'$first_name' ,'$last_name' , '$age' , '$gender' , '$date_birth' , '$phone_number','$hmo','$patient_id', '$vkey' , '$email_status' ,'$date  $time', '$date $time', NULL )";
             //call out yung query , then isama si sendMail para ma valid yung email.
             $run_form = mysqli_query($conn,$patient_form) && sendMail($email, $vkey) ;
+
             if($run_form){
                 echo "<script>alert('Registration Successful')</script>";
                 echo "<script>window.location.href='login-patient.php' </script>";

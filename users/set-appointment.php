@@ -63,7 +63,6 @@ if(empty($_SESSION['email'])){
     </div>
     
 
-
 <?php
 
 
@@ -108,7 +107,7 @@ if(isset($_POST['select'])){
             </ul>
             <?php
         }else{
-            echo  '<b style="color: black;">'. '<center>'. "No Found " . '</center>'. '</b>' .$conn->error;
+            echo  '<b style="color: black;">'. '<center>'. "Not Found " . '</center>'. '</b>' .$conn->error;
         }
     }
 }

@@ -15,10 +15,14 @@ $email = $_SESSION['email'];
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <title>Document</title>
+    <link rel="stylesheet" href="../css/view-profile.css">
 </head>
 <body>
-    <a href="home.php">Back</a>
-    <h2>Your Profile</h2>
+<div class="cancel">
+    <a class="btn btn-primary" href="home.php" role="button">Back</a>
+</div>
+<div class="container">
+    <h2><b>Your Profile</b></h2>
 
     <?php
 
@@ -40,10 +44,12 @@ $email = $_SESSION['email'];
                 Residency:  <?php echo $row ['residency']?> <br>
                 HMO:  <?php echo $row ['hmo']?> <br>
 
+                <br>
                 <a href="edit-profile.php?account_id=<?php echo $row ['account_id']; ?>">Edit Profile</a>
             <?php
         }
     }
     ?>
+</div>
 </body>
 </html>

@@ -1,0 +1,86 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+body{
+    background: linear-gradient(135deg, #0583d2, #b8e3ff, #0583d2);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    padding-bottom: 380px;
+    
+}
+
+.container{
+    text-align: center;
+    justify-content: center;
+    margin: 0 auto;
+    border: solid black;
+    border-radius: 5px;
+    background: linear-gradient(135deg, #61b0b7, #84caf8, #61b0b7);
+    margin-top: 200px;
+    box-shadow: 0px 1px 10px 1px #000;
+    padding: 10px;
+
+}
+
+.container .g-recaptcha{
+    margin-left: 500px;
+}
+
+.container label{
+    width: 150px;
+    display: inline-block;
+    text-align: left;
+    margin-bottom: 8px;
+}
+
+.container input[type= text]{
+    width: 30%;
+}
+
+.container input[type= email]{
+    width: 30%;
+}
+
+.container input[type= file]{
+    width: 30%;
+}
+
+.container select{
+    width: 30%;
+    margin-left: 155px;
+    margin-bottom: 8px;
+}
+
+.container input[type= radio]{
+    height: 1em;
+    width: 1em;
+    margin-inline-start: 80px;
+}
+
+.container input[type= date]{
+    width: 30%;
+}
+
+.container form  input[type= submit]{
+    justify-content: center;
+    width: 130px;
+    font-size: 15px;
+    padding: 3px 6px;
+    border-radius: 3px;
+    box-sizing: border-box;
+    background-color: #3660D4;
+    color: white;
+    text-align: center;
+    margin-bottom: 8px;
+}
+
+.container h2{
+    font-size: 25px;
+    margin-bottom: 15px;
+}
+
+.container a{
+    color: black;
+    text-decoration: none;
+}

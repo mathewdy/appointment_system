@@ -59,8 +59,6 @@ $error = NULL;
 ?>  
 <body>
 <div class="container">
-<a href="homepage.php">Home</a>
-    <a href="about.php">About</a> 
     <br>
     <br>
     <div class="logo">

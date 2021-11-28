@@ -8,9 +8,17 @@ if(empty($_SESSION['email'])){
     echo "<script> window.location.href='login.php'</script>";
 }
 
+if(isset($_GET['page'])){
+    $page = $_GET['page'];
+}else{
+    $page = 1;
+}
+
+$num_per_age = 05;
+$start_from = ($page-1)*05;
+
 
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -18,103 +26,117 @@ if(empty($_SESSION['email'])){
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <title>Document</title>
-    <link rel="stylesheet" href="../css/view-doctors.css">
 </head>
 <body>
-    <br>
-    <div class="back">
-    <form action="home.php" method="POST">
-        <input type="submit" name="home" value="Back">
-    </form>
-    </div>
-    
-<br>    
-<h3><i>View Doctors</i></h3>
-
-    
     <div class="container">
-    <form action="#" method="POST">
-        <label for="">Specialization</label>
-        <select name="specialization" id="">
-        <option value="Select">-Select-</option>
-        <option value="Allergy and immunology">Allergy and immunology</option>
-            <option value="Anesthesiology">Anesthesiology</option>
-            <option value="Dermatology">Dermatology</option>
-            <option value="Diagnostic radiology">Diagnostic radiology</option>
-            <option value="Emergency medicine">Emergency medicine</option>
-            <option value="Family medicine">Family medicine</option>
-            <option value="Internal medicine">Internal medicine</option>
-            <option value="Medical genetics">Medical genetics</option>
-            <option value="Neurology">Neurology</option>
-            <option value="Nuclear medicine">Nuclear medicine</option>
-            <option value="Obstetrics and gynecology">Obstetrics and gynecology</option>
-            <option value="Ophthalmology">Ophthalmology</option>
-            <option value="Pathology">Pathology</option>
-            <option value="Pediatrics">Pediatrics</option>
-            <option value="Physical medicine and rehabilitation">Physical medicine and rehabilitation</option>
-            <option value="Preventive medicine">Preventive medicine</option>
-            <option value="Psychiatry">Psychiatry</option>
-            <option value="Radiation oncology">Radiation oncology</option>
-            <option value="Surgery">Surgery</option>
-            <option value="Urology">Urology</option>
-        </select>
-        <input type="submit" name="select" value="Select"> 
-    </form>
-    </div>
-    
-    
-
-<?php
-
-
-if(isset($_POST['select'])){
-    $specialization = $_POST['specialization'];
-// unfinished 
-    $select_doctors_Details = "SELECT users.first_name,users.last_name,doctors_details.specialization,
-    doctors_details.hmo,doctors_details.doc_picture,doctors_details.user_id
-    FROM users
-    LEFT JOIN doctors_details ON users.account_id = doctors_details.user_id
-    WHERE doctors_details.specialization = '$specialization'";
-    $run_doctors_Details = mysqli_query($conn,$select_doctors_Details);
-
-    if($run_doctors_Details){
-        echo '<b>'.'<center>'.$specialization . " Section ".'</center>' .'</b>';
-        
-        if(mysqli_num_rows($run_doctors_Details) > 0)
-        foreach($run_doctors_Details as $row){
-        ?>
-        <ul class="card-container">   
-            <li>
-                <div class= "card">
-                    <div class="image">
-                    <img src="<?php echo "doc_picture/" .$row['doc_picture']; ?>" alt="Doc Image" width="200px" height="200px">
-                    </div>    
+    <a href="home.php">Back</a>
+        <div class="jumbotron">
+            <h2>Doctor's Info</h2>
+            <div class="card">
+                <div class="card-body">
+                    <label for="search">Search Doctor</label> <br>
+                    <input type="text" id="search_doctor" autocomplete="off" placeholder="Search">
                     <br>
-                        <div class="card-body">
-                            <h4 class="card-title"> <?php echo $row ['first_name'] . " " . $row ['last_name']?> </h4>
-                            <h5 class="card-title"> <?php echo $row ['specialization']?> </h5>
-                            <p class="card-text">
-                                <?php echo $row ['hmo']?>
-                            </p>
-                            <div class="profile">
-                            <form action="whole-profile-doc.php?user_id=<?php echo $row ['user_id']?>" method="POST">
-                                <input type="submit" name="home" value="View Profile">
-                            </form>
-                            </div>
-                        </div>        
+                    <br>
+                    <table id="data_table" class="table table-hover table-primary table-responsive">
+                        <thead>
+                            <tr>
+                                <th scope="col">Account ID</th>
+                                <th scope="col">First Name</th>
+                                <th scope="col">Last Name</th>
+                                <th scope="col">Specialization</th>
+                                <th></th>
+                                <th>Options</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                           <?php
+
+                                $query= "SELECT * FROM users LEFT JOIN doctors_details ON users.account_id = doctors_details.user_id WHERE doctor_or_secretary ='doctor' LIMIT $start_from, $num_per_age";
+                                $run_query = mysqli_query($conn,$query);
+
+                                if($run_query){
+                                    if(mysqli_num_rows($run_query)){
+                                        foreach($run_query as $row){
+                                            ?>
+
+                                               <tr>
+                                                   <td><?php echo $row ['account_id']?></td>
+                                                   <td><?php echo $row ['first_name']?></td>
+                                                   <td><?php echo $row ['last_name']?></td>
+                                                   <td><?php echo $row ['specialization']?></td>
+                                                   <td>
+                                                       <a href="view-doctors-profile.php?account_id=<?php echo $row ['account_id']?>" class="btn btn-info">View</a>
+                                                   </td>
+                                                   <td>
+                                                       <a href="edit-doctors-profile.php?account_id=<?php echo $row ['account_id']?>" class="btn btn-secondary">Edit</a>
+                                                   </td>
+                                                   <td>
+                                                       <a href="delete-doctors-profile.php?account_id=<?php echo $row ['account_id']?>" class="btn btn-danger">Delete</a>
+                                                   </td>
+                                               </tr>
+
+
+                                            <?php
+                                        }
+                                    }
+                                }
+
+                            ?>
+                        </tbody>
+                    </table>
+                
+                    <?php
+
+                        $pr_query = "SELECT * FROM users LEFT JOIN doctors_details ON users.account_id = doctors_details.user_id WHERE doctor_or_secretary ='doctor'";
+                        $pr_results = mysqli_query($conn,$pr_query);
+                        $total_record = mysqli_num_rows($pr_results);
+                      
+                        $total_page = ceil($total_record/$num_per_age);
+                      
+
+                        if($page > 1 ){
+                            echo  "<a href='view-doctors.php?page=".($page-1)."' class='btn btn-danger'>Previous</a> ";
+                        }
+                        
+                        for($i=1;$i<$total_page;$i++){
+                            echo  "<a href='view-doctors.php?page=".$i."' class='btn btn-primary'>$i</a> ";
+                        }
+
+                        if($i > $page ){
+                            echo  "<a href='view-doctors.php?page=".($page+1)."' class='btn btn-danger'>Next</a> ";
+                        }
+                    ?>
                 </div>
-            </li>
-        </ul>
-        <?php
-        }else{
-            
-            echo  '<b style="color: black;">'. '<center>'. "No Found " . '</center>'. '</b>' .$conn->error;
-        }
-    }
-}
+            </div>
+        </div>
+        
+    </div>
 
 
-?>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+<script>
+    $(document).ready(function(){
+       $("#search_doctor").on("keyup",function(){
+            var search = $(this).val();
+            $.ajax({
+                url: "search2.php",
+                type: "POST",
+                data: {search: search},
+                success: function(data){
+                    $("#data_table").html(data);
+                }
+            });
+       });
+    });
+</script>
 </body>
 </html>
+
+

@@ -58,7 +58,7 @@ if(empty($_SESSION['email'])){
                                     <br>
                                     </div>
                                     <div>
-                                    <a href="#" class="btn">View profile</a>
+                                    <a href="view-profile.php" class="btn">View profile</a>
                                     </div>
                                 </div>
                             </div>

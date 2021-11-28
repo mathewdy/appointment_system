@@ -211,7 +211,7 @@ if(isset($_POST['update'])){
         $run_update2 = mysqli_query($conn,$query_update2);
 
         if($run_update2){
-            echo "data updated2";
+            echo "<script>window.location.href='view-profile.php' </script>";
         }else{
             echo "error update 2". $conn->error;
         }

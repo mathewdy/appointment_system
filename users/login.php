@@ -12,33 +12,48 @@ session_start();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../css/login-users.css">
+    
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src= "https://kit.fontawesome.com/b99e675b6e.js" ></script>
+    
 </head>
 <body>
 
-    
-    <form action="login.php" method="POST">
-    <div class="login">
-        <br><br><br><br><br><br>
+<div class="container p-4">
+    <form action="login.php" method="POST" class="row g-2 needs-validation" novalidate>
         <h3>Welcome Secretary!</h3>  
-        <div class="inputs">
-            <input type="email" name="email" placeholder="  Email:"><br>
-            <input type="text" name="account_id"  placeholder="  Account ID:"><br>
+            <div class="col-md-4">
+                <label for="validationCustom01" class="form-label">Email</label>
+                <input type="email" class="form-control" id="validationCustom01" name="email" required>
+                <div class="invalid-feedback">
+                    Require Field
+                </div>
             </div>
-            <input type="submit" name="login" value="Log In"><br><br>
-        <a href="reg-users.php">No account? Sign Up</a>
+
+            <div class="col-md-4">
+                <label for="validationCustom01" class="form-label">Account Id</label>
+                <input type="text" class="form-control" id="validationCustom01" name="account_id" required>
+                <div class="invalid-feedback">
+                    Require Field
+                </div>
+            </div>
+
+            <div>
+                <div class="g-recaptcha" data-sitekey="6LeDhkEdAAAAAOowHWu_1sVH7vjlVwgZeJHhp3tr">
+            </div> 
+            <br>
+            <div class="col-md-4">
+                <input class="btn btn-primary" name="login" type="submit" value="Log in">
+            </div>
+    
+        <a href="reg-users.php">No account? Sign Up</a> <br>
         <!-----wala pa tong function--->
-        <a href="#">Forgot account id?</a>
-    </div>
-        <div>
-            <div class="g-recaptcha" data-sitekey="6LeDhkEdAAAAAOowHWu_1sVH7vjlVwgZeJHhp3tr">
-        </div>
-    <a href="../doctors/login.php">Doctor's Portal</a>
-    <a href="../login-patient.php">Patient's Portal</a>
+        <a href="forgot_account_id.php">Forgotten account id?</a> <br>
+        <a href="../doctors/login.php">Doctor's Portal</a> <br>
+        <a href="../login-patient.php">Patient's Portal</a>
     </form>
+    </div>
 </body>
 </html>
 
@@ -84,3 +99,21 @@ if(isset($_POST['login']) && $_POST['g-recaptcha-response'] != ""){
     }
 }
 ?>
+<script>
+
+(function () {
+'use strict'
+var forms = document.querySelectorAll('.needs-validation')
+
+Array.prototype.slice.call(forms)
+.forEach(function (form) {
+form.addEventListener('submit', function (event) {
+    if (!form.checkValidity()) {
+    event.preventDefault()
+    event.stopPropagation()
+    }
+    form.classList.add('was-validated')
+}, false)
+})
+})()
+</script>

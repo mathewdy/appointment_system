@@ -54,7 +54,7 @@ session_start();
     </form>
 </div>
     <a href="registration.php">No Account? Sign up</a> <br>
-    <a href="forgot_account_id.php">Forgot Account Id</a>
+    <a href="forgot_account_id.php">Forgotten Account Id?</a>
 </body>
 </html>
 

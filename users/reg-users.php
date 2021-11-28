@@ -9,24 +9,13 @@
     <title>Online Appointment System</title>
 </head>
 <body>
-<div class="wrapper">
-        <div class="navbar">
-            <ul>
-                <li>
-                    <a href="homepage.php">Home</a>
-                    <a href="#">About</a>
-                    <a href="#">Doctors</a>
-                    <a href="">Secretary</a>
-                </li>
-            </ul>
-        </div>
-    </div> 
+
+       
+      
+
  
 <!--yan nagana na yan hahaha-->
-    <div class="logo">
-        <img src="../css/logo.png" alt="Logo" >
-    </div>
-
+   
    <?php    
 //secretary to 
    ///NAAGA NA ITO MAY MALI LANG SA PATIENTS> I DONT KNOW WHY SHAHSHA
@@ -52,7 +41,7 @@
           $mail->Host       = 'smtp.gmail.com';                     //Set the SMTP server to send through
           $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
           $mail->Username   = 'mathewmelendez123123123@gmail.com';                     //SMTP username
-          $mail->Password   = 'mathewpogi123';                               //SMTP password
+          $mail->Password   = '62409176059359';                               //SMTP password
           $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
           $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
       
@@ -79,8 +68,22 @@
 
    $error = NULL;
     ?>
-<div class="container">
+<div class="container-md">
     <form action="reg-users.php" method="POST" class="row g-3 needs-validation" novalidate>
+
+    <div class="img-fluid">
+        <img src="../css/logo.png" alt="Logo" >
+    </div>
+
+        <ul>
+            <li>
+                <a href="homepage.php">Home</a>
+                <a href="#">About</a>
+                <a href="#">Doctors</a>
+                <a href="">Secretary</a>
+            </li>
+        </ul>
+
         <!-----sign up nya-->
         <!--yung nasa NAME na input yan yung mga inputed data na ipapasok sa database-->
         <!--gumamit ng POST method para ma secure yung pag input sa DB--->
@@ -90,7 +93,7 @@
             <label for="validationCustom01" class="form-label">Email</label>
             <input type="email" class="form-control" id="validationCustom01" placeholder="sample@gmail.com" name="email" required>
             <div class="invalid-feedback">
-                Please input email
+                Input Required
             </div>
         </div>
         
@@ -110,42 +113,59 @@
             </div>
         </div>
 
-        <label for="validationCustom01" class="form-label">Gender</label>
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="gender" id="inlineRadio1" value="Male">
-            <label class="form-check-label" for="inlineRadio1">Male</label>
+        <div class="col-md-4 p-2">
+        <label for="validationCustom01" class="form-label">Gender:</label>
+            <div class="row g-2 border bg-white">
+                <div class="col-5">
+                    
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="gender" id="inlineRadio1" value="Male">
+                        <label class="form-check-label" for="inlineRadio1">Male</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="gender" id="inlineRadio2" value="Female">
+                        <label class="form-check-label" for="inlineRadio2">Female</label>
+                    </div>
+                </div>
+                <div class="invalid-feedback">
+                    Gender Required
+                </div>
+            </div>
         </div>
-        <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="gender" id="inlineRadio2" value="Female">
-            <label class="form-check-label" for="inlineRadio2">Female</label>
-        </div>
-       
         
-        <label for="">Date of Birth:</label> 
-        <input type="date" name="date_of_birth">  <br>
-        <label for="">Phone Number:</label>
-        <input type="text" name="mobile_number" id="mobile_num" value="+63" title="use international number"> <br>
-        <div class="errors">
 
-        </div>
-    
-        <div class="register">
-        <!--kapag na pindot mo naman tong register button so papasok na to sa loob ng database-->
-        <input type="submit" name="register" value="Register">
+        <div class="col-md-4">
+            <label for="validationCustom01" class="form-label">Date of Birth</label>
+            <input type="date" class="form-control" id="validationCustom01" name="date_of_birth" required>
+            <div class="invalid-feedback">
+                Input Required
+            </div>
         </div>
 
-    <div>
-        <div class="g-recaptcha" data-sitekey="6LeDhkEdAAAAAOowHWu_1sVH7vjlVwgZeJHhp3tr"></div>
-    </div>
+        <div class="col-md-4">
+            <label for="validationCustom01" class="form-label">Mobile Number</label>
+            <input type="text" class="form-control" id="validationCustom01" name="mobile_number" pattern="[+][6]{1}[3]{1}[0-9]{10}" placeholder="+63" required>
+            <div class="invalid-feedback">
+                Input Required
+                or use correct format
+            </div>
+        </div>
 
+        <div>
+            <div class="g-recaptcha" data-sitekey="6LeDhkEdAAAAAOowHWu_1sVH7vjlVwgZeJHhp3tr"></div>
+        </div>
+        
+        <div class="col-12">
+            <input class="btn btn-primary" type="submit" name="register" value="Register">
+        </div>
     </form>
         <br>
-        <div class="login">
+        <div class="p-4">
             <!---kapag na click ko to pupunta ako sa login page-->
             <a href="login.php">Have an account? Log in</a>
         </div>
+</div>
 
-    </div>
     <?php
 
   
@@ -210,7 +230,7 @@
             }else{
                 $insert = "INSERT INTO users (doctor_or_secretary,email,account_id,first_name,last_name,gender,date_of_birth,mobile_number,v_code,email_status,date_time_created,
                 date_time_updated,remarks) VALUES('$secretary','$email', '$account_id', '$first_name', '$last_name', '$gender','$date_birth',
-                '$phone_number', '$vkey', '$email_status', '$date $time', '$date $time', NULL)";
+                '$mobile_number', '$vkey', '$email_status', '$date $time', '$date $time', NULL)";
                 $run_insert = mysqli_query($conn,$insert) && sendMail($email,$vkey,$account_id);
 
                 if($run_insert){
@@ -220,12 +240,11 @@
                 }
             }
         }
-
         echo "" . $conn->error ; 
 }
     ?>
+<script src="js/bootstrap.js"></script>
 </body>
-
-
 </html>
+
 

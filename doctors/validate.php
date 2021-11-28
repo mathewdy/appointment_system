@@ -3,8 +3,6 @@
 include('../connection.php');
 
 session_start();
-echo $code =  $_SESSION['code'];
-echo $email = $_SESSION['email'];
 
 ?>
 

@@ -1,141 +1,137 @@
 <?php
-session_start();
+
 include('../connection.php');
-$name_of_secretary = $_SESSION['first_name'] .  " " . $_SESSION['last_name'];
+session_start();
 
-
-if(isset($_POST['select_doctor'])){
-    $id = $_POST['user_id'];
-    $name_of_doctor = $_POST['name_of_doctor'];
-    $specialization = $_POST['specialization'];
-
-}
-if(empty($_SESSION['email'])){
-    echo "<script> window.location.href='login.php'</script>";
-}
 
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/themes/smoothness/jquery-ui.css"/>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-        <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/themes/smoothness/jquery-ui.css" />
-        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" href="../css/set-patient.css">
-    <script>     
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/themes/smoothness/jquery-ui.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <title>Document</title>
+</head>
+<body>
+    
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+            <a href="set-appointment.php">Cancel</a>
+
+        <?php
+
+            if(isset($_GET['patient_id'])){
+                $patient_id = $_GET['patient_id'];
+                $query = "SELECT * FROM patients WHERE patient_id = '$patient_id'";
+                $run = mysqli_query($conn,$query);
+
+                if(mysqli_num_rows($run) > 0){
+                    foreach($run as $row){
+                        ?>
+
+                        <form class="row g-3 needs-validation" method="POST" action="select-doctor.php" novalidate>
+                            <div class="col-md-4 position-relative">
+                                <label for="validationTooltip01" class="form-label">First Name</label>
+                                <input type="text" class="form-control" name="patient_first_name" id="validationTooltip01" value="<?php echo $row ['first_name']?>" required>
+                                <div class="invalid-tooltip">
+                                    Input Details
+                                </div>
+                            </div>
+                            <div class="col-md-4 position-relative">
+                                <label for="validationTooltip01" class="form-label">Last Name</label>
+                                <input type="text" class="form-control" name="patient_last_name" id="validationTooltip01" value="<?php echo $row ['last_name']?>" required>
+                                <div class="invalid-tooltip">
+                                    Input Details
+                                </div>
+                            </div>
+                            <div class="col-md-3 position-relative">
+                                <label for="validationTooltip01" class="form-label">Time</label>
+                                <select class="form-select" id="validationTooltip01" name="appointment_time" required>
+                                <option selected disabled value="">Appointment Time</option>
+                                <option value="09:00:00 AM">09:00 AM</option>
+                                <option value="09:30:00 AM">09:30 AM</option>
+                                <option value="10:00:00 AM">10:00 AM</option>
+                                <option value="10:30:00 AM">10:30 AM</option>
+                                <option value="11:00:00 AM">11:00 AM</option>
+                                <option value="11:30:00 AM">11:30 AM</option>
+                                <option value="12:00:00 PM">12:00 PM</option>
+                                <option value="12:30:00 PM">12:30 PM</option>
+                                <option value="01:00:00 PM">01:00 PM</option>
+                                <option value="01:30:00 PM">01:30 PM</option>
+                                <option value="02:00:00 PM">02:00 PM</option>
+                                <option value="02:30:00 PM">02:30 PM</option>
+                                <option value="03:00:00 PM">03:00 PM</option>
+                                </select>
+                                <div class="invalid-tooltip">
+                                    Please Select Time
+                                </div>
+                            </div>
+                            <div class="col-md-3 position-relative">
+                                <label for="validationTooltip01" class="form-label">Date</label>
+                                <input type="text"   class="form-control" name="appointment_date" id="datepicker" required>
+                                <div class="invalid-tooltip">
+                                    Please Select Date
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <input type="submit"  class="btn btn-primary" name="next" value="Next">
+                                <input type="hidden" name="patient_id" value="<?php echo $row['patient_id']?>">
+                                <input type="hidden" name="mobile_number" value="<?php echo $row ['mobile_number']?>">
+                            </div>
+                        </form>
+                        <?php
+                    }
+                }
+            }
+        ?>
+        
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script>
+(function () {
+  'use strict'
+  var forms = document.querySelectorAll('.needs-validation')
+
+  Array.prototype.slice.call(forms)
+    .forEach(function (form) {
+      form.addEventListener('submit', function (event) {
+        if (!form.checkValidity()) {
+          event.preventDefault()
+          event.stopPropagation()
+        }
+        form.classList.add('was-validated')
+      }, false)
+    })
+})()
+</script>
+
+ <script>     
     $(function() {
         var date_today = new Date();
         $( "#datepicker" ).datepicker({
             minDate: date_today,
+            minDate: 4,
             beforeShowDay: function(d) {
-                
                 var day = d.getDay()
                 return [(day != 0 && day != 1)];
+              
             }
         });
     });
+</script> 
 
-    </script>
-    
-</head>
-<body>
-    <br>
-    <div class="back">
-    <form action="set-appointment.php" method="POST">
-        <input type="submit" name="cancel" value="Cancel">
-    </form>
-    </div>
-    <?php
-    
-    //query patients
-
-    $query_patients = "SELECT * FROM patients";
-    $run_patients = mysqli_query($conn,$query_patients);
-
-    ?>
-    
-    <br><br>
-    <div class="container">
-    <h1><i>Select Patient</i></h1>
-    <form action="#" method="POST">
-        <!--id ata to ng doctor SHAHSHA nakalimutan ko na --->
-        
-        <select name="name_of_patient" id="name_of_patient">
-            <option value="">-Select-</option>
-            <?php foreach ($run_patients as $row) {?>
-                <option value="<?php echo $row ['first_name']. " " . $row ['last_name'] ?>">
-                <?php echo $row ['first_name'] . " " .$row ['last_name']?></option>
-            <?php } ?>
-        </select> <br>
-    
-        <label for="">Click to Select Date & Time</label><br>
-        <i class="fa fa-calendar" style="font-size:28px"></i> <input type="text" name="appointment_date" id="datepicker" readonly>
-        <select name="appointment_time" id="">
-            <option value="9:00am - 9:30am">9:00am - 9:30am</option>
-            <option value="10:00am - 10:30am">10:00am - 10:30am</option>
-            <option value="11:00am -11:30am">11:00am -11:30am</option>
-            <option value="12:00pm - 12:30pm">12:00pm - 12:30pm</option>
-            <option value="1:00pm - 1:30pm">1:00pm - 1:30pm</option>
-            <option value="2:00pm - 2:30pm">2:00pm - 2:30pm</option>
-            <option value="3:00pm - 3:30pm">3:00pm - 3:30pm</option>
-            <option value="4:00pm - 4:30pm">4:00pm - 4:30pm</option>
-        </select>
-       <br>
-        <label for=""><b>Doctor: </b></label>
-        <input type="text" name="name_of_doctor" value="<?php echo $name_of_doctor?>"><br>
-        <label for=""><b>Specialization: </b></label>
-        <input type="text" name="specialization" value="<?php echo $specialization?>">
-        <br><br><br><br>
-        <input type="hidden" name="user_id" value="<?php echo $id?> ">
-        
-
-
-        <input type="submit" name="select_patient" value="Confirm">
-    </form>
-    </div>
- 
 </body>
 </html>
 
-<?php
-
-if(isset($_POST['select_patient'])){
-    date_default_timezone_set("Asia/Manila");
-    $time= date("h:i:s", time());
-    $date = date('y-m-d');
-    $remarks = "Pending Appointment";
-    $name_of_doctor = $_POST['name_of_doctor'];
-    $name_of_patient = $_POST['name_of_patient'];
-    $id_doctor =  $_POST['user_id'];
-    $appointment_date = date('y-m-d', strtotime($_POST['appointment_date']));
-    $appointment_time = $_POST['appointment_time'];
-
-    if($name_of_patient == ""){
-        echo "no patient";
-    }
-
-    $query_appointment = "INSERT INTO appointments (appointment_date,appointment_time,user_id,name_of_doctor,name_of_secretary,name_of_patient,
-    date_time_created,date_time_updated,remarks) VALUES ('$appointment_date' , '$appointment_time','$id_doctor','$name_of_doctor',
-    '$name_of_secretary' , '$name_of_patient' , '$date $time' , '$date $time', '$remarks')";
-
-    $run_appointment = mysqli_query($conn,$query_appointment);
-
-    if($run_appointment) {
-        echo "<script> window.alert('Succesfully Updated'); window.location.href='home.php'; </script>";
-    }else{
-        echo "<script>alert('Something went wrong'); </script>" . $conn->error;
-    }
-}
-
-
-
-
-
-
-?>

@@ -1,116 +1,129 @@
 <?php
 
+
 include('../connection.php');
+
 session_start();
-if(empty($_SESSION['email'])){
-    echo "<script> window.location.href='login.php'</script>";
+
+
+if(isset($_GET['page'])){
+    $page = $_GET['page'];
+}else{
+    $page = 1;
 }
+
+$num_per_page = 05;
+$start_from = ($page-1)*05;
+
+
 ?>
-
-<!--------SORT OUT KO NA LANG MUNA TO SIGURO------->
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
     <title>Document</title>
-    <link rel="stylesheet" href="../css/set-appointment.css">
 </head>
 <body>
-    <br>
-    <div class="back">
-    <form action="home.php" method="POST">
-        <input type="submit" name="home" value="Back">
-    </form>
-    </div>
-    
-    <br>
-    <h3><i>Set an Appointment</i></h3>
-
-    <div class="container">
-    <form action="#" method="POST">
-        <label for="">Select Specialization</label>
-        <select name="specialization" id="">
-        <option value="-select-">-Select-</option>
-        <option value="Allergy and immunology">Allergy and immunology</option>
-            <option value="Anesthesiology">Anesthesiology</option>
-            <option value="Dermatology">Dermatology</option>
-            <option value="Diagnostic radiology">Diagnostic radiology</option>
-            <option value="Emergency medicine">Emergency medicine</option>
-            <option value="Family medicine">Family medicine</option>
-            <option value="Internal medicine">Internal medicine</option>
-            <option value="Medical genetics">Medical genetics</option>
-            <option value="Neurology">Neurology</option>
-            <option value="Nuclear medicine">Nuclear medicine</option>
-            <option value="Obstetrics and gynecology">Obstetrics and gynecology</option>
-            <option value="Ophthalmology">Ophthalmology</option>
-            <option value="Pathology">Pathology</option>
-            <option value="Pediatrics">Pediatrics</option>
-            <option value="Physical medicine and rehabilitation">Physical medicine and rehabilitation</option>
-            <option value="Preventive medicine">Preventive medicine</option>
-            <option value="Psychiatry">Psychiatry</option>
-            <option value="Radiation oncology">Radiation oncology</option>
-            <option value="Surgery">Surgery</option>
-            <option value="Urology">Urology</option>
-        </select>
-        <input type="submit" name="select" value="Select"> 
-    </form><br>
-    </div>
     
 
-<?php
+<div class="container">
+    <a href="appointment.php">Back</a>
+    <div class="card">
+        <div class="card-body">
+            <label for="search">Search</label>
+            <input type="text"  id="search_patient"  class="form-control" placeholder="Search Patient" style="width: 300px;">
+            <div class="result">
 
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="table-responsive">
+        <div class="col-md-2"></div>
+            <table class="table table-responsive table-bordered caption-top border border-success border-4 " id="table_data">
+                <caption style="font-size: 20px;">List of Patients</caption>
+                    <thead>
+                        <tr>
+                            <th scope="col">Patient ID</th>
+                            <th scope="col">First Name</th>
+                            <th scope="col">Last Name</th>
+                            <th scope="col">Set Appointment</th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
 
-if(isset($_POST['select'])){
-    $specialization = $_POST['specialization'];
-// unfinished 
-    $select_doctors_Details = "SELECT users.first_name,users.last_name,users.mobile_number ,
-    doctors_details.user_id,doctors_details.specialization,doctors_details.doc_picture
-    FROM users
-    LEFT JOIN doctors_details ON users.account_id = doctors_details.user_id
-    WHERE doctors_details.specialization = '$specialization'";
-    $run_doctors_Details = mysqli_query($conn,$select_doctors_Details);
+                            $query = "SELECT * FROM patients LIMIT $start_from , $num_per_page";
+                            $run = mysqli_query($conn,$query);
 
-    if($run_doctors_Details){
-       if(mysqli_num_rows($run_doctors_Details) > 0)
-        foreach($run_doctors_Details as $row){
-            ?>
-            <ul class="card-container">   
-                <li>
-                    <div class= "card">
-                        <div class="image">
-                        <img src="<?php echo "doc_picture/" .$row['doc_picture']; ?>" alt="Doc Image" width="200px" height="200px">
-                        </div>    
-                        <br>
-                            <form action="set-patient.php" method="POST">
-                            <div class="card-body">
-                            <i><label for="">Doctor's Name</label></i>
-                                <h4 class="card-title"> <?php echo $row ['first_name'] . " " . $row ['last_name']?> </h4>
-                            <i><label for="">Specialization</label></i>    
-                                <h5 class="card-title"> <?php echo $row ['specialization']?> </h5>
-                                <div class="profile">
-                                <br>
-                                    <input type="submit" name="select_doctor" value="Select">
-                                    <input type="hidden" name="user_id" value="<?php echo $row ['user_id']?>">
-                                    <input type="hidden" name="name_of_doctor" value="<?php echo $row ['first_name']." " . $row['last_name']?>">
-                                    <input type="hidden" name="specialization" value="<?php echo $row['specialization']?>">
-                                </form>
-                                </div>
-                            </div>        
-                    </div>
-                </li>
-            </ul>
+                            if(mysqli_fetch_assoc($run) > 0){
+                                foreach($run as $row){
+                                ?>
+                                <tbody>
+                                    <tr>
+                                        <td><b> <?php echo $row ['patient_id']?></b> </td>
+                                        <td><?php echo $row ['first_name']?></td>
+                                        <td><?php echo $row ['last_name']?></td>
+                                        <td>
+                                            <a href="set-patient.php?patient_id=<?php echo $row ['patient_id']?>">Set Appointment</a>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                <?php
+                                }
+                            }
+                        ?>
+                    </tbody>
+            </table>
             <?php
-        }else{
-            echo  '<b style="color: black;">'. '<center>'. "Not Found " . '</center>'. '</b>' .$conn->error;
-        }
-    }
-}
-?>
+
+                    $pr_query = "SELECT * FROM patients";
+                    $pr_result = mysqli_query($conn,$pr_query);
+                    $total_record = mysqli_num_rows($pr_result);
+                   
+                    $total_page = ceil($total_record / $num_per_page);
+
+                    if($page > 1 ){
+                        echo  "<a href='set-appointment.php?page=".($page-1)."' class='btn btn-danger'>Previous</a> ";
+                    }
+
+                    for($i=1;$i<$total_page;$i++){
+
+                        echo  "<a href='set-appointment.php?page=".$i."' class='btn btn-primary'>$i</a> ";
+                    }
+
+                     if($i > $page ){
+                        echo  "<a href='set-appointment.php?page=".($page+1)."' class='btn btn-danger'>Next</a> ";
+                    }
+
+                ?>
+        </div>
+    </div>
+<!-----------set appointment---------->
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+ <script>
+    $(document).ready(function(){
+       $("#search_patient").on("keyup",function(){
+            var search = $(this).val();
+            $.ajax({
+                url: "search-patient.php",
+                type: "POST",
+                data: {search: search},
+                success: function(data){
+                    $("#table_data").html(data);
+                }
+            });
+       });
+    });
+</script> 
 </body>
 </html>

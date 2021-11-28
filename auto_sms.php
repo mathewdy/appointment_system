@@ -55,6 +55,7 @@ if(mysqli_num_rows($run) > 0){
         $run = mysqli_query($conn,$insert);
         if($run){
         echo "added to databse";
+        /*
         
         require_once __DIR__.'/vendor/autoload.php';
         $msg = "Hi doc goodmorning! You are about to expect of a total of number of patients ($number_of_patients) this day. 
@@ -67,6 +68,7 @@ if(mysqli_num_rows($run) > 0){
         $response = $messagebird->messages->create($message);
         var_dump($response);
         echo "sms sent";
+        */
         
 
         }else{

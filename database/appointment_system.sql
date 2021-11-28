@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 06, 2021 at 08:22 AM
--- Server version: 10.4.19-MariaDB
--- PHP Version: 8.0.6
+-- Generation Time: Nov 20, 2021 at 08:36 PM
+-- Server version: 10.4.21-MariaDB
+-- PHP Version: 8.0.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -111,7 +111,9 @@ CREATE TABLE `patients` (
 --
 
 INSERT INTO `patients` (`id`, `email`, `password`, `first_name`, `last_name`, `age`, `gender`, `date_of_birth`, `mobile_number`, `hmo`, `patient_id`, `v_code`, `email_status`, `date_time_created`, `date_time_updated`, `remarks`) VALUES
-(6, 'mathewdalisay@gmail.com', '123', 'mathew', 'dalisay', 21, 'male', '2000-10-01', '+639156915704', 'maxicare', 999999, 'b7a782741f667201b548', 1, '2021-11-06 07:51:47', '2021-11-06 07:51:47', NULL);
+(6, 'mathewdalisay@gmail.com', '123', 'mathew', 'dalisay', 21, 'male', '2000-10-01', '+639156915704', 'maxicare', 999999, 'b7a782741f667201b548', 1, '2021-11-06 07:51:47', '2021-11-06 07:51:47', NULL),
+(7, 'mathewmelendez123123123@gmail.com', 'empty129', 'sample', 'sample', 22, 'Male', '2021-11-09', '09176059359', 'sample', 202031779, ' ', 0, '2021-11-21 01:27:56', '2021-11-21 01:27:56', NULL),
+(8, 'sample11@gmail.com', 'empty222', 'sample1', 'sample1', 22, 'Male', '2021-11-16', '09176059359', 'sample2', 202086, ' ', 0, '2021-11-21 01:29:14', '2021-11-21 01:29:14', NULL);
 
 -- --------------------------------------------------------
 
@@ -169,7 +171,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `doctor_or_secretary`, `email`, `account_id`, `first_name`, `last_name`, `age`, `gender`, `date_of_birth`, `mobile_number`, `v_code`, `email_status`, `date_time_created`, `date_time_updated`, `remarks`) VALUES
 (7, 'doctor', 'leonidafrancisco12@gmail.com', 738047, 'nida', 'franciso', 63, 'female', '1956-04-06', '+639614507751', 'fa246d0262c3925617b0c72bb20eeb1d', 0, '2021-11-06 08:08:29', '2021-11-06 08:08:29', NULL),
-(8, 'secretary', 'mathewmelendez123123123@gmail.com', 123, 'dorothy', 'melendez', 28, 'female', '1992-02-20', '+639176059359', 'fa246d0262c3925617b0c72bb20eeb1d', 1, '2021-11-06 08:18:51', '2021-11-06 08:18:51', NULL);
+(8, 'secretary', 'mathewmelendez123123123@gmail.com', 202143884, 'dorothy', 'melendez', 28, 'Male', '1992-01-27', '+639176059359', 'b7a782741f667201b54880c925faec4b', 0, '2021-11-06 08:18:51', '2021-11-21 03:30:53', 'Profile Updated');
 
 -- --------------------------------------------------------
 
@@ -184,13 +186,6 @@ CREATE TABLE `user_type` (
   `date_time_updated` datetime DEFAULT NULL,
   `remarks` varchar(30) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `user_type`
---
-
-INSERT INTO `user_type` (`id`, `user_id`, `date_time_created`, `date_time_updated`, `remarks`) VALUES
-(2, 123, '2021-11-06 08:18:51', '2021-11-06 08:18:51', NULL);
 
 --
 -- Indexes for dumped tables
@@ -256,7 +251,7 @@ ALTER TABLE `doctors_details`
 -- AUTO_INCREMENT for table `patients`
 --
 ALTER TABLE `patients`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `sample`

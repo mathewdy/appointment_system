@@ -6,6 +6,15 @@ if(empty($_SESSION['email'])){
 }
 
 
+if(isset($_GET['page'])){
+    $page = $_GET['page'];
+}else{
+    $page = 1;
+}
+
+$num_per_page = 05;
+$start_from = ($page-1)*05;
+
 
 ?>
 
@@ -22,7 +31,7 @@ if(empty($_SESSION['email'])){
 <body>
 
 <div class="container">
-  <a href="home.php" >Home</a>
+  <a href="home2.php" >Home</a>
   <a href="appointments.php" >Appointments</a>
   <a href="logout.php">Logout</a>
     
@@ -77,7 +86,7 @@ if(empty($_SESSION['email'])){
 <?php
 
     $query = "SELECT * FROM users LEFT JOIN doctors_details ON users.account_id = doctors_details.user_id 
-    WHERE users.doctor_or_secretary = 'doctor' LIMIT 10";
+    WHERE users.doctor_or_secretary = 'doctor' LIMIT $start_from , $num_per_page";
     $run = mysqli_query($conn,$query);
 
     if(mysqli_fetch_assoc($run) > 0){
@@ -104,9 +113,39 @@ if(empty($_SESSION['email'])){
     echo '<div class="text-danger">'. '<h3>'  . "No data" . '</h3>' .'</div>' . $conn->error;
 }
 
+
+?>
+
+
+<div class="container py-5">
+
+<?php
+
+$pr_query = "SELECT * FROM users LEFT JOIN doctors_details ON users.account_id = doctors_details.user_id 
+WHERE users.doctor_or_secretary = 'doctor'";
+$pr_result = mysqli_query($conn,$pr_query);
+$total_record = mysqli_num_rows($pr_result);
+
+$total_page = ceil($total_record / $num_per_page);
+
+if($page > 1 ){
+    echo  "<a href='home2.php?page=".($page-1)."' class='btn btn-danger'>Previous</a> ";
+}
+
+for($i=1;$i<$total_page;$i++){
+
+    echo  "<a href='home2.php?page=".$i."' class='btn btn-primary'>$i</a> ";
+}
+
+    if($i > $page ){
+    echo  "<a href='home2.php?page=".($page+1)."' class='btn btn-danger'>Next</a> ";
+}
+
 ?>
 
   </div>
+
+</div>
 
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>

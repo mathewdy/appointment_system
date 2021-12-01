@@ -58,7 +58,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="../css/reg-doctors.css">
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
 </head>
@@ -114,9 +113,7 @@
     <input type="text"name= "hmo"> <br>
     <label for="">Profile Picture</label>
     <input type="file" name="doc_picture"> <br>
-    <div><br>
-        <div class="g-recaptcha" data-sitekey="6LeDhkEdAAAAAOowHWu_1sVH7vjlVwgZeJHhp3tr"></div>
-    </div><br>
+    
     <input type="submit" name="register" value="Register">
     </form> <a href="login.php">Already have account? Log in</a>
 </div>    
@@ -125,12 +122,8 @@
 
 <?php
 
-if(isset($_POST['register']) && $_POST['g-recaptcha-response'] != "" ){
-    $secret = '6LeDhkEdAAAAADaqjnG1pIM6UkVcS6shpF7nsRo1';
-    $verify_response = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret=' . $secret . '&response=' . $_POST['g-recaptcha-response'] );
-    $response_data = json_decode($verify_response);
-
-    if($response_data->success){
+if(isset($_POST['register'])){
+   
 
         $doctor = "doctor"; 
         $first_name = $_POST['first_name'];
@@ -198,7 +191,6 @@ if(isset($_POST['register']) && $_POST['g-recaptcha-response'] != "" ){
                 echo "error insert1". $conn->error;
             }
         }
-    }
 
    
 

@@ -11,7 +11,6 @@ session_start();
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/login-doctors.css">
     <title>Document</title>
@@ -41,9 +40,7 @@ session_start();
         </div>
     </new>
 
-        <div>
-            <div class="g-recaptcha" data-sitekey="6LeDhkEdAAAAAOowHWu_1sVH7vjlVwgZeJHhp3tr">
-        </div><br>
+        
 
         <div class="col-12">
             <input class="btn btn-primary" type="submit" name="login" value="Login">
@@ -62,13 +59,9 @@ session_start();
 
 <?php
 
-if(isset($_POST['login']) && $_POST['g-recaptcha-response'] != ""){
+if(isset($_POST['login'])){
 
-    $secret = '6LeDhkEdAAAAADaqjnG1pIM6UkVcS6shpF7nsRo1';
-    $verify_response = file_get_contents('https://www.google.com/recaptcha/api/siteverify?secret=' . $secret . '&response=' . $_POST['g-recaptcha-response'] );
-    $response_data = json_decode($verify_response);
-
-    if($response_data->success){
+   
         $email = $_POST['email'];
         $account_id = $_POST['account_id'];   
 
@@ -100,7 +93,6 @@ if(isset($_POST['login']) && $_POST['g-recaptcha-response'] != ""){
             }
         }
 
-    }
 }
 
 ?>
